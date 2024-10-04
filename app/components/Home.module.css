@@ -1,0 +1,38 @@
+.section {
+	overflow: hidden;
+}
+
+.first {
+	height: 100dvh;
+	width: 100dvw;
+	background: url("../../src/images/section-1.jpg") no-repeat center center fixed;
+	background-size: cover;
+	animation: 15s linear infinite bg-anim;
+}
+
+@keyframes bg-anim {
+	0% {
+		background-position: center;
+		scale: 1;
+	}
+
+	25% {
+		background-position: left;
+		scale: 1.025;
+	}
+
+	50% {
+		background-position: center;
+		scale: 1.025;
+	}
+
+	75% {
+		background-position: right;
+		scale: 1.025;
+	}
+
+	100% {
+		background-position: center;
+		scale: 1;
+	}
+}
