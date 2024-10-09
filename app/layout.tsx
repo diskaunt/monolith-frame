@@ -1,4 +1,4 @@
-import { Inter, Play } from '@next/font/google';
+import { Inter, Play } from "next/font/google";
 import './globals.css';
 
 export const inter = Inter({

@@ -14,26 +14,144 @@
 	height: 100svh;
 	fill: none;
 	background-image: none;
-	& #vectorLongLast {
-		position: relative;
-		transition: all 1s ease;
-		fill:#fff;
+}
+
+.preloaderSvg {
+	position: relative;
+	z-index: 1;
+
+	& defs {
+		opacity: 0;
+	}
+
+	& path {
+		opacity: 0;
+		animation: 3.8s ease-in-out 0.4s both pathStroke;
+	}
+
+	& rect {
+		animation: 0s linear 0.7s both rectOpacity;
 	}
 }
 
-/* #VectorLong::before {
-	content: '1';
-	position: absolute;
-	height: 100px;
-	width: 100px;
-	z-index: 12;
-} */
-
-.loader {
+.loaderWrapper {
 	position: absolute;
 	left: 50%;
 	bottom: clamp(50px, 6.5%, 65px);
+	transform: translateY(100%);
+	overflow: hidden;
+	z-index: 2;
+}
+
+.loader {
 	font-size: 25px;
 	font-weight: 700;
-	transform: translateX(-50%);
+	animation: 3.7s ease-in-out 0.5s both loadTranslate;
+	transform: translateY(100%);
+}
+
+.back {
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	background-color: #DF462A;
+	animation: 0.7s linear both backTranslate;
+}
+
+.loadLevel {
+	display: inline-block;
+	position: relative;
+	width: 2rem;
+	overflow: hidden;
+}
+
+.loadLevFirst {
+	position: absolute;
+	animation: 0.8s ease-in-out 0.9s infinite backwards loadLevTrans;
+}
+
+.loadLevSecond {
+	position: absolute;
+	right: 0;
+	animation: 0.8s ease-in-out 1s infinite backwards loadLevTrans;
+}
+
+@keyframes loadLevTrans {
+	0% {
+		transform: translateY(-100%);
+	}
+
+	10% {
+		transform: translateY(0);
+	}
+
+	90% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(100%);
+	}
+
+}
+
+@keyframes loadTranslate {
+	0% {
+		transform: translateY(100%);
+	}
+
+	9% {
+		transform: translateY(0);
+	}
+
+	91% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes pathStroke {
+	0% {
+		opacity: 0;
+	}
+
+	13.3% {
+		opacity: 1;
+	}
+
+	86.7% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes rectOpacity {
+	0% {
+		opacity: 0;
+	}
+
+	99% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes backTranslate {
+	0% {
+		transform: translateY(0);
+	}
+
+	100% {
+		transform: translateY(-100svh);
+		display: none;
+	}
 }
