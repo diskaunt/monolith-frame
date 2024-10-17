@@ -1,12 +1,15 @@
 .container {
-	position: relative;
-	width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 	min-width: 375px;
 	height: 100svh;
-	background: url("../../../src/images/section-1.jpg") no-repeat center center fixed;
+	/* background: url("../../../public/images/section-1.jpg") no-repeat center center fixed; */
 	background-size: cover;
 	overflow: hidden;
 	color: #fff;
+	z-index: 1;
 }
 
 .svg {
@@ -34,68 +37,93 @@
 	}
 }
 
+.back {
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	background-color: #DF462A;
+	animation: 0.7s linear both backTrans;
+}
+
 .loaderWrapper {
 	position: absolute;
 	left: 50%;
 	bottom: clamp(50px, 6.5%, 65px);
-	transform: translateY(100%);
+	transform: translate(-50%, 0);
 	overflow: hidden;
 	z-index: 2;
 }
 
 .loader {
 	font-size: 25px;
-	font-weight: 700;
-	animation: 3.7s ease-in-out 0.5s both loadTranslate;
+	text-transform: uppercase;
+	animation: 3.7s ease-in-out 0.5s both loaderTrans;
 	transform: translateY(100%);
 }
 
-.back {
-	width: 100%;
-	height: 100%;
-	z-index: 0;
-	background-color: #DF462A;
-	animation: 0.7s linear both backTranslate;
-}
-
 .loadLevel {
-	display: inline-block;
+	display: inline-flex;
+	height: 37.5px;
 	position: relative;
-	width: 2rem;
-	overflow: hidden;
+	flex-direction: column;
+	overflow-y: hidden;
 }
 
-.loadLevFirst {
-	position: absolute;
-	animation: 0.8s ease-in-out 0.9s infinite backwards loadLevTrans;
+.loadLvlFirst {
+	display: inline-flex;
+	animation: 3s linear 0.7s both loadLvlTrans;
 }
 
-.loadLevSecond {
-	position: absolute;
-	right: 0;
-	animation: 0.8s ease-in-out 1s infinite backwards loadLevTrans;
+.loadLvlSecond {
+	display: inline-flex;
+	animation: 3s linear 0.75s both loadLvlTrans;
 }
 
-@keyframes loadLevTrans {
+@keyframes loadLvlTrans {
 	0% {
+		transform: translateY(-400%);
+	}
+
+	5% {
+		transform: translateY(-400%);
+	}
+
+	20% {
+		transform: translateY(-300%);
+	}
+
+	25% {
+		transform: translateY(-300%);
+	}
+
+	40% {
+		transform: translateY(-200%);
+	}
+
+	45% {
+		transform: translateY(-200%);
+	}
+
+	60% {
 		transform: translateY(-100%);
 	}
 
-	10% {
-		transform: translateY(0);
+	65% {
+		transform: translateY(-100%);
 	}
 
-	90% {
-		transform: translateY(0);
+	80% {
+		transform: translateY(0%);
 	}
 
 	100% {
-		transform: translateY(100%);
+		transform: translateY(0%);
 	}
+
 
 }
 
-@keyframes loadTranslate {
+@keyframes loaderTrans {
 	0% {
 		transform: translateY(100%);
 	}
@@ -145,7 +173,7 @@
 	}
 }
 
-@keyframes backTranslate {
+@keyframes backTrans {
 	0% {
 		transform: translateY(0);
 	}

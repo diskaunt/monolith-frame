@@ -1,29 +1,30 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+'use clients';
+import React, { use, useEffect, useId, useState } from 'react';
 import styles from './Preloader.module.css';
 import PreloaderSvg from './PreloaderSvg';
+import classNames from 'classnames';
 
-const Preloader = ({
-  loadLevel,
-  setloadLevel,
-}: {
-  loadLevel: string;
-  setloadLevel: (value: string) => void;
-}) => {
-  useEffect(() => {
-    const progeress = setTimeout(() => {
-      let newLoadLevel = loadLevel + 28;
-      +newLoadLevel >= 99 ? (newLoadLevel = '99') : newLoadLevel;
-      setloadLevel(String(newLoadLevel).padStart(2, '0').slice(-2));
-    }, 800);
+const Preloader = () => {
+  let [animationEnded, setAnimationEnd] = useState(false);
+  const levels = ['00', '28', '45', '87', '99'];
 
-    return () => clearTimeout(progeress);
-  }, [loadLevel]);
+  const renderLoadLevels = levels.reverse().map((lvl, i) => (
+    <div key={i}>
+      <span className={styles.loadLvlFirst}>
+        <span>{lvl[0]}</span>
+      </span>
+      <span className={styles.loadLvlSecond}>
+        <span>{lvl[1]}</span>
+      </span>
+    </div>
+  ));
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container,
+		{ hidden: animationEnded }
+		)}>
       <div className={styles.svg}>
         <PreloaderSvg
+          setAnimationEnd={setAnimationEnd}
           preserveAspectRatio='xMidYMid slice'
           className={styles.preloaderSvg}
         />
@@ -31,11 +32,7 @@ const Preloader = ({
       <div className={styles.back} />
       <div className={styles.loaderWrapper}>
         <div className={styles.loader}>
-          LOADING -
-          <span className={styles.loadLevel}>
-            <span className={styles.loadLevFirst}>{loadLevel[0]}</span>
-            <span className={styles.loadLevSecond}>{loadLevel[1]}</span>
-          </span>
+          загрузка -<span className={styles.loadLevel}>{renderLoadLevels}</span>
           %
         </div>
       </div>
