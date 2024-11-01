@@ -4,7 +4,6 @@
 	background: url("../../../public/images/section-1.jpg") no-repeat center center fixed;
 	background-size: cover;
 	/* animation: 15s linear infinite bgAnim; */
-	padding: 20px;
 }
 
 @keyframes bgAnim {
@@ -32,4 +31,57 @@
 		background-position: center;
 		scale: 1;
 	}
+}
+
+@keyframes slide-up-opacity {
+	0% {
+		transform: translateY(50%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1
+	}
+}
+
+.slideUpOpacity {
+	animation: slide-up-opacity 0.3s ease-out 4.2s both;
+}
+
+@keyframes slide-up-rotate {
+	0% {
+		transform: translateY(100%) rotate(2deg);
+	}
+
+	100% {
+		transform: translateY(0) rotate(0);
+	}
+}
+
+.slideUpRotate {
+	animation: slide-up-rotate 0.3s ease-out 4.2s both;
+}
+
+@keyframes slide-right-opacity {
+	0% {
+		transform: translateX(-30%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX(0);
+		opacity: 1
+	}
+}
+
+.slideRightOpacity {
+	animation: slide-right-opacity 0.3s ease-out 4.2s both;
+}
+
+.main {
+	overflow: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	/* Internet Explorer 10+ */
 }

@@ -4,13 +4,32 @@
 
 :root {
 	box-sizing: border-box;
-	--font-inter: 'Inter'
+	--font-inter: 'Inter';
+	--new-orange: #DF462A;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+	display: none;
+	/* WebKit (Chrome, Safari, etc.) */
 }
 
 body {
 	margin: 0;
 }
 
-/* .font-inter {
-  font-family: var(--font-inter), sans-serif;
-} */
+.hoverMenuNav:hover::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4px;
+	display: inline-block;
+	margin-right: 8px;
+	height: 0.95em;
+	width: 7px;
+	background-color: var(--new-orange);
+}
+
+.clipPath {
+	clip-path: xywh(0 0 100% 100%);
+}

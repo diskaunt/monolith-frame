@@ -1,5 +1,6 @@
 import { Inter, Oswald } from 'next/font/google';
 import DrucSyr from 'next/font/local';
+import HalvarBreit from 'next/font/local';
 import './globals.css';
 import Head from 'next/head';
 
@@ -7,6 +8,16 @@ export const inter = Inter({
   subsets: ['cyrillic', 'latin'],
   variable: '--font-inter',
 });
+
+export const halvarBreit = HalvarBreit({
+	src: [
+		{
+			path: './../public/fonts/Halvar Breitschrift/HalvarBreit-Lt.woff2',
+			weight: '300',
+			style: 'normal'
+		}
+	]
+})
 
 export const drucSyr = DrucSyr({
   src: [
