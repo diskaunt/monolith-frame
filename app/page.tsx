@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 const page = () => {
   return (
     <>
-			<Preloader/>
+			<Preloader />
       <Main />
     </>
   );

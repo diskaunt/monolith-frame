@@ -18,15 +18,18 @@ const config: Config = {
       fontFamily: {
         inter: ['var(--font-inter)'],
         drucSyr: ['var(--font-drucSyr)'],
-				halvarBreit: ['var(--font-halvarBreit)']
+				halvarBreit: ['var(--font-halvarBreit)'],
       },
 			width: {
 				'menuDev': 'calc(100vw - 753px)',
+				'devConst-hd': 'calc(100vw - 117px - 40px)',
+				'nav-sm': 'calc(100% - 40px)',
+				'nav': 'calc(100% - 32px)',
 			},
 			spacing: {
 				'complex-x': 'calc(100% + 6px)',
 			  'complex-y': 'calc(-100% + -6px)',
-				'scroll': 'calc(100wv-17px)',
+				'scroll': 'calc(100vw-17px)',
 			}
     },
     screens: {
@@ -39,7 +42,7 @@ const config: Config = {
 			tighter: '-.03em',
 			tight: '-.01em',
 			normal: '0',
-			wide: '.01em'
+			wide: '.01em',
 		}
   },
   plugins: [],

@@ -1,0 +1,156 @@
+.svgLoadDev path {
+	stroke-dasharray: 1408;
+	stroke-dashoffset: 1408;
+	animation: drawLoad 1s linear forwards;
+}
+
+.dev:hover .svgLoadDev path {
+	stroke-dasharray: 1489;
+	stroke-dashoffset: 0;
+	animation: drawHover 1s linear .8s forwards;
+}
+
+.svgLoadConst path {
+	stroke-dasharray: 1489;
+	stroke-dashoffset: 1489;
+	animation: drawLoad 1s linear .8s forwards;
+}
+
+@keyframes drawLoad {
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes drawHover {
+	100% {
+		stroke-dashoffset: 1408;
+	}
+}
+
+.loadImageDev {
+	animation: loadImage 1s linear forwards;
+	transform: scale(1.25);
+	clip-path: xywh(0 0 0 100%);
+}
+
+.dev:hover .loadImageDev {
+	transform: scale(1);
+	clip-path: xywh(0 0 100% 100%);
+	animation: imageHover 1s linear forwards;
+}
+
+@keyframes imageHover {
+	100% {
+		transform: scale(1.25);
+		clip-path: xywh(0 0 0 100%);
+	}
+}
+
+.loadImageConst {
+	animation: loadImage 1s linear .5s forwards;
+	transform: scale(1.25);
+	clip-path: xywh(0 0 0 100%);
+}
+
+@keyframes loadImage {
+	100% {
+		transform: scale(1);
+		clip-path: xywh(0 0 100% 100%);
+	}
+}
+
+.loadTextDev {
+	animation: loadText 1s ease-in-out forwards;
+	transform: translateY(100%);
+	opacity: 0;
+}
+
+.loadTextConst {
+	animation: loadText 1s ease-in-out .5s forwards;
+	transform: translateY(100%);
+	opacity: 0;
+}
+
+@keyframes loadText {
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.loadTitleDev {
+	transform: translateY(100%) rotate(2deg);
+	animation: loadTitle 1s ease-in-out forwards;
+}
+
+.loadTitleConst {
+	transform: translateY(100%) rotate(2deg);
+	animation: loadTitle 1s ease-in-out .5s forwards;
+}
+
+@keyframes loadTitle {
+	100% {
+		transform: translateY(0) rotate(0);
+	}
+}
+
+.devBuildSvgHover path{
+	stroke-dasharray: 1034;
+	stroke-dashoffset: 1034;
+	animation: devBuildPath 1s linear reverse forwards;
+}
+
+.devBuildSvgHover line:nth-child(1) {
+	stroke-dasharray: 296;
+	stroke-dashoffset: -296;
+	animation: devBuildPath 1s linear reverse forwards;
+}
+
+.devBuildSvgHover line:nth-child(2) {
+	stroke-dasharray: 266;
+	stroke-dashoffset: 266;
+	animation: devBuildPath 1s linear reverse forwards;
+}
+
+.devBuildSvgHover line:nth-child(3) {
+	stroke-dasharray: 394;
+	stroke-dashoffset: 394;
+	animation: devBuildPath 1s linear reverse forwards;
+}
+
+@keyframes devBuildPath {
+	100% {
+		stroke-dashoffset: 0;
+	}
+}
+
+.dev:hover .devBuildSvgHover path {
+	stroke-dasharray: 1034;
+	stroke-dashoffset: 1034;
+	animation: devBuildPathHover 1s linear 1.6s forwards;
+}
+
+.dev:hover .devBuildSvgHover line:nth-child(1) {
+	stroke-dasharray: 296;
+	stroke-dashoffset: -296;
+	animation: devBuildPathHover .4s linear 2.4s forwards;
+}
+
+.dev:hover .devBuildSvgHover line:nth-child(2) {
+	stroke-dasharray: 266;
+	stroke-dashoffset: 266;
+	animation: devBuildPathHover .5s linear 2.5s forwards;
+}
+
+.dev:hover .devBuildSvgHover line:nth-child(3) {
+	stroke-dasharray: 394;
+	stroke-dashoffset: 394;
+	animation: devBuildPathHover .5s linear 2s forwards;
+}
+
+@keyframes devBuildPathHover {
+	100% {
+		stroke-dashoffset: 0;
+	}
+}

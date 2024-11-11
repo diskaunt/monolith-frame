@@ -1,21 +1,26 @@
 import styles from './Main.module.css';
-import React, { useRef } from 'react';
-import Nav from './Navigate/Nav';
+import React, { useEffect, useRef, useState } from 'react';
+import Nav from './Navbar/Nav';
 import classNames from 'classnames';
 import ArrowRight from './ArrowRight';
-import ResComplex from './ResComplexCard/ResComplex';
-import DevConst from './DevConst';
+import RCCard from './RCCard/RCCard';
+import DevConst from './developeConst/DevConst';
+import useInactiveTimeout from '@/hooks/useInactiveTimeout';
 
 const Main = () => {
   const mainRef = useRef<HTMLDivElement>(null);
+	const [scrollEnd, setScrollEnd] = useState(false)
 
-  const scrollToEnd = () => {
+  const scrollToDevConst = () => {
     mainRef.current &&
       mainRef.current.scrollTo({
         left: mainRef.current.scrollWidth - mainRef.current.clientWidth,
         behavior: 'smooth',
       });
+			setScrollEnd(true)
   };
+
+	useInactiveTimeout(scrollToDevConst, 6000)
 
   return (
     <section
@@ -32,14 +37,14 @@ const Main = () => {
         )}
       >
         <div className='flex flex-wrap gap-x-[101px] gap-y-[37px]'>
-          <div className='sm:h-[60px] h-[50px] max-w-[707px] w-[100%] min-w-[343px]'>
+          <div className='relative h-[50px] sm:h-[60px] max-w-[707px] w-full min-w-[343px] z-20'>
             <Nav />
           </div>
           <div className='space-y-[30px] grow mt-[-11px]'>
-            <div className='text-[70px] leading-[60px] font-bold uppercase sm:leading-[120px] tracking-wide max-w-[330px] ml-[-1px] sm:max-w-[840px] sm:text-[140px] overflow-hidden'>
-              <div className=''>
+            <div className=' overflow-hidden pr-[117px]'>
+              <div className='text-[70px] leading-[60px] font-bold uppercase sm:leading-[120px] tracking-wide max-w-[400px] ml-[-1px] sm:max-w-[900px] sm:text-[140px]'>
                 <div className='overflow-hidden inline-block'>
-                  <h1 className={styles.slideUpRotate}>компания</h1>
+                  <h1 className={styles.slideUpRotate}>компания&nbsp;</h1>
                 </div>
                 <div className='overflow-hidden inline-block'>
                   <h1 className={styles.slideUpRotate}>третьего</h1>
@@ -60,17 +65,17 @@ const Main = () => {
         </div>
         <div className='flex items-end justify-between mx-[-16px] my-[-16px] sm:m-[0]'>
           <div className='w-full relative font-inter tracking-tighter max-w-[307px] max-h-[104px] sm:max-w-[370px] sm:max-h-[120px] group'>
-            <ResComplex />
+            <RCCard />
           </div>
-          <div onClick={scrollToEnd} className='hidden sm:block'>
+          <div onClick={scrollToDevConst} className='invisible sm:visible'>
             <ArrowRight
               className={classNames(styles.slideRightOpacity, 'cursor-pointer')}
             />
           </div>
         </div>
       </div>
-      <div className='min-w-[88vw] h-[100svh] columns-2 gap-0 snap-start'>
-        <DevConst />
+      <div className='w-[100vw] shrink-0 hd:max-w-[1765px] hd:w-devConst-hd h-[100svh] md:columns-2 gap-0 snap-start'>
+        <DevConst scrollEnd={scrollEnd} />
       </div>
     </section>
   );

@@ -12,11 +12,12 @@ export const inter = Inter({
 export const halvarBreit = HalvarBreit({
 	src: [
 		{
-			path: './../public/fonts/Halvar Breitschrift/HalvarBreit-Lt.woff2',
-			weight: '300',
+			path: './../public/fonts/Halvar Breitschrift/HalvarBreit-Md.woff2',
+			weight: '400',
 			style: 'normal'
 		}
-	]
+	],
+	variable: '--font-halvarBreit'
 })
 
 export const drucSyr = DrucSyr({
@@ -50,7 +51,7 @@ export default function RootLayout({
       <Head>
         <link rel='icon' href='/icon.ico' />
       </Head>
-      <body className={`${drucSyr.className} ${inter.variable}`}>{children}</body>
+      <body className={`${drucSyr.className} ${inter.variable} ${halvarBreit.variable}`}>{children}</body>
     </html>
   );
 }

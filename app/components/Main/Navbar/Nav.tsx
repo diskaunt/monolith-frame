@@ -1,11 +1,11 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import MenuSvg from './Svg/MenuSvg';
-import MgLogoSvg from './Svg/MgLogoSvg';
-import NavSvg from './Svg/NavSvg';
-import ArrowNavSvg from './Svg/ArrowNavSvg';
-import MgLogoSmSvg from './Svg/MgLogoSmSvg';
-import NavSmSvg from './Svg/NavSmSvg';
+import MenuSvg from './conponentsSvg/MenuSvg';
+import MgLogoSvg from './conponentsSvg/MgLogoSvg';
+import NavSvg from './conponentsSvg/NavSvg';
+import ArrowNavSvg from './conponentsSvg/ArrowNavSvg';
+import MgLogoSmSvg from './conponentsSvg/MgLogoSmSvg';
+import NavSmSvg from './conponentsSvg/NavSmSvg';
 import DevelopmentMenu from './DevelopmentMenu';
 import classNames from 'classnames';
 import useClickOutside from '@/hooks/useClickOutside';
@@ -20,11 +20,11 @@ const Nav = () => {
   useClickOutside(menuRef, setDevOpened, setConstOpened);
 
   return (
-    <div className='fixed flex sm:h-[60px] h-[50px] max-w-[707px] w-[100%] min-w-[343px] z-10'>
+    <div className='fixed flex w-nav h-[50px] max-w-[707px] sm:w-nav-sm min-w-[343px] sm:h-[60px] z-10'>
       <div
         className={classNames(
           styles.slideUpMenuBorder,
-          'invisible w-0 md:visible md:flex md:w-[60px] items-center justify-center border border-white md:px-[15px]'
+          'invisible w-0 md:visible items-center justify-center border-white md:flex md:w-[60px] md:px-[15px] md:border'
         )}
       >
         <MenuSvg className={classNames(styles.slideUpMenuSvg)} />
@@ -33,12 +33,12 @@ const Nav = () => {
         ref={menuRef}
         className={classNames(
           styles.borderAnimate,
-          'relative flex grow border border-white sm:leading-[25px] sm:text-[24px] text-[16px] leading-[25px] tracking-wide md:ml-[6px] '
+          'relative flex grow border border-white text-[16px] leading-[25px] tracking-wide sm:leading-[25px] sm:text-[24px] md:ml-[6px] '
         )}
       >
         <div
           className={classNames(
-            'flex grow sm:max-w-[247px] w-[100%] justify-center items-center border-white sm:pl-[20px] px-[15px] max-w-[79px]'
+            'flex grow w-[100%] justify-center items-center border-white px-[15px] max-w-[79px] sm:max-w-[247px]'
           )}
         >
           <MgLogoSvg className='hidden sm:block' />
@@ -47,7 +47,7 @@ const Nav = () => {
         <div className={(styles.growAnimate, 'w-[1px] h-full bg-white')}></div>
         <div
           onClick={() => setDevOpened(!devOpened)}
-          className='flex grow justify-center items-center border-white space-x-[3px] sm:max-w-[158px] sm:pl-[20px] pl-[17px] pr-[14px] hover:bg-white hover:text-black cursor-pointer fill-white hover:fill-black uppercase'
+          className='flex grow justify-center items-center border-white space-x-[3px] px-[14px] hover:bg-white hover:text-black cursor-pointer fill-white sm:max-w-[154px] sm:px-[22px] hover:fill-black uppercase'
         >
           <span className=''>девелопмент</span>
           <span className='h-[0.7em] w-[6.67px] sm:w-[10px]'>
@@ -57,7 +57,7 @@ const Nav = () => {
         <div className={(styles.growAnimate, 'w-[1px] h-full bg-white')}></div>
         <div
           onClick={() => setConstOpened(!constOpened)}
-          className='flex grow justify-center items-center border-white space-x-[3px] sm:max-w-[171px] sm:pl-[20px] pl-[16px] pr-[13px] hover:bg-white hover:text-black cursor-pointer fill-white hover:fill-black uppercase'
+          className='flex grow justify-center items-center border-white space-x-[3px] px-[16px] hover:bg-white hover:text-black cursor-pointer fill-white sm:max-w-[171px] sm:px-[20px] hover:fill-black uppercase'
         >
           <span>строительство</span>
           <span className='h-[0.7em] w-[6.67px] sm:w-[10px]'>
@@ -65,7 +65,7 @@ const Nav = () => {
           </span>
         </div>
         <div className={(styles.growAnimate, 'w-[1px] h-full bg-white')}></div>
-        <div className='flex mx-auto w-[50px] sm:w-[60px] justify-center items-center px-[18px] sm:px-[20px] stroke-white'>
+        <div className='flex mx-auto w-[48px] justify-center items-center px-[16px] sm:w-[60px] sm:px-[20px] stroke-white'>
           <NavSvg className='hidden sm:block' />
           <NavSmSvg className='sm:hidden' />
         </div>

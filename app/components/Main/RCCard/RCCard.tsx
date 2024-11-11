@@ -1,11 +1,11 @@
 import React, { RefObject, useEffect, useRef, useState } from 'react';
 import ArrowComplex from './ArrowComplex';
 import Link from 'next/link';
-import styles from './ResComplex.module.css';
+import styles from './RCCard.module.css';
 import classNames from 'classnames';
 import useMouseOver from '@/hooks/useMouseOver';
 
-const ResComplex = () => {
+const RCCard = () => {
   const resRef = useRef(null);
   const [resOvered, setResOver] = useState(false);
   useMouseOver(resRef, setResOver, 300);
@@ -58,7 +58,7 @@ const ResComplex = () => {
       {/* pop-up block */}
       <div
         className={classNames(
-          resOvered ? 'translate-y-[-20px] visible' : 'invisible',
+          resOvered ? 'translate-y-[-25px] visible' : 'invisible',
           'absolute group flex top-0 left-0 w-full  z-10 scale-90 transition-all duration-300 easy-in-out hover:scale-100 hover:translate-y-[-103%] hover:visible'
         )}
       >
@@ -85,4 +85,4 @@ const ResComplex = () => {
   );
 };
 
-export default ResComplex;
+export default RCCard;

@@ -15,7 +15,7 @@ const ConstructionMenu = ({ constOpened }: { constOpened: boolean }) => {
     <>
       <div
         className={classNames(
-          constOpened ? 'z-10' : '-z-10 delay-300',
+          constOpened ? 'visible z-10' : 'invisible -z-10 delay-300',
           'absolute top-[0] left-[100%] ml-[6px] overflow-hidden trasition-all'
         )}
       >

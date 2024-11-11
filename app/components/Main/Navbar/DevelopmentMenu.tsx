@@ -16,7 +16,7 @@ const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
       {/* menu development */}
       <div
         className={classNames(
-          devOpened ? 'z-10' : '-z-10 delay-300',
+          devOpened ? 'visible z-10' : 'invisible -z-10 delay-300',
           'absolute top-[66px] right-[0] overflow-hidden trasition-all'
         )}
       >
