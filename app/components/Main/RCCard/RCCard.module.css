@@ -73,3 +73,12 @@
 .loadRightArrow {
 	animation: load-right-arrow .3s ease-in-out both;
 }
+
+.cutoffText {
+	--max-lines: 3;
+
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: var(--max-lines);
+}

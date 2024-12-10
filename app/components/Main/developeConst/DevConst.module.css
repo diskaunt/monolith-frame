@@ -24,7 +24,7 @@
 
 @keyframes drawHover {
 	100% {
-		stroke-dashoffset: 1408;
+		stroke-dashoffset: 1462;
 	}
 }
 
@@ -95,34 +95,15 @@
 	}
 }
 
-.devBuildSvgHover path{
-	stroke-dasharray: 1034;
-	stroke-dashoffset: 1034;
-	animation: devBuildPath 1s linear reverse forwards;
+.devBuildSvgHover {
+	visibility: hidden;
+	opacity: 0;
 }
 
-.devBuildSvgHover line:nth-child(1) {
-	stroke-dasharray: 296;
-	stroke-dashoffset: -296;
-	animation: devBuildPath 1s linear reverse forwards;
-}
-
-.devBuildSvgHover line:nth-child(2) {
-	stroke-dasharray: 266;
-	stroke-dashoffset: 266;
-	animation: devBuildPath 1s linear reverse forwards;
-}
-
-.devBuildSvgHover line:nth-child(3) {
-	stroke-dasharray: 394;
-	stroke-dashoffset: 394;
-	animation: devBuildPath 1s linear reverse forwards;
-}
-
-@keyframes devBuildPath {
-	100% {
-		stroke-dashoffset: 0;
-	}
+.dev:hover .devBuildSvgHover {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s linear 300ms, opacity 300ms;
 }
 
 .dev:hover .devBuildSvgHover path {

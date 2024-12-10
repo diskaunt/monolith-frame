@@ -4,7 +4,6 @@ import MenuSvg from './conponentsSvg/MenuSvg';
 import MgLogoSvg from './conponentsSvg/MgLogoSvg';
 import NavSvg from './conponentsSvg/NavSvg';
 import ArrowNavSvg from './conponentsSvg/ArrowNavSvg';
-import MgLogoSmSvg from './conponentsSvg/MgLogoSmSvg';
 import NavSmSvg from './conponentsSvg/NavSmSvg';
 import DevelopmentMenu from './DevelopmentMenu';
 import classNames from 'classnames';
@@ -20,7 +19,7 @@ const Nav = () => {
   useClickOutside(menuRef, setDevOpened, setConstOpened);
 
   return (
-    <div className='fixed flex w-nav h-[50px] max-w-[707px] sm:w-nav-sm min-w-[343px] sm:h-[60px] z-10'>
+    <div className='fixed top-[16px] left-[16px] flex w-nav h-[50px] max-w-[707px] hd:top-[20px] hd:left-[20px] sm:w-nav-sm min-w-[343px] sm:h-[60px] z-10'>
       <div
         className={classNames(
           styles.slideUpMenuBorder,
@@ -38,11 +37,10 @@ const Nav = () => {
       >
         <div
           className={classNames(
-            'flex grow w-[100%] justify-center items-center border-white px-[15px] max-w-[79px] sm:max-w-[247px]'
+            'flex grow w-full justify-center items-center border-white px-[15px] max-w-[79px] sm:max-w-[247px] stroke-white'
           )}
         >
-          <MgLogoSvg className='hidden sm:block' />
-          <MgLogoSmSvg className='sm:hidden' />
+          <MgLogoSvg />
         </div>
         <div className={(styles.growAnimate, 'w-[1px] h-full bg-white')}></div>
         <div

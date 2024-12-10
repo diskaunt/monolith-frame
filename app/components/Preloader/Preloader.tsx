@@ -1,5 +1,5 @@
 'use clients';
-import React, { use, useEffect, useId, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Preloader.module.css';
 import PreloaderSvg from './PreloaderSvg';
 import classNames from 'classnames';
@@ -20,7 +20,7 @@ const Preloader = () => {
   ));
   return (
     <div className={classNames(styles.container,
-		{ hidden: animationEnded }
+		{ hidden: animationEnded },
 		)}>
       <div className={styles.svg}>
         <PreloaderSvg

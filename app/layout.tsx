@@ -47,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang='ru'>
       <Head>
         <link rel='icon' href='/icon.ico' />
       </Head>

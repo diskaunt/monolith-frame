@@ -71,11 +71,11 @@ const RCCard = () => {
         </div>
         <div className='flex overflow-hidden flex-wrap flex-col grow bg-sky-950 justify-between max-w-[260px]'>
           <div className='flex mx-[10px] mt-[3px] gap-x-[16px] text-[10px] sm:mx-[14px] sm:mt-[11px] sm:gap-x-[23px] sm:text-[12px] font-semibold uppercase leading-[23px] opacity-60'>
-            <p className={styles['slide-up-opacity']}>07.12.22</p>
-            <p className={styles['slide-up-opacity']}>#новое</p>
+            <p className={classNames(styles['slide-up-opacity'])}>07.12.22</p>
+            <p className={classNames(styles['slide-up-opacity'])}>#новое</p>
           </div>
-          <div className='mx-[10px] my-[10px] text-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px] leading-[18px] font-medium'>
-            <p className={styles['slide-up']}>
+          <div className='w-full px-[10px] py-[10px] text-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px] leading-[18px] font-medium'>
+            <p className={classNames(styles['slide-up'], styles.cutoffText ,'w-full')}>
               В ЖК Речной парк начались первые продажи апартаментов
             </p>
           </div>

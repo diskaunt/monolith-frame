@@ -24,7 +24,7 @@ const ConstructionMenu = ({ constOpened }: { constOpened: boolean }) => {
             constOpened
               ? 'translate-x-[0] translate-y-[0] opacity-100'
               : 'translate-x-[-100%] translate-y-[-100%] opacity-0',
-            'flex flex-wrap justify-between h-min-[476px] ] bg-white text-black w-menuDev fhd:max-w-[1167px] hd:max-w-[675px] p-[10px] min-w-[360px] gap-[10px] transition-all duration-300'
+            'flex flex-wrap justify-between h-min-[476px] bg-white text-black w-menuDev fhd:max-w-[1150px] hd:max-w-[675px] p-[10px] min-w-[360px] gap-[10px] transition-all duration-300'
           )}
         >
           <div className='grow flex flex-col justify-between'>
