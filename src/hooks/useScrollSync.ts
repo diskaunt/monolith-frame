@@ -5,7 +5,7 @@ const useScrollSync = (
   // scrollEl: HTMLElement | null,
   // mainEl: HTMLElement | null
 ) => {
-  const scrollRef = useRef<HTMLElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const throttleFn = (fn: (args: Event) => void, ms: number) => {
     let lastFunc: any;

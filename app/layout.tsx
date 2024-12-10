@@ -1,39 +1,38 @@
-import { Inter, Oswald } from 'next/font/google';
-import DrucSyr from 'next/font/local';
-import HalvarBreit from 'next/font/local';
+import localFont from 'next/font/local';
 import './globals.css';
 import Head from 'next/head';
+import {Inter} from '@next/font/google'
 
 export const inter = Inter({
   subsets: ['cyrillic', 'latin'],
   variable: '--font-inter',
 });
 
-export const halvarBreit = HalvarBreit({
-	src: [
-		{
-			path: './../public/fonts/Halvar Breitschrift/HalvarBreit-Md.woff2',
-			weight: '400',
-			style: 'normal'
-		}
-	],
-	variable: '--font-halvarBreit'
-})
+export const halvarBreit = localFont({
+  src: [
+    {
+      path: './../public/fonts/Halvar Breitschrift/HalvarBreit-Md.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-halvarBreit',
+});
 
-export const drucSyr = DrucSyr({
+export const drucSyr = localFont({
   src: [
     {
       path: './../public/fonts/Druc Syr/DrukCyr-Medium.woff2',
       weight: '400',
       style: 'normal',
     },
-		{
+    {
       path: './../public/fonts/Druc Syr/DrukCyr-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
   ],
-	variable: '--font-DrucSyr'
+  variable: '--font-DrucSyr',
 });
 
 export const metadata = {
@@ -47,11 +46,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='ru'>
+    <html
+      lang='ru'
+      className={`${drucSyr.className} ${inter.variable} ${halvarBreit.variable}`}
+    >
       <Head>
         <link rel='icon' href='/icon.ico' />
       </Head>
-      <body className={`${drucSyr.className} ${inter.variable} ${halvarBreit.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

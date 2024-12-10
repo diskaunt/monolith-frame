@@ -1,5 +1,5 @@
 import styles from './Main.module.css';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { RefCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import DevConst from './developeConst/DevConst';
 import useInactiveTimeout from '@/hooks/useInactiveTimeout';
