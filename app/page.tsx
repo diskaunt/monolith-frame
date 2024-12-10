@@ -1,13 +1,17 @@
-import Home from './components/Home';
-import styles from './page.module.css';
+'use client';
+import Main from './components/Main/Main';
+import Preloader from './components/Preloader/Preloader';
+import React from 'react';
 
-export default function HomePage() {
+const page = () => {
   return (
-    <div>
-      <main className={styles.main}>
-				<Home/>
-			</main>
-      <footer className=''></footer>
-    </div>
+    <>
+      <Preloader />
+      <div>
+        <Main />
+      </div>
+    </>
   );
-}
+};
+
+export default page;

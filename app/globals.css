@@ -2,6 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	box-sizing: border-box;
+	--font-inter: 'Inter';
+	--new-orange: #DF462A;
+}
+
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+	display: none;
+	/* WebKit (Chrome, Safari, etc.) */
+}
+
 body {
 	margin: 0;
+}
+
+.hoverMenuNav:hover::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4px;
+	display: inline-block;
+	margin-right: 8px;
+	height: 0.95em;
+	width: 7px;
+	background-color: var(--new-orange);
+}
+
+.clipPath {
+	clip-path: xywh(0 0 100% 100%);
 }

@@ -1,0 +1,17 @@
+import React, { SVGProps } from 'react';
+
+const PikSvg = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox='0 0 115 36'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
+    <path
+      d='M-0.00878906 35.4309V0.570801H34.3159V35.4309H24.4094V9.2161H9.89771V35.4309H-0.00878906ZM63.5736 15.2578L47.7249 35.4309H38.9233V0.570801H48.8298V20.7439L64.6785 0.570801H73.4801V35.4309H63.5736V15.2578ZM87.9918 21.3932V35.4309H78.0875V0.570801H87.994V15.0268L99.834 0.570801H111.398L97.2994 17.4888L114.9 35.4309H101.584L87.994 21.3932H87.9918Z'
+      fill='white'
+    />
+  </svg>
+);
+
+export default PikSvg;

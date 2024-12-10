@@ -1,0 +1,84 @@
+@keyframes load-right {
+	0% {
+		clip-path: xywh(0 0 0 100%);
+	}
+
+	99% {
+		clip-path: xywh(0 0 100% 100%);
+	}
+
+	100% {
+		clip-path: none;
+	}
+}
+
+.loadRight {
+	animation: load-right 0.5s ease-out 4s both;
+}
+
+@keyframes slide-up-opacity {
+	0% {
+		transform: translateY(50%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.slide-up-opacity {
+	animation: slide-up-opacity 0.5s ease-in 4s both;
+}
+
+@keyframes slide-up {
+	0% {
+		transform: translateY(150%);
+	}
+
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.slide-up {
+	animation: slide-up 0.3s ease-in both;
+}
+
+@keyframes load-right-arrow {
+	0% {
+		clip-path: xywh(0 0 0 100%);
+	}
+
+	100% {
+		clip-path: xywh(0 0 100% 100%);
+	}
+}
+
+@keyframes unload {
+	0% {
+		clip-path: xywh(0 0 100% 100%);
+	}
+
+	100% {
+		clip-path: xywh(0 0 0 100%);
+	}
+}
+
+.unloadArrow {
+	animation: unload .3s ease-in-out both;
+}
+
+.loadRightArrow {
+	animation: load-right-arrow .3s ease-in-out both;
+}
+
+.cutoffText {
+	--max-lines: 3;
+
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: var(--max-lines);
+}
