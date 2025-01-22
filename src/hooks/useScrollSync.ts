@@ -1,46 +1,23 @@
-import { useEffect, useRef } from 'react';
+import { throttleFn } from '@/utils/throttleFn';
+import { useEffect, useRef, useState } from 'react';
 
-const useScrollSync = (
-  options: IntersectionObserverInit,
-  // scrollEl: HTMLElement | null,
-  // mainEl: HTMLElement | null
-) => {
+const useScrollSync = (options: IntersectionObserverInit) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const throttleFn = (fn: (args: Event) => void, ms: number) => {
-    let lastFunc: any;
-    let lastRun: number;
-    return function (...args: [Event]) {
-      if (!lastRun) {
-        fn(...args);
-        lastRun = Date.now();
-      } else {
-        clearTimeout(lastFunc);
-        lastFunc = setTimeout(function () {
-          if (Date.now() - lastRun >= ms) {
-            fn(...args);
-            lastRun = Date.now();
-          }
-        }, ms - (Date.now() - lastRun));
-      }
-    };
-  };
-
   const onWheel = (event: Event) => {
+    event.preventDefault();
     const scrollEl = scrollRef.current;
     if (scrollEl) {
-      const scrollLeft = window.scrollY;
-      event.preventDefault();
-      scrollEl.scrollTo({
-        left: scrollLeft,
-        behavior: 'smooth',
-      });
-      console.log('scrollY:', window.scrollY);
-      console.log('scrollX:', scrollEl.scrollLeft);
+      let top = window.scrollY;
+
+			scrollEl.scrollTo({
+				left: top,
+				behavior: "smooth",
+			})
     }
   };
 
-  const ThrottleScroll = throttleFn(onWheel, 200);
+  const ThrottleScroll = throttleFn(onWheel, 300);
 
   const syncScrollEl = (entryes: IntersectionObserverEntry[]) => {
     entryes.forEach((entry) => {
@@ -51,6 +28,7 @@ const useScrollSync = (
       }
     });
   };
+
   useEffect(() => {
     const observer = new IntersectionObserver(syncScrollEl, options);
     const scrollEl = scrollRef.current;
@@ -60,14 +38,6 @@ const useScrollSync = (
     return () => {
       if (scrollEl) {
         observer.unobserve(scrollEl);
-        scrollEl.scrollTo({
-          left: scrollEl.clientWidth,
-          behavior: 'smooth',
-        });
-        window.scrollTo({
-          top: scrollEl.clientWidth,
-          behavior: 'smooth',
-        });
       }
     };
   }, [options, scrollRef]);

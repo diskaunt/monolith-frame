@@ -25,7 +25,7 @@ const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
             devOpened
               ? 'translate-y-[0] opacity-100'
               : 'translate-y-[-100%] opacity-0',
-            'uppercase bg-white text-black w-[394px] h-[410px] pt-[31px] pl-[23px] text-[34px] leading-[25px] tracking-normal text-[34px] space-y-[30px] transition-all duration-300'
+            'uppercase bg-white text-black w-[394px] h-[410px] pt-[31px] pl-[23px] text-[34px] leading-[25px] tracking-normal space-y-[30px] transition-all duration-300'
           )}
         >
           {burgerDev.map((item, i) => {

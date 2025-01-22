@@ -1,46 +1,57 @@
-import React, { RefObject } from 'react';
-import Nav from '../Navbar/Nav';
-import styles from './Company.module.css';
-import RCCard from '../RCCard/RCCard';
-import ArrowRight from './ArrowRight';
-import classNames from 'classnames';
+import React, { RefObject } from "react";
+import Nav from "../Navbar/Nav";
+import styles from "./Company.module.css";
+import RCCard from "./RCCard/RCCard";
+import ArrowRight from "./ArrowRight";
+import classNames from "classnames";
 
-const Company = ({ scrollToDevConst }: { scrollToDevConst: () => void }) => {
+const Company = ({
+  scrollToDevConst,
+  setScrollVerticalRefs,
+}: {
+  scrollToDevConst: () => void;
+  setScrollVerticalRefs: any;
+}) => {
   return (
     <>
-      <div className='flex flex-wrap gap-x-[101px] gap-y-[37px]'>
-        <div className='h-[50px] sm:h-[60px] max-w-[707px] w-full min-w-[343px]'></div>
-        <div className='space-y-[30px] grow mt-[-11px]'>
-          <div className=' overflow-hidden pr-[117px]'>
-            <div className='text-[70px] leading-[60px] font-bold uppercase sm:leading-[120px] tracking-wide max-w-[400px] ml-[-1px] sm:max-w-[900px] sm:text-[140px]'>
-              <div className='overflow-hidden inline-block'>
-                <h1 className={styles.slideUpRotate}>компания&nbsp;</h1>
-              </div>
-              <div className='overflow-hidden inline-block'>
-                <h1 className={styles.slideUpRotate}>третьего</h1>
-              </div>
-              <br />
-              <div className='overflow-hidden inline-block'>
-                <h1 className={styles.slideUpRotate}>тысячелетия</h1>
+      <div
+        className="flex h-full w-full shrink-0 flex-col justify-between p-[16px] sm:p-[20px]"
+        ref={setScrollVerticalRefs}
+      >
+        <div className="flex flex-wrap hd:max-w-[1920px] w-full mx-auto gap-x-[101px] gap-y-[37px]">
+          <div className="h-[50px] w-full min-w-[343px] max-w-[707px] sm:h-[60px]"></div>
+          <div className="mt-[-11px] grow space-y-[30px]">
+            <div className="overflow-hidden pr-[117px]">
+              <div className="ml-[-1px] max-w-[400px] text-[70px] font-bold uppercase leading-[60px] tracking-wide sm:max-w-[900px] sm:text-[140px] sm:leading-[120px]">
+                <div className="inline-block overflow-hidden">
+                  <h1 className={styles.slideUpRotate}>компания&nbsp;</h1>
+                </div>
+                <div className="inline-block overflow-hidden">
+                  <h1 className={styles.slideUpRotate}>третьего</h1>
+                </div>
+                <br />
+                <div className="inline-block overflow-hidden">
+                  <h1 className={styles.slideUpRotate}>тысячелетия</h1>
+                </div>
               </div>
             </div>
-          </div>
-          <div className='font-inter text-[15px] leading-[20px] sm:text-[18px] max-w-[276px] sm:max-w-[396px] tracking-tighter'>
-            <p className={styles.slideUpOpacity}>
-              Наш многолетний опыт и&nbsp;уникальные технологии гарантируют
-              успех строительства в&nbsp;сотрудничестве с&nbsp;нашей компанией
-            </p>
+            <div className="max-w-[276px] font-inter text-[15px] leading-[20px] tracking-tighter sm:max-w-[396px] sm:text-[18px]">
+              <p className={styles.slideUpOpacity}>
+                Наш многолетний опыт и&nbsp;уникальные технологии гарантируют
+                успех строительства в&nbsp;сотрудничестве с&nbsp;нашей компанией
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className='flex items-end justify-between mx-[-16px] my-[-16px] sm:m-[0]'>
-        <div className='w-full relative font-inter tracking-tighter max-w-[307px] max-h-[104px] sm:max-w-[370px] sm:max-h-[120px] group'>
-          <RCCard />
-        </div>
-        <div onClick={scrollToDevConst} className='invisible sm:visible'>
-          <ArrowRight
-            className={classNames(styles.slideRightOpacity, 'cursor-pointer')}
-          />
+        <div className="mx-[-16px] my-[-16px] flex items-end justify-between sm:m-[0]">
+          <div className="group relative max-h-[104px] w-full max-w-[307px] font-inter tracking-tighter sm:max-h-[120px] sm:max-w-[370px]">
+            <RCCard />
+          </div>
+          <div onClick={scrollToDevConst} className="invisible sm:visible">
+            <ArrowRight
+              className={classNames(styles.slideRightOpacity, "cursor-pointer")}
+            />
+          </div>
         </div>
       </div>
     </>
