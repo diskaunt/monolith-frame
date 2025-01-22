@@ -9,9 +9,9 @@ const NavSmSvg = (props: SVGProps<SVGSVGElement>) => (
     xmlns='http://www.w3.org/2000/svg'
     {...props}
   >
-    <path d='M0 4.63647L14 4.63647' stroke='white' />
-    <path d='M0 1L14 1' stroke='white' />
-    <path d='M0 11L14 11' stroke='white' strokeWidth={7} />
+    <path d='M0 4.63647L14 4.63647'  />
+    <path d='M0 1L14 1'  />
+    <path d='M0 11L14 11'  strokeWidth={7} />
   </svg>
 );
 

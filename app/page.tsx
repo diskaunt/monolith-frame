@@ -7,7 +7,7 @@ const page = () => {
   return (
     <>
       <Preloader />
-      <div>
+      <div className='relative'>
         <Main />
       </div>
     </>

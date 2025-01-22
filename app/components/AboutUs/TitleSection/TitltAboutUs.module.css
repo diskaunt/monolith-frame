@@ -1,0 +1,84 @@
+.active {
+	visibility: visible;
+}
+
+.active.titleLoad {
+	animation: slideUpRotate 1s ease-in-out both;
+}
+
+@keyframes slideUpRotate {
+	0% {
+		transform: translateY(100%) rotate(2deg);
+	}
+
+	100% {
+		transform: translateY(0) rotate(0);
+	}
+}
+
+.active.arrowLoad {
+	animation: slideUpOpacity 1s ease-in-out both;
+}
+
+@keyframes slideUpOpacity {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.active.descrLoad {
+	animation: slideUpOpacity 1s ease-in-out both;
+}
+
+.active.snowMountLoad {
+	animation: mainSectionLoad 2s ease-in-out both;
+}
+
+.active.whiteTowerLoad {
+	animation: mainSectionLoad 1s ease-in-out both;
+}
+
+@keyframes mainSectionLoad {
+	0% {
+		transform: translateY(7svh);
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+
+.loadEnd.active.whiteTowerLoad {
+	animation: endTowerLoad 0.3s ease-in-out both;
+}
+
+@keyframes endTowerLoad {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(31.9svh);
+		opacity: 1;
+	}
+}
+
+.loadEnd.active.snowMountLoad {
+	animation: snowMountLoad 0.3s ease-in-out both;
+}
+
+@keyframes snowMountLoad {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}

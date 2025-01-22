@@ -4,14 +4,13 @@
 
 :root {
 	box-sizing: border-box;
-	--font-inter: 'Inter';
 	--new-orange: #DF462A;
 }
 
 *::-webkit-scrollbar,
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-	display: none;
+	/* display: none; */
 	/* WebKit (Chrome, Safari, etc.) */
 }
 
