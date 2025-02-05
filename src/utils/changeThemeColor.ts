@@ -6,6 +6,7 @@ const changeThemeColor = (
 ) => {
 	entries.forEach((entry) => {
 		if (entry.isIntersecting) {
+			if(entry.target.clientWidth < window.innerWidth / 2) return
 			removeClass && divRef.current?.classList.remove(removeClass);
 			divRef.current?.classList.add(addClass);
 		}

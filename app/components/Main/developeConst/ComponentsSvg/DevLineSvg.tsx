@@ -4,7 +4,7 @@ const DevLineSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     // width={924}
     // height={419}
-    viewBox='0 0 924 419'
+    viewBox='5 0 924 419'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}

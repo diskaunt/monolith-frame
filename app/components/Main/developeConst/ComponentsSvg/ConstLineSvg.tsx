@@ -5,7 +5,7 @@ const ConstLineSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     // width={1006}
     // height={1215}
-    viewBox="0 0 1006 1215"
+    viewBox="-45 -30 1006 1215"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

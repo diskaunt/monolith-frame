@@ -1,5 +1,5 @@
 import styles from "./Main.module.css";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import classNames from "classnames";
 import DevConst from "./developeConst/DevConst";
 import Company from "./Company/Company";
@@ -7,7 +7,6 @@ import AboutUs from "../AboutUs/AboutUs";
 import Nav from "./Navbar/Nav";
 import useObserver from "@/hooks/useObserver";
 import scrollToVerticalTarget from "@/utils/scrollToVerticalTarget";
-import { Style } from "node:util";
 import changeThemeColor from "@/utils/changeThemeColor";
 
 const Main = () => {
@@ -136,7 +135,9 @@ const Main = () => {
           <div
             ref={setScrollVerticalDevRefs}
             className="hidden h-[50%] w-full bg-blue-500 hd:block"
-          ></div>
+          >
+            <div ref={setWhiteThemeRefs}></div>
+          </div>
         </div>
         <div
           ref={setScrollVerticalRefs}
@@ -163,20 +164,20 @@ const Main = () => {
               </div>
             </section>
             <section className="h-full w-full" ref={setScrollVerticalRefs}>
-              <div className="h-full w-full" ref={setWhiteThemeRefs}>
-                <div
-                  ref={devRef}
-                  className="flex h-full w-100vw shrink-0 flex-wrap gap-0 overflow-y-auto md:flex-nowrap hd:w-devConst-hd"
-                >
-                  <DevConst setScrollVerticalRefs={setScrollVerticalRefs} />
-                </div>
+              {/* <div className="h-full w-full" ref={setWhiteThemeRefs}> */}
+              <div
+                ref={devRef}
+                className="flex h-full w-100vw shrink-0 flex-wrap gap-0 overflow-y-auto md:flex-nowrap hd:w-devConst-hd"
+              >
+                <DevConst setScrollVerticalRefs={setScrollVerticalRefs} />
               </div>
+              {/* </div> */}
             </section>
             <section
               ref={aboutUsRefs}
               className={classNames(
                 styles.aboutUsLoad,
-                "relative z-10 block w-100vw shrink-0 overflow-hidden overflow-y-auto hd:hidden hd:w-100vw-scroll",
+                "relative z-10 block w-100vw shrink-0 overflow-y-auto overflow-x-hidden hd:hidden hd:w-100vw-scroll",
               )}
             >
               <AboutUs
@@ -192,7 +193,7 @@ const Main = () => {
         ref={aboutUsRefs}
         className={classNames(
           styles.aboutUsLoad,
-          "hidden relative z-10 w-100vw hd:block hd:w-100vw-scroll",
+          "relative z-10 hidden w-100vw hd:block hd:w-100vw-scroll",
         )}
       >
         <AboutUs

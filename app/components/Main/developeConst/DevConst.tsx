@@ -36,7 +36,7 @@ const DevConst = ({
           ref={setDivRef}
           className={classNames(
             styles.dev,
-            "flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-orange-500 pt-[13.1svh] text-white",
+            "flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-orange-500 pt-[16.1svh] text-white md:pt-[13.1svh]",
           )}
         >
           <div
@@ -99,10 +99,16 @@ const DevConst = ({
               ref={setDivRef}
               className={classNames(
                 styles.svgLoadDev,
-                "invisible absolute right-0 top-0 w-[187%] translate-x-[262px] rotate-[.23deg] stroke-white stroke-[3px] md:w-[924px] md:translate-x-[12px] md:translate-y-[0] md:rotate-[-2.58deg] md:stroke-[6px]",
+                "invisible absolute right-0 top-0 w-full md:justify-center md:flex",
               )}
             >
-              <DevLineSvg />
+              <div
+                className={classNames(
+                  "w-[187%] -translate-y-3 translate-x-[-62px] rotate-[.23deg] stroke-white stroke-[3px] md:translate-x-0 md:translate-y-0 md:rotate-[-2.58deg] md:stroke-[6px] md:min-w-[106%]",
+                )}
+              >
+                <DevLineSvg />
+              </div>
             </div>
           </div>
           <div className="relative box-content max-w-[280px] px-[14px] py-[20px] text-center font-inter text-[15px] leading-[20px] tracking-tight hd:max-w-[450px] hd:text-[18px] hd:leading-[23px] hd:tracking-tighter">
@@ -122,7 +128,7 @@ const DevConst = ({
       <div className="h-100svh w-full hd:h-full" ref={setScrollVerticalRefs}>
         <div
           ref={setDivRef}
-          className="flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-blue-500 pt-[13.1svh] text-white"
+          className="flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-blue-500 pt-[16.1svh] text-white md:pt-[13.1svh]"
         >
           <div
             ref={setDivRef}
@@ -180,7 +186,7 @@ const DevConst = ({
             >
               <div
                 className={classNames(
-                  "w-[194%] translate-x-[-230px] translate-y-[1px] rotate-[48deg] stroke-white stroke-[3px] md:w-[1006px] md:translate-x-[-63px] md:translate-y-[33px] md:rotate-[99.5deg] md:stroke-[6px]",
+                  "w-[194%] translate-x-[-125px] translate-y-[-32px] rotate-[0deg] stroke-white stroke-[3px] md:w-[112%] md:translate-x-[0] md:translate-y-[0] md:rotate-[99.5deg] md:stroke-[6px]",
                 )}
               >
                 <ConstLineSvg />

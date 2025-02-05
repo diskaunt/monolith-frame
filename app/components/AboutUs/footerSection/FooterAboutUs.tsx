@@ -5,6 +5,9 @@ import styles from "./FooterAboutUs.module.css";
 import PikSvg from "./componentsSvg/PikSvg";
 import SamoletPlusSvg from "./componentsSvg/SamoletPlusSvg";
 import InGradSvg from "./componentsSvg/InGradSvg";
+import Marque from "@/commons/Marque";
+import useObserver from "@/hooks/useObserver";
+import addActiveClassname from "@/utils/addActiveStyles";
 
 const FooterAboutUs = ({
   setScrollVerticalRefs,
@@ -15,33 +18,58 @@ const FooterAboutUs = ({
   setBlackThemeRefs: (node: HTMLDivElement) => void;
   setWhiteThemeRefs: (node: HTMLDivElement) => void;
 }) => {
+  const [divLoadRefs, setDivLoadRef] = useObserver(
+    (entryes) => addActiveClassname(entryes, styles),
+    {
+      root: null,
+      rootMargin: "0px",
+      threshold: [0.3],
+    },
+  );
   return (
     <>
       {/* Награды */}
       <div
         ref={setScrollVerticalRefs}
-        className="h-100svh w-full bg-gray-100 px-[15px] pb-[40px] pt-[83px] hd:px-[30px] hd:pb-[60px] hd:pt-[43px]"
+        className="h-100svh w-full shrink-0 overflow-hidden bg-gray-100 pb-[40px] pt-[83px] hd:w-2/4 hd:pb-[6svh] hd:pt-[4.3svh]"
       >
         <div
           ref={setBlackThemeRefs}
           className="mx-auto flex h-full w-full max-w-[375px] flex-col items-center hd:max-w-[665px]"
         >
-          <div className="w-fit hd:mt-[80px]">
-            <Department fill="black" depName="награды" />
+          <div ref={setDivLoadRef} className="invisible w-fit hd:mt-[8svh]">
+            <Department styles={styles} fill="black">
+              награды
+            </Department>
           </div>
-          <div className="w-fit text-center hd:mt-[58px]">
-            <p className="font-drucSyr text-[55px] font-bold uppercase leading-[56px] tracking-wide hd:text-[90px] hd:leading-[83px]">
-              архитектурное
-              <br /> решение
-            </p>
+          <div
+            ref={setDivLoadRef}
+            className="invisible w-fit overflow-hidden text-center hd:mt-[5.8svh]"
+          >
+            <div className={classNames(styles.loadTitleDescr)}>
+              <p className="font-drucSyr text-[55px] font-bold uppercase leading-[56px] tracking-wide hd:text-[90px] hd:leading-[83px]">
+                архитектурное
+                <br /> решение
+              </p>
+            </div>
           </div>
-          <div className="mt-[36px] flex justify-center hd:mt-[39px]">
-            <div className="ml-[40px] hd:ml-[72px]">
-              <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[330px]">
+          <div
+            ref={setDivLoadRef}
+            className="invisible mt-[36px] flex justify-center overflow-hidden hd:mt-[8.5svh]"
+          >
+            <div
+              className={classNames(styles.loadTitle, "ml-[40px] hd:ml-[60px]")}
+            >
+              <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
                 2
               </p>
             </div>
-            <div className="mb-[28px] ml-[-10px] self-end hd:mb-[85px] hd:ml-[-20px]">
+            <div
+              className={classNames(
+                styles.loadTitleDescr,
+                "mb-[28px] ml-[-10px] self-end hd:mb-[55px] hd:ml-[-20px]",
+              )}
+            >
               <p className="font-midium hd:tracking-very-tight font-inter text-[17px] leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px]">
                 место
               </p>
@@ -94,51 +122,66 @@ const FooterAboutUs = ({
       {/* Партнеры */}
       <div
         ref={setScrollVerticalRefs}
-        className="h-100svh w-full bg-blue-500 px-[15px] pb-[40px] pt-[83px] text-white hd:px-[30px] hd:pb-[55px] hd:pt-[43px]"
+        className="h-100svh w-full shrink-0 overflow-hidden bg-blue-500 pb-[40px] pt-[83px] text-white hd:w-2/4 hd:pb-[5.5svh] hd:pt-[4.3svh]"
       >
         <div ref={setWhiteThemeRefs} className="flex h-full w-full flex-col">
           <div className="mx-auto flex w-full max-w-[375px] flex-col items-center hd:max-w-[665px]">
-            <div className="w-fit hd:mt-[80px]">
-              <Department fill="white" depName="партнеры" />
+            <div ref={setDivLoadRef} className="invisible w-fit hd:mt-[8svh]">
+              <Department styles={styles} fill="white">
+                партнеры
+              </Department>
             </div>
-            <div className="w-fit text-center hd:mt-[58px]">
-              <p className="font-drucSyr text-[42px] font-bold uppercase leading-[46px] tracking-wide hd:text-[70px] hd:leading-[70px]">
-                мы&nbsp;ценим наших
-                <br />
-                партнеров
-              </p>
+            <div
+              ref={setDivLoadRef}
+              className="invisible w-fit overflow-hidden text-center hd:mt-[5.8svh]"
+            >
+              <div className={classNames(styles.loadTitleDescr)}>
+                <p className="font-drucSyr text-[42px] font-bold uppercase leading-[46px] tracking-wide hd:text-[70px] hd:leading-[70px]">
+                  мы&nbsp;ценим наших
+                  <br />
+                  партнеров
+                </p>
+              </div>
             </div>
-            <div className="mt-[58px] flex justify-center hd:mt-[61px]">
+            <div
+              ref={setDivLoadRef}
+              className="invisible mt-[58px] flex justify-center hd:mt-[11svh]"
+            >
               <div className="ml-[55px] hd:ml-[80px]">
                 <p
                   className={classNames(
                     styles.shadow,
-                    "text-[119px] font-bold leading-[130px] tracking-wide text-blue-500 hd:text-[300px] hd:leading-[330px]",
+                    styles.loadTitle,
+                    "text-[119px] font-bold leading-[130px] tracking-wide text-blue-500 hd:text-[300px] hd:leading-[265px]",
                   )}
                 >
                   50+
                 </p>
               </div>
-              <div className="mb-[30px] ml-[-25px] self-end hd:mb-[85px] hd:ml-[-55px]">
+              <div
+                className={classNames(
+                  styles.loadTitleDescr,
+                  "mb-[30px] ml-[-25px] self-end hd:mb-[55px] hd:ml-[-55px]",
+                )}
+              >
                 <p className="font-inter text-[17px] font-medium leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px] hd:tracking-veryTight">
                   партнеров
                 </p>
               </div>
             </div>
           </div>
-          <div className="mt-auto flex w-full items-center self-start overflow-hidden">
-            <div className="w-[12.5%] shrink-0">
-              <PikSvg />
-            </div>
-            <div className="ml-[13.5%] w-[13%] shrink-0">
-              <SamoletPlusSvg />
-            </div>
-            <div className="ml-[15%] w-[12%] shrink-0">
-              <InGradSvg />
-            </div>
-            <div className="ml-[14%] w-[12.5%] shrink-0">
-              <PikSvg />
-            </div>
+          <div className="mt-auto w-full self-start">
+            <Marque styles={styles}>
+              <div className="mr-[13.5%] flex w-[12.5%] shrink-0 items-center pt-[5px]">
+                <PikSvg />
+              </div>
+              <div className="mr-[15%] flex w-[13%] shrink-0 items-center pt-[7px]">
+                <SamoletPlusSvg />
+              </div>
+              <div className="mr-[14%] flex w-[12%] shrink-0 items-center">
+                <InGradSvg />
+              </div>
+            </Marque>
           </div>
         </div>
       </div>

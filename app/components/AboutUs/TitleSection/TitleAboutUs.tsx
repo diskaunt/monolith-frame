@@ -72,11 +72,11 @@ const TitleAboutUs = ({
           ref={setScrollVerticalRefs}
           className="hidden w-100vw-scroll bg-blue-500 hd:block hd:h-100svh"
         >
-          <div className="w-full h-fit bg-white">
+          <div className="h-fit w-full bg-white">
             <div
               ref={setBlackThemeRefs}
               className={classNames(
-                "z-10 mx-auto flex h-[60svh] w-full max-w-[1920px] flex-wrap gap-x-[206px] overflow-hidden  px-[20px] py-[33px]",
+                "z-10 mx-auto flex h-[60svh] w-full max-w-[1920px] flex-wrap gap-x-[206px] overflow-hidden px-[20px] py-[33px]",
               )}
             >
               <div className="mt-[120px] flex space-x-[15px] whitespace-nowrap text-[140px] uppercase leading-[140px] tracking-wide">
@@ -143,7 +143,7 @@ const TitleAboutUs = ({
             >
               <div
                 className={classNames(
-                  "invisible ml-[25px] mt-[118px] hd:ml-[15%] hd:mt-[10%]",
+                  "invisible ml-[25px] mt-[112px] hd:ml-[15%] hd:mt-[10%]",
                 )}
               >
                 <div className="inline-block overflow-hidden">
@@ -162,7 +162,7 @@ const TitleAboutUs = ({
                 ref={setDivLoadRef}
                 className={classNames(
                   styles.descrLoad,
-                  "invisible order-5 ml-[5%] mt-[22px] max-w-[226px] hd:order-none hd:ml-0 hd:mt-[10%] hd:max-w-[342px] hd:pt-[26px]",
+                  "invisible order-5 ml-[5%] mt-[18px] max-w-[226px] hd:order-none hd:ml-0 hd:mt-[10%] hd:max-w-[342px] hd:pt-[26px]",
                 )}
               >
                 <div>
@@ -173,7 +173,7 @@ const TitleAboutUs = ({
                   </p>
                 </div>
               </div>
-              <div className="mt-[20px] flex w-full flex-wrap justify-center gap-y-[10px] hd:ml-[7%] hd:mt-0 hd:gap-x-[18%]">
+              <div className="mt-[16px] flex w-full flex-wrap justify-center gap-y-[6px] hd:ml-[7%] hd:mt-0 hd:gap-x-[18%]">
                 <div className={classNames("invisible mr-[20%] hd:mr-0")}>
                   <div className="inline-block overflow-hidden">
                     <p
@@ -203,7 +203,7 @@ const TitleAboutUs = ({
               </div>
               <div
                 className={classNames(
-                  "invisible ml-[5%] mt-[5px] hd:ml-[46.5%] hd:mt-[6px]",
+                  "invisible ml-[5%] mt-[0px] hd:ml-[46.5%] hd:mt-[6px]",
                 )}
               >
                 <div className="inline-block overflow-hidden">
@@ -228,7 +228,7 @@ const TitleAboutUs = ({
           ref={whiteTowerRef}
           className={classNames(
             styles.whiteTowerLoad,
-            "absolute top-[-220px] z-10 w-full opacity-0 hd:top-[-25svh]",
+            "absolute top-[-200px] z-10 w-full opacity-0 hd:top-[-25svh]",
           )}
         >
           <img
@@ -241,7 +241,7 @@ const TitleAboutUs = ({
       {/* небоскреб задним фоном*/}
       <div
         ref={setScrollVerticalStartRefs}
-        className="relative top-[-42px] h-[475px] w-full overflow-hidden hd:top-0 hd:h-[120.9svh]"
+        className="relative top-[-28px] h-[475px] w-full overflow-hidden hd:top-0 hd:h-[120.9svh]"
       >
         <div ref={setDivLoadRef3} className="h-full w-full">
           <div className="min-h-[959px] w-full hd:min-h-[1209px]">
