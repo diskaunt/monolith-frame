@@ -9,20 +9,24 @@ function Marque({
   styles: { [key: string]: string };
 }) {
   return (
-    <div
-      className={classNames(
-        styles.marque,
-        'px-[15px] flex hd:px-[30px] flex-nowrap w-[200%]'
-      )}
-    >
-      <div className={classNames('flex flex-nowrap w-[50%] overflow-hidden')}>
-        {[...Array(2)].map((_, i) => children)}
+    <div className={classNames(styles.marque, ' flex flex-nowrap w-[240%]')}>
+      <div className={classNames('flex flex-nowrap shrink-0 w-[33%] overflow-hidden')}>
+        {/* {[...Array(3)].map((_, i) => children)} */}
+        {children}
       </div>
       <div
         aria-hidden='true'
-        className={classNames('flex flex-nowrap w-[50%] overflow-hidden')}
+        className={classNames('flex flex-nowrap w-[33%] overflow-hidden')}
       >
-        {[...Array(2)].map((_, i) => children)}
+        {/* {[...Array(3)].map((_, i) => children)} */}
+        {children}
+      </div>
+      <div
+        aria-hidden='true'
+        className={classNames('flex flex-nowrap w-[33%] overflow-hidden')}
+      >
+        {/* {[...Array(3)].map((_, i) => children)} */}
+        {children}
       </div>
     </div>
   );

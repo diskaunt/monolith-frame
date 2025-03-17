@@ -1,5 +1,5 @@
 .slideUpRotate {
-	animation: slide-up-rotate 0.3s ease-out 4.2s both;
+	animation: slide-up-rotate 0.3s ease-out both;
 }
 
 @keyframes slide-up-rotate {
@@ -13,7 +13,7 @@
 }
 
 .slideUpOpacity {
-	animation: slide-up-opacity 0.3s ease-out 4.2s both;
+	animation: slide-up-opacity 0.3s ease-out both;
 }
 
 @keyframes slide-up-opacity {
@@ -30,7 +30,7 @@
 
 
 .slideRightOpacity {
-	animation: slide-right-opacity 0.3s ease-out 4.2s both;
+	animation: slide-right-opacity 0.3s ease-out both;
 }
 
 @keyframes slide-right-opacity {

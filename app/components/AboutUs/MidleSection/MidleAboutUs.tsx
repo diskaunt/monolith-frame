@@ -78,7 +78,7 @@ const MidleAboutUs = ({
           <div className="relative w-full">
             <div
               ref={setExpFirstRefs}
-              className="flex flex-col gap-x-[72px] gap-y-[70px] hd:h-[62svh] hd:max-w-[100vw] hd:flex-row hd:flex-nowrap hd:pt-[18svh]"
+              className="flex flex-col gap-x-[72px] gap-y-[70px] hd:h-[62svh] hd:min-h-[620px] hd:max-w-[100vw] hd:flex-row hd:flex-nowrap hd:pt-[18svh]"
             >
               <div
                 ref={setDivLoadRef}
@@ -127,9 +127,10 @@ const MidleAboutUs = ({
               </div>
             </div>
             {/* Опыт */}
+            <div className="h-[25px] w-full hd:h-[7svh] hd:min-h-[70px]"></div>
             <div
               ref={expRef}
-              className="mb-[100px] ml-auto mr-[6%] mt-[25px] w-fit overflow-hidden hd:mb-[25svh] hd:mr-[23%] hd:mt-[7svh] hd:pt-[2svh]"
+              className="ml-auto mr-[6%] w-fit overflow-hidden hd:mr-[23%]"
             >
               <div ref={setDivLoadRef} className="invisible">
                 <div className={classNames(styles.loadRoadPoints)}>
@@ -139,10 +140,11 @@ const MidleAboutUs = ({
                 </div>
               </div>
             </div>
+            <div className="h-[100px] w-full hd:h-[25svh] hd:min-h-[250px]"></div>
             <div ref={setExpSecondRefs} className="w-full">
               <div
                 ref={setDivLoadRef}
-                className="invisible flex flex-col gap-x-[300px] gap-y-[45px] pl-[5%] pt-[12px] hd:h-[67.5svh] hd:max-w-[100vw] hd:flex-row hd:pb-[21svh] hd:pl-[7%]"
+                className="invisible flex flex-col gap-x-[300px] gap-y-[45px] pl-[5%] pt-[12px] hd:h-[67.5svh] hd:min-h-[675px] hd:max-w-[100vw] hd:flex-row hd:pb-[21svh] hd:pl-[7%]"
               >
                 <div
                   className={classNames(
@@ -158,7 +160,7 @@ const MidleAboutUs = ({
                 </div>
                 <div
                   className={classNames(
-                    "ml-[105px] flex hd:ml-auto hd:mr-[148px] hd:self-end",
+                    "ml-[105px] flex overflow-hidden hd:ml-auto hd:mr-[148px] hd:self-end",
                   )}
                 >
                   <AboutUsAchvmts styles={styles} number={5}>
@@ -172,7 +174,7 @@ const MidleAboutUs = ({
             <div ref={setDivLoadRef} className="invisible w-full">
               <div
                 ref={setScrollVerticalRefs}
-                className="mt-[13svh] flex h-100svh w-full flex-col hd:mt-0"
+                className="min-h-mobile hd:min-h-desktop mt-[13svh] flex h-100svh w-full flex-col hd:mt-0"
               >
                 {/* Скорость */}
                 <div
@@ -188,11 +190,11 @@ const MidleAboutUs = ({
                 </div>
                 <div className="mt-[30px] flex flex-col-reverse pl-[5%] pr-[5%] hd:mt-auto hd:max-w-[100vw] hd:flex-row hd:pb-[10svh] hd:pl-[7%] hd:pr-[100px]">
                   <div className="mt-[-37px] flex flex-col gap-y-[55px] hd:mt-0 hd:gap-y-[70px]">
-                    <div className="flex">
+                    <div className="flex overflow-hidden">
                       <div
                         className={classNames(
                           styles.loadNumber,
-                          "text-[160px] font-bold uppercase leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[240px]",
+                          "text-[160px] font-bold uppercase leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[260px]",
                         )}
                       >
                         <p className="block hd:hidden">10 925</p>
@@ -207,11 +209,11 @@ const MidleAboutUs = ({
                         <p>новоселов живут в&nbsp;построенных домах</p>
                       </div>
                     </div>
-                    <div className="flex">
+                    <div className="flex overflow-hidden">
                       <div
                         className={classNames(
                           styles.loadNumber,
-                          "text-[160px] font-bold uppercase leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[240px]",
+                          "text-[160px] font-bold uppercase leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[260px]",
                         )}
                       >
                         <p>24</p>
@@ -239,12 +241,14 @@ const MidleAboutUs = ({
             </div>
             <div
               className="mt-[3svh] w-full hd:mt-[1svh]"
-              ref={setScrollVerticalEndRefs}
+              ref={setScrollVerticalRefs}
             >
               {/* Качество */}
               <div
                 ref={setDivLoadRef}
-                className={classNames("invisible h-100svh w-full")}
+                className={classNames(
+                  "hd:min-h-desktop invisible h-100svh w-full",
+                )}
               >
                 <div className="flex flex-row-reverse flex-wrap">
                   <div className="ml-auto mr-[9%] mt-[20svh] h-fit w-fit overflow-hidden hd:mr-[15.5%] hd:mt-[18svh]">

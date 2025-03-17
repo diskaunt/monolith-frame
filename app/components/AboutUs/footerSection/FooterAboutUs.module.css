@@ -2,12 +2,9 @@
 	text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, -1px 1px 0 #fff;
 }
 
+/* анимация бегуей строки */
 .marque {
 	animation: marqueAnimate 5s linear infinite;
-}
-
-.marque:hover {
-	animation-play-state: paused;
 }
 
 @keyframes marqueAnimate {
@@ -16,7 +13,7 @@
 	}
 
 	100% {
-		transform: translateX(calc(-50% + 30px));
+		transform: translateX(calc(-33%));
 	}
 }
 
@@ -24,18 +21,36 @@
 	visibility: visible;
 }
 
+/* анимации при первом появлении */
+
 .active .loadTitle {
 	animation: slideUpOpacity 1s ease-in-out both;
 }
 
-.active .loadTitleDescr {
+@keyframes slideUpOpacity {
+	0% {
+		transform: translateY(50%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.active .loadTitleDescr,
+.active .loadTitleNumDescr {
 	animation: slideUpRotate 1s ease-in-out both;
 }
 
-
 @keyframes slideUpRotate {
 	0% {
-		transform: translateY(100%) rotate(2deg);
+		transform: translateY(100%) rotate(0);
+	}
+
+	50% {
+		transform: translateY(50%) rotate(2deg);
 	}
 
 	100% {
@@ -43,14 +58,199 @@
 	}
 }
 
-@keyframes slideUpOpacity {
+.active .loadTableCell {
+	animation: opacity 1s ease-in-out both;
+}
+
+@keyframes opacity {
 	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.active .loadHorizontalBar {
+	animation: loadHorizontalBar 1s linear both;
+}
+
+@keyframes loadHorizontalBar {
+	0% {
+		opacity: 0;
+		clip-path: xywh(0 0 20% 100%);
+	}
+
+	100% {
+		opacity: 1;
+		clip-path: xywh(0 0 100% 100%)
+	}
+}
+
+.active .loadVertikalBar {
+	animation: loadVertikalBar 1s linear both;
+}
+
+@keyframes loadVertikalBar {
+	0% {
+		opacity: 0;
+		clip-path: xywh(0 0 100% 20%);
+	}
+
+	100% {
+		opacity: 1;
+		clip-path: xywh(0 0 100% 100%)
+	}
+}
+
+/* анимации после наведения мыши */
+
+.hover .active .loadTitleDescr {
+	animation: slideUpHover 3s linear both;
+}
+
+@keyframes slideUpHover {
+	0% {
+		transform: translateY(0) rotate(0);
+	}
+
+	16% {
+		transform: translateY(-16%) rotate(1deg)
+	}
+
+	33% {
+		transform: translateY(-33%) rotate(0)
+	}
+
+	66% {
+		transform: translateY(-33%) rotate(0)
+	}
+
+	78% {
+		transform: translateY(-49%) rotate(1deg)
+	}
+
+	100% {
+		transform: translateY(-66%) rotate(0);
+	}
+}
+
+.hover .active .loadTitleNumDescr {
+	animation: slideUpHoverNum 1s linear both;
+}
+
+@keyframes slideUpHoverNum {
+	0% {
+		transform: translateY(0) rotate(0);
+	}
+
+	50% {
+		transform: translateY(-25%) rotate(1deg)
+	}
+
+	100% {
+		transform: translateY(-50%) rotate(0);
+	}
+}
+
+.hover .active .loadTableCell {
+	animation: opacityHover 1s ease-in-out both;
+}
+
+@keyframes opacityHover {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	50% {
 		transform: translateY(100%);
+		flex-direction: column-reverse;
 		opacity: 0;
 	}
 
 	100% {
 		transform: translateY(0);
+		flex-direction: column-reverse;
 		opacity: 1;
+	}
+}
+
+/* анимации стрелки вверх  */
+
+.active.arrow rect:nth-child(2) {
+	animation: arrowLoad 0.5s linear both;
+}
+
+@keyframes arrowLoad {
+	0% {
+		x: 2;
+	}
+
+	100% {
+		x: 14;
+	}
+}
+
+.hover .active.arrow rect:nth-child(2) {
+	animation: arrowHoverFirst 3s linear both;
+}
+
+@keyframes arrowHoverFirst {
+	0% {
+		x: 14;
+	}
+
+	33% {
+		x: 2;
+	}
+
+	100% {
+		x: 2;
+	}
+}
+
+.hover .arrow rect:nth-child(3) {
+	animation: arrowHover 3s linear both;
+}
+
+@keyframes arrowHover {
+	0% {
+		x: 2;
+	}
+
+	33% {
+		x: 14;
+	}
+
+	66% {
+		x: 14;
+	}
+
+	100% {
+		x: 2;
+	}
+}
+
+.hover .arrow rect:nth-child(4) {
+	animation: arrowHoverLast 3s linear 2s both;
+}
+
+@keyframes arrowHoverLast {
+	0% {
+		x: 2;
+	}
+
+	33% {
+		x: 14;
+	}
+
+	66% {
+		x: 14;
+	}
+
+	100% {
+		x: 14;
 	}
 }

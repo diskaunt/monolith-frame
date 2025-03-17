@@ -33,8 +33,8 @@ const config: Config = {
         '100vw-scroll': 'calc(100vw - 17px)',
         menuDev: 'calc(100vw - 753px)',
         'devConst-hd': 'calc(100vw - 17px - 117px - 40px)',
-        'nav-sm': 'calc(100vw - 40px)',
-        nav: 'calc(100vw - 32px)',
+        'nav-mobile': 'calc(100vw - 40px)',
+        'nav-desktop': 'calc(100vw - 32px)',
       },
       spacing: {
         'complex-x': 'calc(100% + 6px)',
@@ -43,6 +43,14 @@ const config: Config = {
       objectPosition: {
 				'center-top': 'center top',
       },
+			minHeight: {
+				'desktop': '1000px',
+				'mobile': '812px',
+			},
+			left: {
+				navleftDesktop: 'calc(100vw - 40px)',
+				navleftMobile: 'calc(100vw - 32px)',
+			}
     },
     screens: {
       sm: '640px',

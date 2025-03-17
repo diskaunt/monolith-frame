@@ -8,7 +8,7 @@
   animation: drawLoad 1s linear forwards;
 }
 
-.dev:hover .active.svgLoadDev path {
+.hover .active.svgLoadDev path {
   stroke-dasharray: 1408;
   stroke-dashoffset: 0;
   animation: drawHover 1s linear 0.8s forwards;
@@ -38,7 +38,7 @@
   clip-path: xywh(0 0 0 100%);
 }
 
-.dev:hover .active.loadImageDev {
+.hover .active.loadImageDev {
   transform: scale(1);
   clip-path: xywh(0 0 100% 100%);
   animation: imageHover 1s linear forwards;
@@ -104,7 +104,7 @@
   opacity: 0;
 }
 
-.dev:hover .active.devBuildSvgHover {
+.hover .active.devBuildSvgHover {
   visibility: visible;
   opacity: 1;
   transition:
@@ -112,25 +112,25 @@
     opacity 300ms;
 }
 
-.dev:hover .active.devBuildSvgHover path {
+.hover .active.devBuildSvgHover path {
   stroke-dasharray: 1034;
   stroke-dashoffset: 1034;
   animation: devBuildPathHover 1s linear 1.6s forwards;
 }
 
-.dev:hover .active.devBuildSvgHover line:nth-child(1) {
+.hover .active.devBuildSvgHover line:nth-child(1) {
   stroke-dasharray: 296;
   stroke-dashoffset: -296;
   animation: devBuildPathHover 0.4s linear 2.4s forwards;
 }
 
-.dev:hover .active.devBuildSvgHover line:nth-child(2) {
+.hover .active.devBuildSvgHover line:nth-child(2) {
   stroke-dasharray: 266;
   stroke-dashoffset: 266;
   animation: devBuildPathHover 0.5s linear 2.5s forwards;
 }
 
-.dev:hover .active.devBuildSvgHover line:nth-child(3) {
+.hover .active.devBuildSvgHover line:nth-child(3) {
   stroke-dasharray: 394;
   stroke-dashoffset: 394;
   animation: devBuildPathHover 0.5s linear 2s forwards;

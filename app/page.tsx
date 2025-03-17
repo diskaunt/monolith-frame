@@ -1,17 +1,16 @@
-'use client';
-import Main from './components/Main/Main';
-import Preloader from './components/Preloader/Preloader';
-import React from 'react';
+import { getLoaded } from "@/data-access/loaded";
+import Main from "./components/Main/Main";
+import React from "react";
+import { getProjects } from "@/data-access/projects";
 
-const page = () => {
+const MonolithFrame = async () => {
+  let loaded = await getLoaded();
+  let projects = await getProjects();
   return (
     <>
-      <Preloader />
-      <div className='relative'>
-        <Main />
-      </div>
+      <Main projects={projects} loaded={loaded} />
     </>
   );
 };
 
-export default page;
+export default MonolithFrame;

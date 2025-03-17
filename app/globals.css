@@ -33,3 +33,30 @@ body {
 .clipPath {
 	clip-path: xywh(0 0 100% 100%);
 }
+
+.white-theme {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.10);
+	border-color: white;
+	fill: white;
+	stroke: white;
+}
+
+.black-theme {
+	color: black;
+	background-color: rgba(255, 255, 255, 0.10);
+	border-color: black;
+	fill: black;
+	stroke: black;
+}
+
+.vertical-text-bottom {
+  writing-mode: vertical-rl; /* Направление письма: сверху вниз справа налево */
+  text-orientation: mixed; /* Ориентация текста */
+  transform: rotate(180deg); /* Поворот текста на 180 градусов */
+}
+
+.vertical-text-top {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}

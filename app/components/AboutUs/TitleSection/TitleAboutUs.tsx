@@ -6,6 +6,7 @@ import AboutUsStart from "../componentsSvg/AboutUsStart";
 import AboutUsMid from "../componentsSvg/AboutUsMid";
 import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
+import SecTitle from "@/commons/SecTitle";
 
 const TitleAboutUs = ({
   setScrollVerticalRefs,
@@ -79,26 +80,14 @@ const TitleAboutUs = ({
                 "z-10 mx-auto flex h-[60svh] w-full max-w-[1920px] flex-wrap gap-x-[206px] overflow-hidden px-[20px] py-[33px]",
               )}
             >
-              <div className="mt-[120px] flex space-x-[15px] whitespace-nowrap text-[140px] uppercase leading-[140px] tracking-wide">
-                <div
-                  className={classNames("inline-block h-fit overflow-hidden")}
+              <div ref={setDivLoadRef} className="mt-[120px] invisible">
+                <SecTitle
+                  titleLoad={styles.titleLoad}
+                  arrowLoad={styles.arrowLoad}
+                  color="black"
                 >
-                  <h1
-                    ref={setDivLoadRef}
-                    className={classNames(styles.titleLoad, "invisible")}
-                  >
-                    о компании
-                  </h1>
-                </div>
-                <div
-                  ref={setDivLoadRef}
-                  className={classNames(
-                    styles.arrowLoad,
-                    "flow-start invisible mt-[30px] h-fit w-[80px] stroke-black",
-                  )}
-                >
-                  <ArrowComplex />
-                </div>
+                  о компании
+                </SecTitle>
               </div>
               <div
                 ref={setDivLoadRef}
@@ -228,12 +217,12 @@ const TitleAboutUs = ({
           ref={whiteTowerRef}
           className={classNames(
             styles.whiteTowerLoad,
-            "absolute top-[-200px] z-10 w-full opacity-0 hd:top-[-25svh]",
+            "absolute top-[-200px] z-10 w-full opacity-0 hd:top-[-11svw]",
           )}
         >
           <img
             className="mx-auto w-[256px] sm:w-[40%] hd:h-[114.5svh] hd:w-[41%]"
-            src="./images/whiteTower.png"
+            src="/images/whiteTower.png"
             alt="whiteTower"
           />
         </div>

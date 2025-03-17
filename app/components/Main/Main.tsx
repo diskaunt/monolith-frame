@@ -1,19 +1,29 @@
+"use client";
 import styles from "./Main.module.css";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import classNames from "classnames";
 import DevConst from "./developeConst/DevConst";
 import Company from "./Company/Company";
 import AboutUs from "../AboutUs/AboutUs";
-import Nav from "./Navbar/Nav";
 import useObserver from "@/hooks/useObserver";
 import scrollToVerticalTarget from "@/utils/scrollToVerticalTarget";
 import changeThemeColor from "@/utils/changeThemeColor";
+import Preloader from "../Preloader/Preloader";
+import Nav from "../Navbar/Nav";
+import { ProjectType } from "@/data-access/projects";
 
-const Main = () => {
+const Main = ({
+  loaded,
+  projects,
+}: {
+  loaded: boolean;
+  projects: ProjectType[];
+}) => {
   const aboutUsRefs = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
   const devRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {}, [loaded]);
 
   //обсервер функция для вертикального прокручивания стандартного
   const [scrollVerticalRefs, setScrollVerticalRefs] = useObserver(
@@ -100,7 +110,8 @@ const Main = () => {
 
   // обсерверы для изменнеия цвета темы навигационного меню
   const [blackThemeRefs, setBlackThemeRefs] = useObserver(
-    (entries) => changeThemeColor(entries, navRef, styles.black, styles.white),
+    (entries) =>
+      changeThemeColor(entries, navRef, "black-theme", "white-theme"),
     {
       root: null,
       rootMargin: "0px",
@@ -109,32 +120,34 @@ const Main = () => {
   );
 
   const [whiteThemeRefs, setWhiteThemeRefs] = useObserver(
-    (entries) => changeThemeColor(entries, navRef, styles.white, styles.black),
+    (entries) =>
+      changeThemeColor(entries, navRef, "white-theme", "black-theme"),
     {
       root: null,
       rootMargin: "0px",
       threshold: [0.1],
     },
   );
-  // useInactiveTimeout(scrollToDevConst, 6000);
 
-  return (
-    <>
+  return !loaded ? (
+    <Preloader />
+  ) : (
+    <div className="relative">
       <div
+        className="fixed left-[16px] top-[16px] z-20 hd:left-[20px] hd:top-[20px]"
         ref={navRef}
-        className="fixed left-[16px] top-[16px] z-20 transition-all hd:left-[20px] hd:top-[20px]"
       >
-        <Nav />
+        <Nav projects={projects} />
       </div>
       <div className="relative z-10 h-[100svh] w-[100vw] shrink-0 hd:h-mainHeight-hd hd:w-fit">
         <div className="hidden h-full hd:block hd:w-100vw-scroll">
           <div
             ref={setScrollVerticalCompanyRef}
-            className="hidden h-[50%] w-full bg-orange-500 hd:block"
+            className="hidden h-[50%] w-full hd:block"
           ></div>
           <div
             ref={setScrollVerticalDevRefs}
-            className="hidden h-[50%] w-full bg-blue-500 hd:block"
+            className="hidden h-[50%] w-full hd:block"
           >
             <div ref={setWhiteThemeRefs}></div>
           </div>
@@ -202,7 +215,7 @@ const Main = () => {
           setScrollVerticalRefs={setScrollVerticalRefs}
         />
       </section>
-    </>
+    </div>
   );
 };
 
