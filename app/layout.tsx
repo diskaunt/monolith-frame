@@ -1,9 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import Head from "next/head";
 import { Inter } from "next/font/google";
-import { link } from "fs";
 import classNames from "classnames";
+import Nav from "./components/Navbar/Nav";
 
 const inter = Inter({
   subsets: ["cyrillic", "latin"],
@@ -48,15 +47,22 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  navigate,
 }: {
   children: React.ReactNode;
+  navigate: React.ReactNode;
 }) {
   return (
     <html
       lang="ru"
-      className={classNames(`${drucSyr.className} ${inter.variable} ${halvarBreit.variable}`)}
+      className={classNames(
+        `${drucSyr.className} ${inter.variable} ${halvarBreit.variable}`,
+      )}
     >
-      <body className="">{children}</body>
+      <body className="relative">
+        {/* {navigate} */}
+        {children}
+      </body>
     </html>
   );
 }

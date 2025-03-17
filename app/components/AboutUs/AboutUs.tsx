@@ -43,7 +43,10 @@ const AboutUs = ({
     },
   );
   return (
-    <div ref={setScrollVerticalRefs} className="max-w-100vw hd:max-w-100vw-scroll relative w-full min-w-[375px] bg-white">
+    <div
+      ref={setScrollVerticalRefs}
+      className="max-w-100vw hd:max-w-100vw-scroll relative w-full min-w-[375px] bg-white"
+    >
       {/* о нас, заглавие блока*/}
       <div className="relative z-10">
         <TitleAboutUs
@@ -66,10 +69,10 @@ const AboutUs = ({
         />
       </div>
       {/* награды и партнеры блока */}
-      <div className="w-100vw relative z-10 md:flex hd:mt-0 hd:w-100vw-scroll">
+      <div ref={setBlackThemeRefs} className="relative z-10 w-100vw md:flex hd:mt-0 hd:w-100vw-scroll">
         <FooterAboutUs
           setBlackThemeRefs={setBlackThemeRefs}
-					setWhiteThemeRefs={setWhiteThemeRefs}
+          setWhiteThemeRefs={setWhiteThemeRefs}
           setScrollVerticalRefs={setScrollVerticalRefs}
         />
       </div>

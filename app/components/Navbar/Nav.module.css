@@ -1,3 +1,11 @@
+.slideUpMenuSvg {
+	animation: slide-up-menu .3s ease-out both, opacity-menu .3s linear both;
+}
+
+.slideUpMenuBorder {
+	animation: slide-up-menu .3s ease-out both, opacity-menu .6s linear 0.2s both;
+}
+
 @keyframes slide-up-menu {
 	0% {
 		transform: translateY(50%);
@@ -18,13 +26,8 @@
 	}
 }
 
-.slideUpMenuSvg {
-	animation: slide-up-menu .3s ease-out 4s both, opacity-menu .3s linear 4.0s both;
-}
-
-.slideUpMenuBorder {
-	animation: slide-up-menu .3s ease-out 4s both, opacity-menu .6s linear 4.2s both;
-
+.borderAnimate {
+	animation: border-appear .3s ease-out 0.2s both, slide-up-menu .3s ease-out 0.2s both;
 }
 
 @keyframes border-appear {
@@ -42,8 +45,4 @@
 		border-width: 1px;
 		opacity: 1;
 	}
-}
-
-.borderAnimate {
-	animation: border-appear .3s ease-out 4.2s both, slide-up-menu .3s ease-out 4.2s both;
 }

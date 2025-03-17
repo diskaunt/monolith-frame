@@ -3,7 +3,7 @@ import React, { SVGProps } from 'react';
 const InGradSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     // width={111}
-    // height={55}
+    height={55}
     viewBox='0 0 111 55'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'

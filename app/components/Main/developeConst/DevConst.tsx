@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import DevLineSvg from "./componentsSvg/DevLineSvg";
 import classNames from "classnames";
 import styles from "./DevConst.module.css";
@@ -14,7 +14,11 @@ const DevConst = ({
   setScrollVerticalRefs: (el: HTMLDivElement | null) => void;
 }) => {
   const options = { root: null, rootMargin: "0px", threshold: [0.3] };
+  const hoverRef = useRef<HTMLDivElement | null>(null);
 
+	const handleMouseOver = () => {
+		hoverRef.current?.classList.add(styles.hover)
+	}
   const [divRefArr, setDivRef] = useObserver(
     (entryes) => addActiveClassname(entryes, styles),
     options,
@@ -36,7 +40,7 @@ const DevConst = ({
           ref={setDivRef}
           className={classNames(
             styles.dev,
-            "flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-orange-500 pt-[13.1svh] text-white",
+            "flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-orange-500 pt-[16.1svh] text-white md:pt-[13.1svh]",
           )}
         >
           <div
@@ -46,7 +50,7 @@ const DevConst = ({
               "invisible mb-[4px] hd:mb-[3px]",
             )}
           >
-            <Department fill="white" depName="девелопмент" />
+            <Department fill="white"> девелопмент </Department>
           </div>
           <div className="box-content max-w-[346px] px-[14px] text-center text-[55px] font-bold uppercase leading-[56px] tracking-wide fhd:max-w-[577px] fhd:text-[90px] fhd:leading-[87px]">
             <div className="inline-block overflow-hidden">
@@ -74,15 +78,21 @@ const DevConst = ({
               </p>
             </div>
           </div>
-          <div className="relative w-full shrink px-[70px] pb-[20px] pt-[42px] fhd:py-[50px]">
-            <div className="relative z-10 m-auto w-4/12 min-w-[236px] overflow-hidden hd:w-2/4 hd:max-w-[330px]">
+          <div
+            ref={hoverRef}
+            className="relative w-full shrink px-[70px] pb-[20px] pt-[42px] fhd:py-[50px]"
+          >
+            <div
+              onMouseOver={handleMouseOver}
+              className="relative z-10 m-auto w-4/12 min-w-[236px] overflow-hidden hd:w-2/4 hd:max-w-[330px]"
+            >
               <img
                 ref={setImageRef}
                 className={classNames(
                   styles.loadImageDev,
                   "invisible relative z-10 w-full object-cover",
                 )}
-                src="./images/developmentBuild.jpg"
+                src="/images/developmentBuild.jpg"
                 alt="building"
               />
               <div
@@ -99,10 +109,16 @@ const DevConst = ({
               ref={setDivRef}
               className={classNames(
                 styles.svgLoadDev,
-                "invisible absolute right-0 top-0 w-[187%] translate-x-[262px] rotate-[.23deg] stroke-white stroke-[3px] md:w-[924px] md:translate-x-[12px] md:translate-y-[0] md:rotate-[-2.58deg] md:stroke-[6px]",
+                "invisible absolute right-0 top-0 w-full md:flex md:justify-center",
               )}
             >
-              <DevLineSvg />
+              <div
+                className={classNames(
+                  "w-[187%] -translate-y-3 translate-x-[-62px] rotate-[.23deg] stroke-white stroke-[3px] md:min-w-[106%] md:translate-x-0 md:translate-y-0 md:rotate-[-2.58deg] md:stroke-[6px]",
+                )}
+              >
+                <DevLineSvg />
+              </div>
             </div>
           </div>
           <div className="relative box-content max-w-[280px] px-[14px] py-[20px] text-center font-inter text-[15px] leading-[20px] tracking-tight hd:max-w-[450px] hd:text-[18px] hd:leading-[23px] hd:tracking-tighter">
@@ -122,7 +138,7 @@ const DevConst = ({
       <div className="h-100svh w-full hd:h-full" ref={setScrollVerticalRefs}>
         <div
           ref={setDivRef}
-          className="flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-blue-500 pt-[13.1svh] text-white"
+          className="flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-blue-500 pt-[16.1svh] text-white md:pt-[13.1svh]"
         >
           <div
             ref={setDivRef}
@@ -131,7 +147,7 @@ const DevConst = ({
               "invisible mb-[4px] hd:mb-[3px]",
             )}
           >
-            <Department fill="white" depName="строительство" />
+            <Department fill="white">строительство</Department>
           </div>
           <div className="box-content max-w-[346px] px-[14px] text-center text-[55px] font-bold uppercase leading-[56px] tracking-wide fhd:max-w-[577px] fhd:text-[90px] fhd:leading-[87px]">
             <div className="inline-block overflow-hidden">
@@ -165,9 +181,9 @@ const DevConst = ({
                 ref={setImageRef}
                 className={classNames(
                   styles.loadImageConst,
-                  "w-full object-cover",
+                  "invisible w-full object-cover",
                 )}
-                src="./images/constructionBuilders.jpg"
+                src="/images/constructionBuilders.jpg"
                 alt="builders work"
               />
             </div>
@@ -180,7 +196,7 @@ const DevConst = ({
             >
               <div
                 className={classNames(
-                  "w-[194%] translate-x-[-230px] translate-y-[1px] rotate-[48deg] stroke-white stroke-[3px] md:w-[1006px] md:translate-x-[-63px] md:translate-y-[33px] md:rotate-[99.5deg] md:stroke-[6px]",
+                  "w-[194%] translate-x-[-125px] translate-y-[-32px] rotate-[0deg] stroke-white stroke-[3px] md:w-[112%] md:translate-x-[0] md:translate-y-[0] md:rotate-[99.5deg] md:stroke-[6px]",
                 )}
               >
                 <ConstLineSvg />

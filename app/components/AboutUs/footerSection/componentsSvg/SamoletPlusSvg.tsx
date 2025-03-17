@@ -3,7 +3,7 @@ import React, { SVGProps } from 'react';
 const SamoletPlusSvg = (props: SVGProps<SVGSVGElement>) => (
   <svg
     // width={119}
-    // height={46}
+    height={46}
     viewBox='0 0 119 46'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'

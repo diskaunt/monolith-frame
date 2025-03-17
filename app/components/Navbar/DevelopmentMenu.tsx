@@ -16,8 +16,8 @@ const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
       {/* menu development */}
       <div
         className={classNames(
-          devOpened ? 'visible z-10' : 'invisible -z-10 delay-300',
-          'absolute top-[66px] right-[0] overflow-hidden trasition-all'
+          devOpened ? 'visible z-10 ' : 'invisible -z-10 delay-300',
+          'trasition-all'
         )}
       >
         <div
@@ -25,7 +25,7 @@ const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
             devOpened
               ? 'translate-y-[0] opacity-100'
               : 'translate-y-[-100%] opacity-0',
-            'uppercase bg-white text-black w-[394px] h-[410px] pt-[31px] pl-[23px] text-[34px] leading-[25px] tracking-normal space-y-[30px] transition-all duration-300'
+            'uppercase bg-white text-black sm:w-[458px] hd:w-[394px] h-[410px] py-[31px] px-[23px] text-[34px] leading-[25px] tracking-normal space-y-[30px] transition-all duration-300'
           )}
         >
           {burgerDev.map((item, i) => {
