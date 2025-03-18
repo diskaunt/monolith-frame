@@ -1,6 +1,6 @@
 "use client";
 import { ProjectType } from "@/data-access/projects";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import SecTitle from "@/commons/SecTitle";
 import classNames from "classnames";
 import MidlProjectCard from "./MidlProjectCard";
@@ -8,30 +8,27 @@ import BigProjectCard from "./BigProjectCard";
 import SmallProjectCard from "./SmallProjectCard";
 import Modal from "@/commons/Modal";
 import Card from "./Project/Card";
-import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 
 const Projects = ({ projects }: { projects: ProjectType[] }) => {
-  const pathParams = useSearchParams();
   const [project, setProject] = useState<ProjectType | null>(null);
-  useEffect(() => {
-    if (pathParams.has("id")) {
-      let data = projects.find((item) => item.id === pathParams.get("id"));
-      data && setProject(data);
-    }
-  }, [pathParams]);
+  const modalRef = useRef<HTMLDialogElement | null>(null);
+  const projectFind = (projectId: string) => {
+    setProject(() => projects.find((p) => p.id === projectId) || null);
+    modalRef.current && modalRef.current.showModal();
+    document.body.style.overflow = "hidden";
+  };
   return (
     <div className="relative flex min-h-[100svh] w-full">
-      {pathParams.get("id") && (
-        <Modal>
+      <Modal id={project?.id} modalRef={modalRef}>
+        {project && (
           <Card
-            adress={project?.card?.adress}
-            price={project?.card?.price}
-            DueDate={project?.card?.DueDate}
-            information={project?.card?.information}
+            adress={project.card?.adress}
+            price={project.card?.price}
+            DueDate={project.card?.DueDate}
+            information={project.card?.information}
           />
-        </Modal>
-      )}
+        )}
+      </Modal>
       <div className="absolute left-0 top-0 z-10 flex h-[60svh] w-full gap-x-[206px] bg-orange-500 px-[80px]">
         <div className="mt-[120px]">
           <SecTitle color={"white"}>проекты</SecTitle>
@@ -49,91 +46,70 @@ const Projects = ({ projects }: { projects: ProjectType[] }) => {
           <div className="sticky top-[150px] z-0">
             <div className="flex w-full justify-center gap-[20px]">
               <div className="shrink-2 flex flex-col justify-between">
-                <Link
-                  href={"/projects/?id=KMAnkudievskyPark"}
-                  as={"/projects/KMAnkudievskyPark"}
-                >
+                <button onClick={() => projectFind("KMAnkudievskyPark")}>
                   <MidlProjectCard
                     projectName={"КМ Анкудиновский Парк"}
                     src={"/images/KMAnkudievskyPark.jpg"}
                   />
-                </Link>
+                </button>
                 <div className="flex h-[365px] justify-between gap-[20px]">
                   <div className="self-end">
-                    <Link
-                      href={"/projects/?id=KMResidencePrime"}
-                      // as={"/projects/KMResidencePrime"}
-                    >
+                    <button onClick={() => projectFind("KMResidencePrime")}>
                       <SmallProjectCard
                         projectName="КМ Residence Prime"
                         src="/images/KMResidencePrime.jpg"
                       />
-                    </Link>
+                    </button>
                   </div>
                   <div>
-                    <Link
-                      href={"/projects/?id=KMFlagman"}
-                      as={"/projects/KMFlagman"}
-                    >
+                    <button onClick={() => projectFind("KMFlagman")}>
                       <SmallProjectCard
                         projectName="КМ Флагман"
                         src="/images/KMFlagman.jpg"
                       />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               </div>
-              <Link
-                href={"/projects/?id=KMRiverPark"}
-                as={"/projects/KMRiverPark"}
-              >
+              <button onClick={() => projectFind("KMRiverPark")}>
                 <BigProjectCard
                   projectName="км ривер парк"
                   src="/images/ProjectsKMRiverPark.jpg"
                 />
-              </Link>
+              </button>
             </div>
           </div>
         </div>
         <div className="flex justify-center gap-[20px]">
-          <Link
-            href={"/projects/?id=KMTowerPlaza"}
-            as={"/projects/KMTowerPlaza"}
-          >
+          <button onClick={() => projectFind("KMTowerPlaza")}>
             <BigProjectCard
               projectName="km tower plaza"
               src="/images/KMTowerPlaza.jpg"
             />
-          </Link>
+          </button>
           <div className="flex flex-col-reverse justify-between">
-            <Link href={"/projects/?id=KMPrime"} as={"/projects/KMPrime"}>
+            <button onClick={() => projectFind("KMPrime")}>
               <MidlProjectCard
                 projectName={"КМ Прайм"}
                 src={"/images/KMPrime.jpg"}
               />
-            </Link>
+            </button>
             <div className="flex h-[365px] justify-between gap-[20px]">
               <div className="self-end">
-                <Link
-                  href={"/projects/?id=KMMolodezhny"}
-                  // as={"/projects/KMMolodezhny"}
-                >
+                <button onClick={() => projectFind("KMMolodezhny")}>
                   <SmallProjectCard
                     projectName="КМ Молодежный"
                     src="/images/KMMolodezhny.jpg"
                   />
-                </Link>
+                </button>
               </div>
               <div>
-                <Link
-                  href={"/projects/?id=KMTimiryazevsky"}
-                  // as={"/projects/KMTimiryazevsky"}
-                >
+                <button onClick={() => projectFind("KMTimiryazevsky")}>
                   <SmallProjectCard
                     projectName="КМ Тимирязевский"
                     src="/images/KMTimiryazevsky.jpg"
                   />
-                </Link>
+                </button>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import React, { useState } from "react";
 import { ProjectType } from "@/data-access/projects";
+import { usePathname } from "next/navigation";
 
 const ConstructionMenu = ({
   projects,
@@ -14,12 +15,15 @@ const ConstructionMenu = ({
     "/images/KMResidencePrime.jpg",
   );
 
+  const pathName = usePathname();
+  const projectPath = pathName.split("/").some((p) => p === "projects");
+
   return (
     <>
       <div
         className={classNames(
           constOpened ? "visible z-10" : "invisible -z-10 delay-300",
-          "trasition-all w-full overflow-hidden hd:mt-[-66px]",
+          "trasition-all grow w-full overflow-hidden hd:mt-[-66px]",
         )}
       >
         <div
@@ -27,7 +31,8 @@ const ConstructionMenu = ({
             constOpened
               ? "translate-x-[0] translate-y-[0] opacity-100"
               : "translate-x-[-100%] translate-y-[-100%] opacity-0",
-            "flex w-full min-w-[360px] flex-nowrap justify-between gap-[10px] bg-white p-[10px] text-black transition-all duration-300 hd:h-[476px] hd:w-menuDev fhd:max-w-[1150px]",
+							projectPath ? "hd:w-menuDevProject" : "hd:w-menuDev" ,
+            "flex w-full min-w-[360px] flex-nowrap justify-between gap-[10px] bg-white p-[10px] text-black transition-all duration-300 hd:h-[476px] fhd:max-w-[1150px]",
           )}
         >
           <div className="flex grow flex-col justify-between">

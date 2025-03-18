@@ -14,8 +14,9 @@ body::-webkit-scrollbar {
 	/* WebKit (Chrome, Safari, etc.) */
 }
 
-body {
+body, html {
 	margin: 0;
+	scrollbar-gutter: stable;
 }
 
 .hoverMenuNav:hover::before {
@@ -51,12 +52,19 @@ body {
 }
 
 .vertical-text-bottom {
-  writing-mode: vertical-rl; /* Направление письма: сверху вниз справа налево */
-  text-orientation: mixed; /* Ориентация текста */
-  transform: rotate(180deg); /* Поворот текста на 180 градусов */
+	writing-mode: vertical-rl;
+	/* Направление письма: сверху вниз справа налево */
+	text-orientation: mixed;
+	/* Ориентация текста */
+	transform: rotate(180deg);
+	/* Поворот текста на 180 градусов */
 }
 
 .vertical-text-top {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+}
+
+dialog:open::backdrop {
+	background-color: rgb(0 0 0 / 40%);
 }
