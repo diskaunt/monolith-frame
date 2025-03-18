@@ -25,7 +25,13 @@ const Nav = ({
   const menuRef = useRef(null);
   const devMenuRef = useRef(null);
 
-  useClickOutside([menuRef, devMenuRef], setDevOpened, setConstOpened);
+
+	const handleClickOutside	= (value: boolean) => {
+		setDevOpened(value)
+		setConstOpened(value)
+	}
+	
+	useClickOutside([menuRef, devMenuRef], handleClickOutside);
 
   const onDevOpened = () => {
     setDevOpened(!devOpened);

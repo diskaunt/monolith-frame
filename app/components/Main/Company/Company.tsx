@@ -1,5 +1,4 @@
-import React, { RefObject } from "react";
-import Nav from "../Navbar/Nav";
+import React from "react";
 import styles from "./Company.module.css";
 import RCCard from "./RCCard/RCCard";
 import ArrowRight from "./ArrowRight";

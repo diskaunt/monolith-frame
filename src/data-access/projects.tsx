@@ -40,7 +40,7 @@ global.projects = [
   {
     id: 'KMFlagman',
     name: 'КМ Флагман',
-    src: '/images/KMFlagman".jpg',
+    src: '/images/KMFlagman.jpg',
     nav: false,
   },
   {
@@ -49,7 +49,6 @@ global.projects = [
     src: '/images/KMRiverPark.jpg',
     descr: 'живите по-новому в знакомом месте',
     nav: true,
-
     card: {
       adress: 'Магаданская, 6А',
       price: '8 млн ₽',
@@ -64,7 +63,6 @@ global.projects = [
     src: '/images/KMResidencePrime.jpg',
     descr: 'клубный дом уровня делюкс',
     nav: true,
-
     card: {
       adress: 'Барминская, 1А',
       price: '10 млн ₽',

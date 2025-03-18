@@ -104,7 +104,7 @@ const Main = ({
       });
     window.scrollBy({
       behavior: "smooth",
-      top: 50,
+      top: window.innerHeight,
     });
   };
 
@@ -130,7 +130,9 @@ const Main = ({
   );
 
   return !loaded ? (
-    <Preloader />
+    <div>
+      <Preloader />
+    </div>
   ) : (
     <div className="relative">
       <div

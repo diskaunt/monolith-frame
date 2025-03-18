@@ -2,8 +2,7 @@ import { RefObject, useEffect, useRef } from 'react';
 
 const useClickOutside = (
   menu: RefObject<HTMLElement>[],
-  setDevOpened: (value: boolean) => void,
-  setConstOpened: (value: boolean) => void
+  fn: (value: boolean) => void,
 ) => {
   useEffect(() => {
     const handleClick = (e: Event) => {
@@ -12,8 +11,7 @@ const useClickOutside = (
       // if (current && !current.contains(target))
 			if (menu.every((ref) => ref.current && !ref.current.contains(target)))
 			{
-        setDevOpened(false);
-        setConstOpened(false);
+        fn(false);
       }
     };
 
@@ -21,7 +19,7 @@ const useClickOutside = (
     return () => {
       document.removeEventListener('click', handleClick);
     };
-  }, [menu, setDevOpened, setConstOpened]);
+  }, [menu, fn]);
 };
 
 export default useClickOutside;

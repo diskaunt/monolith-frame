@@ -10,7 +10,6 @@ const config: Config = {
   darkmode: 'selector',
   theme: {
     extend: {
-
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
@@ -35,22 +34,23 @@ const config: Config = {
         'devConst-hd': 'calc(100vw - 17px - 117px - 40px)',
         'nav-mobile': 'calc(100vw - 40px)',
         'nav-desktop': 'calc(100vw - 32px)',
+        menuDevProject: 'calc(100vw - 753px - 2 * 80px)',
       },
       spacing: {
         'complex-x': 'calc(100% + 6px)',
         'complex-y': 'calc(-100% + -6px)',
       },
       objectPosition: {
-				'center-top': 'center top',
+        'center-top': 'center top',
       },
-			minHeight: {
-				'desktop': '1000px',
-				'mobile': '812px',
-			},
-			left: {
-				navleftDesktop: 'calc(100vw - 40px)',
-				navleftMobile: 'calc(100vw - 32px)',
-			}
+      minHeight: {
+        desktop: '1000px',
+        mobile: '812px',
+      },
+      left: {
+        navleftDesktop: 'calc(100vw - 40px)',
+        navleftMobile: 'calc(100vw - 32px)',
+      },
     },
     screens: {
       sm: '640px',
