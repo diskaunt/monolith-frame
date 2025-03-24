@@ -45,6 +45,7 @@ const Modal = ({
             <button
               onClick={() => {
                 router.push(`/projects/${id}`);
+								document.body.style.overflow = 'auto';
               }}
             >
               <ArrowRight />

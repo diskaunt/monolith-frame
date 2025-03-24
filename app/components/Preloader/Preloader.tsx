@@ -1,10 +1,10 @@
 "use clients";
-import React, { useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import styles from "./Preloader.module.css";
 import PreloaderSvg from "./PreloaderSvg";
 import classNames from "classnames";
 
-const Preloader = () => {
+const Preloader = ({ setLoaded }: { setLoaded: React.Dispatch<React.SetStateAction<boolean>> }) => {
   const levels = ["00", "28", "45", "87", "99"];
 
   const renderLoadLevels = levels.reverse().map((lvl, i) => (
@@ -28,6 +28,7 @@ const Preloader = () => {
         <PreloaderSvg
           preserveAspectRatio="xMidYMid slice"
           className={styles.preloaderSvg}
+					setLoaded={setLoaded}
         />
       </div>
       <div className={styles.back} />

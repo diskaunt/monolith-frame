@@ -247,7 +247,7 @@ const MidleAboutUs = ({
               <div
                 ref={setDivLoadRef}
                 className={classNames(
-                  "hd:min-h-desktop invisible h-100svh w-full",
+                  "flex flex-col justify-between hd:min-h-desktop invisible h-100svh w-full",
                 )}
               >
                 <div className="flex flex-row-reverse flex-wrap">
@@ -268,7 +268,7 @@ const MidleAboutUs = ({
                   </div>
                 </div>
                 {/* Надежность */}
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap mb-[10svh]">
                   <div
                     className={classNames(
                       "ml-[55px] mt-[12svh] h-fit w-fit overflow-hidden hd:ml-[9%] hd:mt-[23svh]",

@@ -1,6 +1,6 @@
 "use client";
 import styles from "./Main.module.css";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import DevConst from "./developeConst/DevConst";
 import Company from "./Company/Company";
@@ -11,19 +11,19 @@ import changeThemeColor from "@/utils/changeThemeColor";
 import Preloader from "../Preloader/Preloader";
 import Nav from "../Navbar/Nav";
 import { ProjectType } from "@/data-access/projects";
+import { getLocalStorageLoaded } from "@/data-access/loaded";
 
 const Main = ({
-  loaded,
+  // loaded,
   projects,
 }: {
-  loaded: boolean;
+  // loaded: boolean;
   projects: ProjectType[];
 }) => {
   const aboutUsRefs = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
   const devRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {}, [loaded]);
 
   //обсервер функция для вертикального прокручивания стандартного
   const [scrollVerticalRefs, setScrollVerticalRefs] = useObserver(
@@ -128,10 +128,15 @@ const Main = ({
       threshold: [0.1],
     },
   );
+  useEffect(() => {
+    const loadeLocalStotage = getLocalStorageLoaded()
+      typeof window !== "undefined" ? setLoaded(loadeLocalStotage) : setLoaded(false);
+  }, []);
+  const [loaded, setLoaded] = useState(false);
 
   return !loaded ? (
     <div>
-      <Preloader />
+      <Preloader setLoaded={setLoaded} />
     </div>
   ) : (
     <div className="relative">

@@ -1,16 +1,16 @@
-import { getLoaded } from "@/data-access/loaded";
 import Main from "./components/Main/Main";
 import React from "react";
 import { getProjects } from "@/data-access/projects";
 
-const MonolithFrame = async () => {
-  let loaded = await getLoaded();
+const MonolithFramePage = async () => {
   let projects = await getProjects();
+	
   return (
     <>
-      <Main projects={projects} loaded={loaded} />
+      <Main projects={projects}
+			/>
     </>
   );
 };
 
-export default MonolithFrame;
+export default MonolithFramePage;

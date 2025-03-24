@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useRef } from "react";
 import { preloaderSvgData } from "./preloaderSvgData";
-import loadUpdater from "./loadUpdater";
+import { setLocalStorageLoaded } from "@/data-access/loaded";
 
 const PreloaderSvg = ({
   className,
   preserveAspectRatio,
+  setLoaded,
 }: {
+  setLoaded: React.Dispatch<React.SetStateAction<boolean>>;
   className: string;
   preserveAspectRatio: string;
 }) => {
@@ -13,7 +15,8 @@ const PreloaderSvg = ({
 
   useEffect(() => {
     const handleAnimationEnd = () => {
-      loadUpdater();
+      setLoaded(true);
+      setLocalStorageLoaded(true);
     };
     const svg = svgRef.current;
     if (svg) {
@@ -25,7 +28,7 @@ const PreloaderSvg = ({
       }
     };
   }, []);
-	
+
   return (
     <svg
       width="100%"
