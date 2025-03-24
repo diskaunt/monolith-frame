@@ -9,5 +9,6 @@ const nextConfig = {
     // your project has ESLint errors.
     // ignoreDuringBuilds: true,
   },
+	assetPrefix: './public',
 };
 module.exports = nextConfig;
