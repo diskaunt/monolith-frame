@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { ProjectType } from "@/data-access/projects";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 const ConstructionMenu = ({
   projects,
@@ -78,8 +79,10 @@ const ConstructionMenu = ({
             </div>
           </div>
           <div className="hidden h-full w-[655px] overflow-hidden pt-[2px] hd:block">
-            <img
+            <Image
               className="h-full w-full object-cover"
+							width={655}
+							height={454}
               src={KMImage}
               alt={KMImage}
             />

@@ -7,6 +7,8 @@ import addActiveClassname from "@/utils/addActiveStyles";
 import DevBuildSvg from "./ComponentsSvg/DevBuildSvg";
 import DevLineSvg from "./ComponentsSvg/DevLineSvg";
 import ConstLineSvg from "./ComponentsSvg/ConstLineSvg";
+import next from "next";
+import Image from "next/image";
 
 const DevConst = ({
   setScrollVerticalRefs,
@@ -16,9 +18,9 @@ const DevConst = ({
   const options = { root: null, rootMargin: "0px", threshold: [0.3] };
   const hoverRef = useRef<HTMLDivElement | null>(null);
 
-	const handleMouseOver = () => {
-		hoverRef.current?.classList.add(styles.hover)
-	}
+  const handleMouseOver = () => {
+    hoverRef.current?.classList.add(styles.hover);
+  };
   const [divRefArr, setDivRef] = useObserver(
     (entryes) => addActiveClassname(entryes, styles),
     options,
@@ -86,14 +88,16 @@ const DevConst = ({
               onMouseOver={handleMouseOver}
               className="relative z-10 m-auto w-4/12 min-w-[236px] overflow-hidden hd:w-2/4 hd:max-w-[330px]"
             >
-              <img
+              <Image
                 ref={setImageRef}
                 className={classNames(
                   styles.loadImageDev,
                   "invisible relative z-10 w-full object-cover",
                 )}
-                src="/images/developmentBuild.jpg"
+                src={`/images/developmentBuild.jpg`}
                 alt="building"
+                width={330}
+                height={400}
               />
               <div
                 ref={setDivRef}
@@ -177,7 +181,7 @@ const DevConst = ({
           </div>
           <div className="relative w-full shrink px-[70px] pb-[20px] pt-[42px] fhd:py-[50px]">
             <div className="relative z-10 m-auto w-4/12 min-w-[236px] overflow-hidden hd:w-2/4 hd:max-w-[330px]">
-              <img
+              <Image
                 ref={setImageRef}
                 className={classNames(
                   styles.loadImageConst,
@@ -185,6 +189,8 @@ const DevConst = ({
                 )}
                 src="/images/constructionBuilders.jpg"
                 alt="builders work"
+                width={330}
+                height={400}
               />
             </div>
             <div

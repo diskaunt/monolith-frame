@@ -1,9 +1,10 @@
-import React, { RefObject, useEffect, useRef, useState } from 'react';
-import ArrowComplex from './ArrowComplex';
-import Link from 'next/link';
-import styles from './RCCard.module.css';
-import classNames from 'classnames';
-import useMouseOver from '@/hooks/useMouseOver';
+import React, { RefObject, useEffect, useRef, useState } from "react";
+import ArrowComplex from "./ArrowComplex";
+import Link from "next/link";
+import styles from "./RCCard.module.css";
+import classNames from "classnames";
+import useMouseOver from "@/hooks/useMouseOver";
+import Image from "next/image";
 
 const RCCard = () => {
   const resRef = useRef(null);
@@ -13,23 +14,25 @@ const RCCard = () => {
     <>
       <div
         ref={resRef}
-        className={classNames(styles.loadRight, 'relative group z-20')}
+        className={classNames(styles.loadRight, "group relative z-20")}
       >
-        <div className='flex'>
-          <div className='shrink-0'>
-            <img
-              className='w-[110px] h-[104px] sm:h-[120px]'
-              src='/images/newLK-1.jpg'
-              alt='Новый Жк'
+        <div className="flex">
+          <div className="shrink-0">
+            <Image
+              className="h-[104px] w-[110px] sm:h-[120px]"
+              src="/images/newLK-1.jpg"
+              alt="Новый Жк"
+              width={110}
+              height={104}
             />
           </div>
-          <div className='flex flex-wrap flex-col grow bg-orange-500 justify-between max-w-[260px]'>
-            <div className='flex mx-[10px] mt-[3px] gap-x-[16px] text-[10px] sm:mx-[14px] sm:mt-[11px] sm:gap-x-[23px] sm:text-[12px] font-semibold uppercase leading-[23px] opacity-60'>
-              <p className={styles['slide-up-opacity']}>20.12.22</p>
-              <p className={styles['slide-up-opacity']}>#новое</p>
+          <div className="flex max-w-[260px] grow flex-col flex-wrap justify-between bg-orange-500">
+            <div className="mx-[10px] mt-[3px] flex gap-x-[16px] text-[10px] font-semibold uppercase leading-[23px] opacity-60 sm:mx-[14px] sm:mt-[11px] sm:gap-x-[23px] sm:text-[12px]">
+              <p className={styles["slide-up-opacity"]}>20.12.22</p>
+              <p className={styles["slide-up-opacity"]}>#новое</p>
             </div>
-            <div className='mx-[10px] my-[10px] text-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px] leading-[18px] font-medium'>
-              <p className={styles['slide-up']}>
+            <div className="mx-[10px] my-[10px] text-[18px] font-medium leading-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px]">
+              <p className={styles["slide-up"]}>
                 Новый ЖК
                 <br /> готов к сдаче
               </p>
@@ -39,17 +42,17 @@ const RCCard = () => {
         <div
           className={classNames(
             resOvered ? styles.loadRightArrow : styles.unloadArrow,
-            'absolute h-full top-[0] left-complex-x'
+            "absolute left-complex-x top-[0] h-full",
           )}
         >
-          <div className='h-full flex stroke-white bg-orange-500 p-[6px] w-[42px] sm:w-[72px] cursor-pointer'>
-            <Link href={'/'}></Link>
+          <div className="flex h-full w-[42px] cursor-pointer bg-orange-500 stroke-white p-[6px] sm:w-[72px]">
+            <Link href={"/"}></Link>
             <ArrowComplex
               className={classNames(
                 resOvered
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-[20%] opacity-0',
-                'transition-all duration-300'
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-[20%] opacity-0",
+                "transition-all duration-300",
               )}
             />
           </div>
@@ -58,24 +61,32 @@ const RCCard = () => {
       {/* pop-up block */}
       <div
         className={classNames(
-          resOvered ? 'translate-y-[-25px] visible' : 'invisible',
-          'absolute group flex top-0 left-0 w-full  z-10 scale-90 transition-all duration-300 easy-in-out hover:scale-100 hover:translate-y-[-103%] hover:visible'
+          resOvered ? "visible translate-y-[-25px]" : "invisible",
+          "easy-in-out group absolute left-0 top-0 z-10 flex w-full scale-90 transition-all duration-300 hover:visible hover:translate-y-[-103%] hover:scale-100",
         )}
       >
-        <div className='shrink-0'>
-          <img
-            className='w-[110px] h-[104px] sm:h-[120px] object-cover'
-            src='/images/KMRiverPark.jpg'
-            alt='Жилой комплекс Речной парк'
+        <div className="shrink-0">
+          <Image
+            className="h-[104px] w-[110px] object-cover sm:h-[120px]"
+            src="/images/KMRiverPark.jpg"
+            alt="Жилой комплекс Речной парк"
+            width={110}
+            height={104}
           />
         </div>
-        <div className='flex overflow-hidden flex-wrap flex-col grow bg-sky-950 justify-between max-w-[260px]'>
-          <div className='flex mx-[10px] mt-[3px] gap-x-[16px] text-[10px] sm:mx-[14px] sm:mt-[11px] sm:gap-x-[23px] sm:text-[12px] font-semibold uppercase leading-[23px] opacity-60'>
-            <p className={classNames(styles['slide-up-opacity'])}>07.12.22</p>
-            <p className={classNames(styles['slide-up-opacity'])}>#новое</p>
+        <div className="flex max-w-[260px] grow flex-col flex-wrap justify-between overflow-hidden bg-sky-950">
+          <div className="mx-[10px] mt-[3px] flex gap-x-[16px] text-[10px] font-semibold uppercase leading-[23px] opacity-60 sm:mx-[14px] sm:mt-[11px] sm:gap-x-[23px] sm:text-[12px]">
+            <p className={classNames(styles["slide-up-opacity"])}>07.12.22</p>
+            <p className={classNames(styles["slide-up-opacity"])}>#новое</p>
           </div>
-          <div className='w-full px-[10px] py-[10px] text-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px] leading-[18px] font-medium'>
-            <p className={classNames(styles['slide-up'], styles.cutoffText ,'w-full')}>
+          <div className="w-full px-[10px] py-[10px] text-[18px] font-medium leading-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px]">
+            <p
+              className={classNames(
+                styles["slide-up"],
+                styles.cutoffText,
+                "w-full",
+              )}
+            >
               В ЖК Речной парк начались первые продажи апартаментов
             </p>
           </div>

@@ -174,7 +174,7 @@ const MidleAboutUs = ({
             <div ref={setDivLoadRef} className="invisible w-full">
               <div
                 ref={setScrollVerticalRefs}
-                className="min-h-mobile hd:min-h-desktop mt-[13svh] flex h-100svh w-full flex-col hd:mt-0"
+                className="mt-[13svh] flex h-100svh min-h-mobile w-full flex-col hd:mt-0 hd:min-h-desktop"
               >
                 {/* Скорость */}
                 <div
@@ -247,7 +247,7 @@ const MidleAboutUs = ({
               <div
                 ref={setDivLoadRef}
                 className={classNames(
-                  "flex flex-col justify-between hd:min-h-desktop invisible h-100svh w-full",
+                  "invisible flex h-100svh w-full flex-col justify-between hd:min-h-desktop",
                 )}
               >
                 <div className="flex flex-row-reverse flex-wrap">
@@ -264,11 +264,11 @@ const MidleAboutUs = ({
                       "z-10 ml-[5%] mt-[10svh] w-[137px] hd:ml-[34%] hd:mt-[3svh] hd:w-[296px]",
                     )}
                   >
-                    <img src="/images/aboutUsBuild.jpg" alt="build" />
+                    <img src={"/images/aboutUsBuild.jpg"} alt="build" />
                   </div>
                 </div>
                 {/* Надежность */}
-                <div className="flex flex-wrap mb-[10svh]">
+                <div className="mb-[10svh] flex flex-wrap">
                   <div
                     className={classNames(
                       "ml-[55px] mt-[12svh] h-fit w-fit overflow-hidden hd:ml-[9%] hd:mt-[23svh]",
