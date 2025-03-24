@@ -3,10 +3,8 @@ import ButtonOnMain from "../components/Projects/Project/ButtonOnMain";
 
 export default function RootLayout({
   children,
-  navigate,
 }: {
   children: React.ReactNode;
-  navigate: React.ReactNode;
 }) {
   return (
     <section className="">

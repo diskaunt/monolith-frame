@@ -2,7 +2,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import classNames from "classnames";
-import Nav from "./components/Navbar/Nav";
 
 const inter = Inter({
   subsets: ["cyrillic", "latin"],
@@ -47,10 +46,8 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  navigate,
 }: {
   children: React.ReactNode;
-  navigate: React.ReactNode;
 }) {
   return (
     <html
@@ -60,7 +57,6 @@ export default function RootLayout({
       )}
     >
       <body className="relative">
-        {/* {navigate} */}
         {children}
       </body>
     </html>
