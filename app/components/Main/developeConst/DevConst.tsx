@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import DevLineSvg from "./componentsSvg/DevLineSvg";
 import classNames from "classnames";
 import styles from "./DevConst.module.css";
-import DevBuildSvg from "./componentsSvg/DevBuildSvg";
-import ConstLineSvg from "./componentsSvg/ConstLineSvg";
 import Department from "@/commons/Department";
 import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
+import DevBuildSvg from "./ComponentsSvg/DevBuildSvg";
+import DevLineSvg from "./ComponentsSvg/DevLineSvg";
+import ConstLineSvg from "./ComponentsSvg/ConstLineSvg";
 
 const DevConst = ({
   setScrollVerticalRefs,
