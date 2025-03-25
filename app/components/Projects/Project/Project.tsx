@@ -5,6 +5,7 @@ import Department from "@/commons/Department";
 import Card from "./Card";
 import { useRouter } from "next/navigation";
 import { ProjectType } from "@/data-access/projects";
+import myImageLoader from "@/utils/myImageLoader";
 
 const Project = ({ project }: { project: ProjectType }) => {
   const bgImageRef = useRef<HTMLDivElement>(null);
@@ -12,7 +13,7 @@ const Project = ({ project }: { project: ProjectType }) => {
 
   useEffect(() => {
     bgImageRef.current &&
-      (bgImageRef.current.style.backgroundImage = `url(${project.src})`);
+      (bgImageRef.current.style.backgroundImage = `url(${myImageLoader(project.src)})`);
   }, []);
 
   return (
