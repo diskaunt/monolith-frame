@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ProjectType } from "@/data-access/projects";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import myImageLoader from "@/utils/myImageLoader";
 
 const ConstructionMenu = ({
   projects,
@@ -83,7 +84,7 @@ const ConstructionMenu = ({
               className="h-full w-full object-cover"
 							width={655}
 							height={454}
-              src={KMImage}
+              src={myImageLoader(KMImage)}
               alt={KMImage}
             />
           </div>

@@ -239,8 +239,8 @@ const TitleAboutUs = ({
         <div ref={setDivLoadRef3} className="h-full w-full">
           <div className="relative min-h-[959px] w-full hd:min-h-[1209px]">
             <Image
-              className={myImageLoader("object-cover object-top hd:h-full")}
-              src="/images/whiteTowerPhoto.jpg"
+              className="object-cover object-top hd:h-full"
+              src={myImageLoader("/images/whiteTowerPhoto.jpg")}
               alt="whiteTower"
               fill
             />

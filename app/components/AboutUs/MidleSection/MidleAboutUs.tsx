@@ -108,8 +108,8 @@ const MidleAboutUs = ({
                     )}
                   >
                     <Image
-                      className={myImageLoader("w-full object-cover hd:object-none")}
-                      src="/images/experience1.jpg"
+                      className="w-full object-cover hd:object-none"
+                      src={myImageLoader("/images/experience1.jpg")}
                       alt="crane"
                       width={259}
                       height={320}
@@ -122,8 +122,8 @@ const MidleAboutUs = ({
                     )}
                   >
                     <Image
-                      className={myImageLoader("w-full object-cover hd:object-none")}
-                      src="/images/experience2.jpg"
+                      className="w-full object-cover hd:object-none"
+                      src={myImageLoader("/images/experience2.jpg")}
                       alt="workers"
                       width={259}
                       height={190}
