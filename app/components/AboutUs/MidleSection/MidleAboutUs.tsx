@@ -7,6 +7,7 @@ import addActiveClassname from "@/utils/addActiveStyles";
 import styles from "./MidleAboutUs.module.css";
 import classNames from "classnames";
 import Image from "next/image";
+import myImageLoader from "@/utils/myImageLoader";
 
 const MidleAboutUs = ({
   setScrollVerticalRefs,
@@ -107,7 +108,7 @@ const MidleAboutUs = ({
                     )}
                   >
                     <Image
-                      className="w-full object-cover hd:object-none"
+                      className={myImageLoader("w-full object-cover hd:object-none")}
                       src="/images/experience1.jpg"
                       alt="crane"
                       width={259}
@@ -121,7 +122,7 @@ const MidleAboutUs = ({
                     )}
                   >
                     <Image
-                      className="w-full object-cover hd:object-none"
+                      className={myImageLoader("w-full object-cover hd:object-none")}
                       src="/images/experience2.jpg"
                       alt="workers"
                       width={259}
@@ -159,7 +160,7 @@ const MidleAboutUs = ({
                 >
                   <Image
                     className="w-full object-cover hd:object-none"
-                    src="/images/swing.jpg"
+                    src={myImageLoader("/images/swing.jpg")}
                     alt="swing"
                     width={363}
                     height={240}
@@ -242,7 +243,7 @@ const MidleAboutUs = ({
                     )}
                   >
                     <Image
-                      src="/images/playground.jpg"
+                      src={myImageLoader("/images/playground.jpg")}
                       alt="playground"
                       width={363}
                       height={240}
@@ -277,7 +278,7 @@ const MidleAboutUs = ({
                     )}
                   >
                     <Image
-                      src={"/images/aboutUsBuild.jpg"}
+                      src={myImageLoader("/images/aboutUsBuild.jpg")}
                       alt="build"
                       width={296}
                       height={386}

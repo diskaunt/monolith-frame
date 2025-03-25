@@ -1,3 +1,4 @@
+import myImageLoader from "@/utils/myImageLoader";
 import Image from "next/image";
 import React from "react";
 
@@ -13,7 +14,7 @@ const SmallProjectCard = ({
       <div className="h-[173px] w-full">
         <Image
           className="h-full w-full object-cover"
-          src={src}
+          src={myImageLoader(src)}
           alt={projectName}
           width={260}
           height={173}

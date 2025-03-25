@@ -5,6 +5,7 @@ import styles from "./RCCard.module.css";
 import classNames from "classnames";
 import useMouseOver from "@/hooks/useMouseOver";
 import Image from "next/image";
+import myImageLoader from "@/utils/myImageLoader";
 
 const RCCard = () => {
   const resRef = useRef(null);
@@ -20,7 +21,7 @@ const RCCard = () => {
           <div className="shrink-0">
             <Image
               className="h-[104px] w-[110px] sm:h-[120px]"
-              src="/images/newLK-1.jpg"
+              src={myImageLoader("/images/newLK-1.jpg")}
               alt="Новый Жк"
               width={110}
               height={120}
@@ -68,7 +69,7 @@ const RCCard = () => {
         <div className="shrink-0">
           <Image
             className="h-[104px] w-[110px] object-cover sm:h-[120px]"
-            src="/images/KMRiverPark.jpg"
+            src={myImageLoader("/images/KMRiverPark.jpg")}
             alt="Жилой комплекс Речной парк"
             width={110}
             height={120}

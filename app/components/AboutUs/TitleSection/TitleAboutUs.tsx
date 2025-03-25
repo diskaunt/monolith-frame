@@ -8,6 +8,7 @@ import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
 import SecTitle from "@/commons/SecTitle";
 import Image from "next/image";
+import myImageLoader from "@/utils/myImageLoader";
 
 const TitleAboutUs = ({
   setScrollVerticalRefs,
@@ -223,7 +224,7 @@ const TitleAboutUs = ({
         >
           <Image
             className="mx-auto w-[256px] sm:w-[40%] hd:h-[114.5svh] hd:w-[41%]"
-            src="/images/whiteTower.png"
+            src={myImageLoader("/images/whiteTower.png")}
             alt="whiteTower"
             width={779}
             height={1550}
@@ -238,10 +239,10 @@ const TitleAboutUs = ({
         <div ref={setDivLoadRef3} className="h-full w-full">
           <div className="relative min-h-[959px] w-full hd:min-h-[1209px]">
             <Image
-              className="object-cover object-top hd:h-full"
+              className={myImageLoader("object-cover object-top hd:h-full")}
               src="/images/whiteTowerPhoto.jpg"
               alt="whiteTower"
-							fill
+              fill
             />
           </div>
         </div>

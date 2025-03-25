@@ -1,3 +1,4 @@
+import myImageLoader from "@/utils/myImageLoader";
 import Image from "next/image";
 import React from "react";
 
@@ -12,7 +13,7 @@ const BigProjectCard = ({
     <div className="relative h-[870px] max-w-[1010px]">
       <Image
         className="h-full w-full object-cover object-center"
-        src={src}
+        src={myImageLoader(src)}
         alt={projectName}
         width={1010}
         height={870}

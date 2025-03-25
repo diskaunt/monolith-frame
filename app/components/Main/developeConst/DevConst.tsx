@@ -9,6 +9,7 @@ import DevLineSvg from "./ComponentsSvg/DevLineSvg";
 import ConstLineSvg from "./ComponentsSvg/ConstLineSvg";
 import next from "next";
 import Image from "next/image";
+import myImageLoader from "@/utils/myImageLoader";
 
 const DevConst = ({
   setScrollVerticalRefs,
@@ -94,7 +95,7 @@ const DevConst = ({
                   styles.loadImageDev,
                   "invisible relative z-10 h-auto w-auto object-cover",
                 )}
-                src={`/images/developmentBuild.jpg`}
+                src={myImageLoader(`/images/developmentBuild.jpg`)}
                 alt="building"
                 width={330}
                 height={400}
@@ -187,7 +188,7 @@ const DevConst = ({
                   styles.loadImageConst,
                   "invisible h-auto w-auto object-cover",
                 )}
-                src="/images/constructionBuilders.jpg"
+                src={myImageLoader("/images/constructionBuilders.jpg")}
                 alt="builders work"
                 width={330}
                 height={400}

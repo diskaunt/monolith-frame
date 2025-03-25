@@ -1,9 +1,7 @@
-'use client';
+const myImageLoader = (src: string) => {
+  const basePath =
+    process.env.NODE_ENV === 'production' ? '/monolith-frame' : '';
+  return `${basePath}${src}`;
+};
 
-export default function myImageLoader({
-  src,
-}: {
-  src: string;
-}) {
-  return `https://monolith-frame/${src}`;
-}
+export default myImageLoader;

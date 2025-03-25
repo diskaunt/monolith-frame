@@ -6,7 +6,6 @@ const nextConfig = {
   output: 'export',
   distDir: 'dist',
   images: {
-		domains: ['localhost'],
 		unoptimized: true,
 		loader: 'custom',
     loaderFile: './src/utils/myImageLoader.ts',

@@ -1,3 +1,4 @@
+import myImageLoader from "@/utils/myImageLoader";
 import Image from "next/image";
 import React from "react";
 
@@ -13,7 +14,7 @@ const MidlProjectCard = ({
       <div className="h-[350px] w-full">
         <Image
           className="h-full w-full object-cover"
-          src={src}
+          src={myImageLoader(src)}
           alt={projectName}
 					width={638}
 					height={350}
