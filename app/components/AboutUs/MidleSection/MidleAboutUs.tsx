@@ -6,6 +6,7 @@ import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
 import styles from "./MidleAboutUs.module.css";
 import classNames from "classnames";
+import Image from "next/image";
 
 const MidleAboutUs = ({
   setScrollVerticalRefs,
@@ -105,10 +106,12 @@ const MidleAboutUs = ({
                       "w-[155px] shrink-0 hd:min-w-[258px]",
                     )}
                   >
-                    <img
+                    <Image
                       className="w-full object-cover hd:object-none"
                       src="/images/experience1.jpg"
                       alt="crane"
+                      width={259}
+                      height={320}
                     />
                   </div>
                   <div
@@ -117,10 +120,12 @@ const MidleAboutUs = ({
                       "ml-[-30%] w-[155px] shrink-0 self-end hd:h-[190px] hd:min-w-[258px]",
                     )}
                   >
-                    <img
+                    <Image
                       className="w-full object-cover hd:object-none"
                       src="/images/experience2.jpg"
                       alt="workers"
+                      width={259}
+                      height={190}
                     />
                   </div>
                 </div>
@@ -152,10 +157,12 @@ const MidleAboutUs = ({
                     "z-10 w-[185px] hd:w-fit",
                   )}
                 >
-                  <img
+                  <Image
                     className="w-full object-cover hd:object-none"
                     src="/images/swing.jpg"
                     alt="swing"
+                    width={363}
+                    height={240}
                   />
                 </div>
                 <div
@@ -234,7 +241,12 @@ const MidleAboutUs = ({
                       "z-10 ml-auto w-[168px] hd:mr-[5%] hd:mt-[105px] hd:w-[362px]",
                     )}
                   >
-                    <img src="/images/playground.jpg" alt="playground" />
+                    <Image
+                      src="/images/playground.jpg"
+                      alt="playground"
+                      width={363}
+                      height={240}
+                    />
                   </div>
                 </div>
               </div>
@@ -264,7 +276,12 @@ const MidleAboutUs = ({
                       "z-10 ml-[5%] mt-[10svh] w-[137px] hd:ml-[34%] hd:mt-[3svh] hd:w-[296px]",
                     )}
                   >
-                    <img src={"/images/aboutUsBuild.jpg"} alt="build" />
+                    <Image
+                      src={"/images/aboutUsBuild.jpg"}
+                      alt="build"
+                      width={296}
+                      height={386}
+                    />
                   </div>
                 </div>
                 {/* Надежность */}

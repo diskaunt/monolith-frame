@@ -7,6 +7,7 @@ import AboutUsMid from "../componentsSvg/AboutUsMid";
 import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
 import SecTitle from "@/commons/SecTitle";
+import Image from "next/image";
 
 const TitleAboutUs = ({
   setScrollVerticalRefs,
@@ -80,7 +81,7 @@ const TitleAboutUs = ({
                 "z-10 mx-auto flex h-[60svh] w-full max-w-[1920px] flex-wrap gap-x-[206px] overflow-hidden px-[20px] py-[33px]",
               )}
             >
-              <div ref={setDivLoadRef} className="mt-[120px] invisible">
+              <div ref={setDivLoadRef} className="invisible mt-[120px]">
                 <SecTitle
                   titleLoad={styles.titleLoad}
                   arrowLoad={styles.arrowLoad}
@@ -220,10 +221,12 @@ const TitleAboutUs = ({
             "absolute top-[-200px] z-10 w-full opacity-0 hd:top-[-11svw]",
           )}
         >
-          <img
+          <Image
             className="mx-auto w-[256px] sm:w-[40%] hd:h-[114.5svh] hd:w-[41%]"
             src="/images/whiteTower.png"
             alt="whiteTower"
+            width={779}
+            height={1550}
           />
         </div>
       </div>
@@ -233,11 +236,12 @@ const TitleAboutUs = ({
         className="relative top-[-28px] h-[475px] w-full overflow-hidden hd:top-0 hd:h-[120.9svh]"
       >
         <div ref={setDivLoadRef3} className="h-full w-full">
-          <div className="min-h-[959px] w-full hd:min-h-[1209px]">
-            <img
-              className="min-h-[558px] w-full object-cover object-top hd:h-full"
+          <div className="relative min-h-[959px] w-full hd:min-h-[1209px]">
+            <Image
+              className="object-cover object-top hd:h-full"
               src="/images/whiteTowerPhoto.jpg"
               alt="whiteTower"
+							fill
             />
           </div>
         </div>

@@ -23,7 +23,7 @@ const RCCard = () => {
               src="/images/newLK-1.jpg"
               alt="Новый Жк"
               width={110}
-              height={104}
+              height={120}
             />
           </div>
           <div className="flex max-w-[260px] grow flex-col flex-wrap justify-between bg-orange-500">
@@ -71,7 +71,7 @@ const RCCard = () => {
             src="/images/KMRiverPark.jpg"
             alt="Жилой комплекс Речной парк"
             width={110}
-            height={104}
+            height={120}
           />
         </div>
         <div className="flex max-w-[260px] grow flex-col flex-wrap justify-between overflow-hidden bg-sky-950">

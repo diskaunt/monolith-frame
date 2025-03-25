@@ -92,7 +92,7 @@ const DevConst = ({
                 ref={setImageRef}
                 className={classNames(
                   styles.loadImageDev,
-                  "invisible relative z-10 w-full object-cover",
+                  "invisible relative z-10 h-auto w-auto object-cover",
                 )}
                 src={`/images/developmentBuild.jpg`}
                 alt="building"
@@ -185,7 +185,7 @@ const DevConst = ({
                 ref={setImageRef}
                 className={classNames(
                   styles.loadImageConst,
-                  "invisible w-full object-cover",
+                  "invisible h-auto w-auto object-cover",
                 )}
                 src="/images/constructionBuilders.jpg"
                 alt="builders work"

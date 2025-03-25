@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const SmallProjectCard = ({
@@ -8,9 +9,15 @@ const SmallProjectCard = ({
   src: string;
 }) => {
   return (
-    <div className="flex max-w-[260px] h-[204px] flex-col">
-      <div className="w-full h-[173px]">
-        <img className="w-full h-full object-cover" src={src} alt={projectName} />
+    <div className="flex h-[204px] max-w-[260px] flex-col">
+      <div className="h-[173px] w-full">
+        <Image
+          className="h-full w-full object-cover"
+          src={src}
+          alt={projectName}
+          width={260}
+          height={173}
+        />
       </div>
       <div className="mt-auto">
         <p className="font-inter text-[20px] leading-[22px] tracking-veryTight">

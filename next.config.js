@@ -8,6 +8,8 @@ const nextConfig = {
   images: {
 		domains: ['localhost'],
 		unoptimized: true,
+		loader: 'custom',
+    loaderFile: './src/utils/myImageLoader.ts',
 	},
   eslint: {
     // Warning: This allows production builds to successfully complete even if
