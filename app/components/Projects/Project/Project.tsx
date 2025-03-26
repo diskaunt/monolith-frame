@@ -3,39 +3,41 @@ import classNames from "classnames";
 import { useEffect, useRef } from "react";
 import Department from "@/commons/Department";
 import Card from "./Card";
-import { useRouter } from "next/navigation";
 import { ProjectType } from "@/data-access/projects";
 import myImageLoader from "@/utils/myImageLoader";
 
 const Project = ({ project }: { project: ProjectType }) => {
   const bgImageRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
-    bgImageRef.current &&
-      (bgImageRef.current.style.backgroundImage = `url(${myImageLoader(project.src)})`);
-  }, []);
+    if (bgImageRef.current) {
+      bgImageRef.current.style.backgroundImage = `url(${myImageLoader(
+        project.src
+      )})`;
+    }
+  }, [project.src]);
 
   return (
     <div
       ref={bgImageRef}
       className={classNames(
-        "h-100svh w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-blue-500",
+        "h-100svh w-full bg-blue-500 overflow-hidden bg-cover bg-center bg-no-repeat"
       )}
     >
       <div className="flex h-full w-full px-[60px]">
         <div className="grow">
           <div className="flex h-full w-full items-end justify-between px-[20px] py-[22px]">
+            {/* Информация о проекте */}
             <div className="mb-[6px] text-white">
-              <div className="">
-                <Department fill="white">{project.name}</Department>
-              </div>
+              <Department fill="white">{project.name}</Department>
               <div className="w-[700px]">
                 <p className="text-[120px] font-bold uppercase leading-[106px] tracking-wide">
                   {project.descr}
                 </p>
               </div>
             </div>
+
+            {/* Карточка проекта */}
             <div className="flex flex-col items-end">
               <button className="mb-[6px] flex h-[60px] w-[100px] items-center justify-center border border-white">
                 <svg

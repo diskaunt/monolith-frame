@@ -1,19 +1,18 @@
 "use client";
 import classNames from "classnames";
 import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import Card from "../../../Projects/Project/Card";
 import Department from "@/commons/Department";
 import { ProjectType } from "@/data-access/projects";
+import Card from "../Projects/Project/Card";
 
 const Project = ({ project }: { project: ProjectType }) => {
   const bgImageRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
-    bgImageRef.current &&
-      (bgImageRef.current.style.backgroundImage = `url(${project.src})`);
-  }, []);
+    if (bgImageRef.current) {
+      bgImageRef.current.style.backgroundImage = `url(${project.src})`;
+    }
+  }, [project.src]);
 
   return (
     <div
@@ -24,9 +23,10 @@ const Project = ({ project }: { project: ProjectType }) => {
     >
       <div className="flex h-full w-full px-[60px]">
         <div className="grow">
+          {/* Информация о проекте */}
           <div className="flex h-full w-full items-end justify-between px-[20px] py-[22px]">
             <div className="mb-[6px] text-white">
-              <div className="">
+              <div>
                 <Department fill="white">{project.name}</Department>
               </div>
               <div className="w-[700px]">
@@ -35,6 +35,7 @@ const Project = ({ project }: { project: ProjectType }) => {
                 </p>
               </div>
             </div>
+            {/* Карточка проекта */}
             <div className="flex flex-col items-end">
               <button className="mb-[6px] flex h-[60px] w-[100px] items-center justify-center border border-white">
                 <svg

@@ -3,8 +3,12 @@ import React, { SetStateAction, useEffect, useState } from "react";
 import styles from "./Preloader.module.css";
 import PreloaderSvg from "./PreloaderSvg";
 import classNames from "classnames";
-
-const Preloader = ({ setLoaded }: { setLoaded: React.Dispatch<React.SetStateAction<boolean>> }) => {
+import section1 from "@/public/images/section-1.jpg";
+const Preloader = ({
+  setLoaded,
+}: {
+  setLoaded: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const levels = ["00", "28", "45", "87", "99"];
 
   const renderLoadLevels = levels.reverse().map((lvl, i) => (
@@ -21,14 +25,14 @@ const Preloader = ({ setLoaded }: { setLoaded: React.Dispatch<React.SetStateActi
     <div
       className={classNames(
         styles.container,
-        "bg-[url(/images/section-1.jpg)] bg-cover bg-center bg-no-repeat",
+        "bg-[url(.././public/images/section-1.jpg)] bg-cover bg-center bg-no-repeat",
       )}
     >
       <div className={styles.svg}>
         <PreloaderSvg
           preserveAspectRatio="xMidYMid slice"
           className={styles.preloaderSvg}
-					setLoaded={setLoaded}
+          setLoaded={setLoaded}
         />
       </div>
       <div className={styles.back} />

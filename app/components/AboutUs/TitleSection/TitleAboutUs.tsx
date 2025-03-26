@@ -70,7 +70,7 @@ const TitleAboutUs = ({
   return (
     <>
       <div className="relative">
-        {/* представление основной секции, нету в моб версии */}
+        {/* Основная секция, нету в моб версии */}
         <div
           ref={setScrollVerticalRefs}
           className="hidden w-100vw-scroll bg-blue-500 hd:block hd:h-100svh"
@@ -95,10 +95,10 @@ const TitleAboutUs = ({
                 ref={setDivLoadRef}
                 className={classNames(
                   styles.descrLoad,
-                  "invisible w-[589px] self-end font-inter text-[28px] leading-[35px] tracking-veryTight",
+                  "invisible w-[589px] self-end",
                 )}
               >
-                <p>
+                <p className="font-inter text-[28px] leading-[35px] tracking-veryTight">
                   Наша история – летопись непрерывного роста масштабов
                   реализуемых проектов, расширения направлений профессиональной
                   деятельности и географии возведённых объектов.
@@ -107,7 +107,8 @@ const TitleAboutUs = ({
             </div>
           </div>
         </div>
-        {/* Svg вершин гор или снежных сугрробов верхние */}
+
+        {/*Верхние вершины гор */}
         <div className="top-[100svh] mt-auto h-[22%] w-full hd:sticky hd:mb-0 hd:h-[30%]">
           <div
             ref={snowMountTopRef}
@@ -119,7 +120,8 @@ const TitleAboutUs = ({
             <AboutUsStart />
           </div>
         </div>
-        {/* основаная секция*/}
+
+        {/* Основная секция с текстом*/}
         <div
           ref={setScrollVerticalRefs}
           className="flex h-[100svh] w-full flex-col bg-blue-500"
@@ -134,12 +136,14 @@ const TitleAboutUs = ({
             >
               <div
                 className={classNames(
-                  "invisible ml-[25px] mt-[112px] hd:ml-[15%] hd:mt-[10%]",
+                  "ml-[25px] mt-[112px] hd:ml-[15%] hd:mt-[10%]",
                 )}
               >
-                <div className="inline-block overflow-hidden">
+                <div
+                  ref={setDivLoadRef}
+                  className="invisible inline-block overflow-hidden"
+                >
                   <p
-                    ref={setDivLoadRef}
                     className={classNames(
                       styles.titleLoad,
                       "text-[90px] font-bold uppercase leading-[76px] tracking-wide hd:text-[200px] hd:leading-[180px]",
@@ -165,10 +169,12 @@ const TitleAboutUs = ({
                 </div>
               </div>
               <div className="mt-[16px] flex w-full flex-wrap justify-center gap-y-[6px] hd:ml-[7%] hd:mt-0 hd:gap-x-[18%]">
-                <div className={classNames("invisible mr-[20%] hd:mr-0")}>
-                  <div className="inline-block overflow-hidden">
+                <div className={classNames("mr-[20%] hd:mr-0")}>
+                  <div
+                    ref={setDivLoadRef}
+                    className="invisible inline-block overflow-hidden"
+                  >
                     <p
-                      ref={setDivLoadRef}
                       className={classNames(
                         styles.titleLoad,
                         "text-[90px] font-bold uppercase leading-[76px] tracking-wide hd:text-[200px] hd:leading-[180px]",
@@ -178,10 +184,12 @@ const TitleAboutUs = ({
                     </p>
                   </div>
                 </div>
-                <div className={classNames("invisible ml-[30%] hd:ml-0")}>
-                  <div className="inline-block overflow-hidden">
+                <div className={classNames("ml-[30%] hd:ml-0")}>
+                  <div
+                    ref={setDivLoadRef}
+                    className="invisible inline-block overflow-hidden"
+                  >
                     <p
-                      ref={setDivLoadRef}
                       className={classNames(
                         styles.titleLoad,
                         "text-[90px] font-bold uppercase leading-[76px] tracking-wide hd:text-[200px] hd:leading-[180px]",
@@ -194,12 +202,14 @@ const TitleAboutUs = ({
               </div>
               <div
                 className={classNames(
-                  "invisible ml-[5%] mt-[0px] hd:ml-[46.5%] hd:mt-[6px]",
+                  "ml-[5%] mt-[0px] hd:ml-[46.5%] hd:mt-[6px]",
                 )}
               >
-                <div className="inline-block overflow-hidden">
+                <div
+                  ref={setDivLoadRef}
+                  className="invisible inline-block overflow-hidden"
+                >
                   <p
-                    ref={setDivLoadRef}
                     className={classNames(
                       styles.titleLoad,
                       "text-[90px] font-bold uppercase leading-[76px] tracking-wide hd:text-[200px] hd:leading-[180px]",
@@ -213,7 +223,7 @@ const TitleAboutUs = ({
           </div>
         </div>
       </div>
-      {/* небоскреб основная */}
+      {/* небоскреб */}
       <div className={classNames("relative bottom-[585px] top-[0px] z-10")}>
         <div
           ref={whiteTowerRef}
@@ -231,7 +241,7 @@ const TitleAboutUs = ({
           />
         </div>
       </div>
-      {/* небоскреб задним фоном*/}
+      {/* Задний фон небоскреба */}
       <div
         ref={setScrollVerticalStartRefs}
         className="relative top-[-28px] h-[475px] w-full overflow-hidden hd:top-0 hd:h-[120.9svh]"
@@ -247,7 +257,7 @@ const TitleAboutUs = ({
           </div>
         </div>
       </div>
-      {/* Svg вершин гор или снежных сугрробов нижние */}
+      {/* Нижние вершины гор */}
       <div
         ref={setWhiteThemeRefs}
         className="absolute -bottom-1 left-0 z-10 h-[142px] w-full overflow-hidden fill-white hd:h-[200px] hd:w-full"

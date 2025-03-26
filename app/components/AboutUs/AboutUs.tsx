@@ -16,16 +16,10 @@ const AboutUs = ({
 }) => {
   const [therehold, setTherehold] = useState<number>(0.01);
 
-  // useEffect(() => {
-  //   if (window.innerHeight > 1000) {
-  //     let therehold = +((window.innerHeight * 100) / 100000 - 1).toFixed(2);
-  //     setTherehold(therehold);
-  //   }
-  // }, []);
   //обсервер функция для вертикального прокручивания стандартного к старту
   const [scrollVerticalStartRefs, setScrollVerticalStartRefs] = useObserver(
     (entries) =>
-      scrollToVerticalTarget(entries, { behavior: "smooth", block: "start" }),
+      scrollToVerticalTarget(entries, null, { behavior: "smooth", block: "start", inline: "start" }),
     {
       root: null,
       rootMargin: "0px",
@@ -35,7 +29,7 @@ const AboutUs = ({
   //обсервер функция для вертикального прокручивания стандартного к концу
   const [scrollVerticalEndRefs, setScrollVerticalEndRefs] = useObserver(
     (entries) =>
-      scrollToVerticalTarget(entries, { behavior: "smooth", block: "end" }),
+      scrollToVerticalTarget(entries, null, { behavior: "smooth", block: "end", inline: "end" }),
     {
       root: null,
       rootMargin: "0px",

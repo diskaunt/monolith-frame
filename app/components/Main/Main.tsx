@@ -13,6 +13,7 @@ import Nav from "../Navbar/Nav";
 import { ProjectType } from "@/data-access/projects";
 import { getLocalStorageLoaded } from "@/data-access/loaded";
 
+
 const Main = ({
   // loaded,
   projects,
@@ -24,15 +25,13 @@ const Main = ({
   const companyRef = useRef<HTMLDivElement>(null);
   const devRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
+	const [loaded, setLoaded] = useState(false);
+
 
   //обсервер функция для вертикального прокручивания стандартного
   const [scrollVerticalRefs, setScrollVerticalRefs] = useObserver(
     (entries) =>
-      scrollToVerticalTarget(entries, {
-        behavior: "smooth",
-        block: "nearest",
-        inline: "nearest",
-      }),
+      scrollToVerticalTarget(entries, null),
     {
       root: null,
       rootMargin: "0px",
@@ -40,28 +39,9 @@ const Main = ({
     },
   );
 
-  //функция для вертикального прокручивания на дублирущий блок компании на оси y
-  const scrollToVerticalCompanyTarget = (
-    entries: IntersectionObserverEntry[],
-  ) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-        companyRef.current &&
-          companyRef.current.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "nearest",
-          });
-      }
-    });
-  };
   //обсервер функция для вертикального проеручивания на дублирущий блок компании на оси y
   const [scrollVerticalCompanyRefs, setScrollVerticalCompanyRef] = useObserver(
-    scrollToVerticalCompanyTarget,
+    (entries) => scrollToVerticalTarget(entries, companyRef ),
     {
       root: null,
       rootMargin: "0px",
@@ -69,31 +49,16 @@ const Main = ({
     },
   );
 
-  //функция для вертикального прокручивания на дублирущий блок девелопмент на оси y
-  const scrollToVerticalDevTarget = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-        });
-        devRef.current &&
-          devRef.current.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-          });
-      }
-    });
-  };
   //обсервер функция для вертикального проеручивания на дублирущий блок девелопмент на оси y
   const [scrollVerticalDevRefs, setScrollVerticalDevRefs] = useObserver(
-    scrollToVerticalDevTarget,
+    (entries) => scrollToVerticalTarget(entries, devRef ),
     {
       root: null,
       rootMargin: "0px",
       threshold: [0.1],
     },
   );
+
   // функция для стрелки в право
   const scrollToDevConst = () => {
     devRef.current &&
@@ -128,11 +93,12 @@ const Main = ({
       threshold: [0.1],
     },
   );
+
   useEffect(() => {
-    const loadeLocalStotage = getLocalStorageLoaded()
-      typeof window !== "undefined" ? setLoaded(loadeLocalStotage) : setLoaded(false);
+    if (typeof window !== "undefined") {
+      setLoaded(getLocalStorageLoaded());
+    }
   }, []);
-  const [loaded, setLoaded] = useState(false);
 
   return !loaded ? (
     <div>

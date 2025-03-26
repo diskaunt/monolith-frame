@@ -1,0 +1,62 @@
+.active {
+	visibility: visible;
+}
+
+.active .titleLoad {
+	animation: slideUpRotate 1s ease-in-out both;
+}
+
+@keyframes slideUpRotate {
+	0% {
+		transform: translateY(100%) rotate(2deg);
+	}
+
+	100% {
+		transform: translateY(0) rotate(0);
+	}
+}
+
+.active .arrowLoad {
+	animation: slideUpOpacity 1s ease-in-out both;
+}
+
+@keyframes slideUpOpacity {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideUpOpacity {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.active.descrLoad {
+	animation: slideUpOpacity 1s ease-in-out both;
+}
+
+.active .loadImage {
+  animation: loadImage 1s linear forwards;
+  transform: scale(1.25);
+  clip-path: xywh(0 0 0 100%);
+}
+
+@keyframes loadImage {
+  100% {
+    transform: scale(1);
+    clip-path: xywh(0 0 100% 100%);
+  }
+}

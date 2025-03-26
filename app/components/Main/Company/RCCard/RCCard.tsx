@@ -1,22 +1,25 @@
-import React, { RefObject, useEffect, useRef, useState } from "react";
-import ArrowComplex from "./ArrowComplex";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
 import styles from "./RCCard.module.css";
 import classNames from "classnames";
 import useMouseOver from "@/hooks/useMouseOver";
 import Image from "next/image";
 import myImageLoader from "@/utils/myImageLoader";
+import ArrowComplex from "@/commons/ArrowComplex";
 
 const RCCard = () => {
   const resRef = useRef(null);
   const [resOvered, setResOver] = useState(false);
+
   useMouseOver(resRef, setResOver, 300);
+
   return (
     <>
       <div
         ref={resRef}
         className={classNames(styles.loadRight, "group relative z-20")}
       >
+        {/* Основной блок */}
         <div className="flex">
           <div className="shrink-0">
             <Image
@@ -40,26 +43,30 @@ const RCCard = () => {
             </div>
           </div>
         </div>
+				
+        {/* Стрелка */}
         <div
           className={classNames(
             resOvered ? styles.loadRightArrow : styles.unloadArrow,
             "absolute left-complex-x top-[0] h-full",
           )}
         >
-          <div className="flex h-full w-[42px] cursor-pointer bg-orange-500 stroke-white p-[6px] sm:w-[72px]">
-            <Link href={"/"}></Link>
-            <ArrowComplex
-              className={classNames(
-                resOvered
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-[20%] opacity-0",
-                "transition-all duration-300",
-              )}
-            />
+          <div className="flex h-full w-[42px] cursor-pointer items-center bg-orange-500 p-[6px] sm:w-[72px]">
+            <Link className="h-fit w-full" href={"/projects"}>
+              <ArrowComplex
+                className={classNames(
+                  resOvered
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-[20%] opacity-0",
+                  "h-auto w-full stroke-white transition-all duration-300",
+                )}
+              />
+            </Link>
           </div>
         </div>
       </div>
-      {/* pop-up block */}
+
+      {/* Попап */}
       <div
         className={classNames(
           resOvered ? "visible translate-y-[-25px]" : "invisible",

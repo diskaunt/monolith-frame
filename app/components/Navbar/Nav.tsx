@@ -13,44 +13,32 @@ import ConstructionMenu from "./ConstructionMenu";
 import { ProjectType } from "@/data-access/projects";
 import { useRouter } from "next/compat/router";
 
-const Nav = ({
-  projects,
-  theme = "light",
-}: {
-  projects?: ProjectType[];
-  theme?: "dark" | "light";
-}) => {
+const Nav = ({ projects }: { projects?: ProjectType[] }) => {
   const [devOpened, setDevOpened] = useState<boolean>(false);
   const [constOpened, setConstOpened] = useState<boolean>(false);
   const menuRef = useRef(null);
   const devMenuRef = useRef(null);
 
+  const handleClickOutside = (value: boolean) => {
+    setDevOpened(value);
+    setConstOpened(value);
+  };
 
-	const handleClickOutside	= (value: boolean) => {
-		setDevOpened(value)
-		setConstOpened(value)
-	}
-	
-	useClickOutside([menuRef, devMenuRef], handleClickOutside);
+  useClickOutside([menuRef, devMenuRef], handleClickOutside);
 
   const onDevOpened = () => {
     setDevOpened(!devOpened);
     setConstOpened(!constOpened);
   };
-	const router = useRouter()
 
   return (
-    <div
-      className={classNames(
-        // theme === "light" ? "white-theme" : "black-theme",
-        "border-inherit transition-all",
-      )}
-    >
+    <div className={classNames("border-inherit transition-all")}>
       <div
         className={classNames(
           "z-10 flex h-[50px] w-nav-mobile min-w-[343px] max-w-[707px] border-inherit sm:h-[60px] sm:w-nav-desktop",
         )}
       >
+        {/* Логотип */}
         <div
           className={classNames(
             styles.slideUpMenuBorder,
@@ -59,6 +47,8 @@ const Nav = ({
         >
           <MenuSvg className={classNames(styles.slideUpMenuSvg)} />
         </div>
+
+        {/* Основное меню */}
         <div
           ref={menuRef}
           className={classNames(
@@ -66,6 +56,7 @@ const Nav = ({
             "relative flex grow border border-inherit text-[16px] leading-[25px] tracking-wide sm:text-[24px] sm:leading-[25px] hd:ml-[6px]",
           )}
         >
+          {/* Логотип Monolith Frame */}
           <div
             className={classNames(
               "flex w-full max-w-[79px] grow items-center justify-center px-[15px] sm:max-w-[247px]",
@@ -73,12 +64,16 @@ const Nav = ({
           >
             <MgLogoSvg />
           </div>
+
+          {/* Разделитель */}
           <div
             className={classNames(
               styles.growAnimate,
               "h-full border-l border-inherit",
             )}
           ></div>
+
+          {/* Кнопка "Девелопмент" */}
           <div
             className={classNames(
               "relative grow px-[14px] sm:max-w-[154px] sm:px-[22px]",
@@ -104,14 +99,18 @@ const Nav = ({
               <ConstructionMenu projects={projects} constOpened={constOpened} />
             </div>
           </div>
+
+          {/* Разделитель */}
           <div
             className={classNames(
               styles.growAnimate,
               "h-full border-l border-inherit",
             )}
           ></div>
+
+          {/* Кнопка "Строительство" */}
           <div
-            // onClick={() => setConstOpened(!constOpened)}
+            onClick={() => {}}
             className={classNames(
               "flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase sm:max-w-[171px] sm:px-[20px]",
             )}
@@ -121,12 +120,16 @@ const Nav = ({
               <ArrowNavSvg />
             </span>
           </div>
+
+					{/* Разделитель */}
           <div
             className={classNames(
               styles.growAnimate,
               "h-full border-l border-inherit",
             )}
           ></div>
+
+					{/* Иконка навигации */}
           <div
             className={classNames(
               "mx-auto flex w-[48px] items-center justify-center px-[16px] sm:w-[60px] sm:px-[20px]",
