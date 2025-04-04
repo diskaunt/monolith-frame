@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SVGProps } from 'react';
 const MgLogoSvg = (props: SVGProps<SVGSVGElement>) => (
   <>
-    <div className='w-full hidden sm:block'>
+    <div className='w-full hidden hd:block'>
       <svg
         // width={335}
         // height={61}
@@ -90,7 +90,7 @@ const MgLogoSvg = (props: SVGProps<SVGSVGElement>) => (
         />
       </svg>
     </div>
-    <div className='w-full block sm:hidden'>
+    <div className='w-full block hd:hidden'>
       <svg
         // width={100}
         // height={53}

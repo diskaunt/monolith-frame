@@ -2,11 +2,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 const useObserver = (
   fn: (atr: any) => void,
-  options: IntersectionObserverInit
+  options: IntersectionObserverInit = {
+    root: null,
+    rootMargin: '0px',
+    threshold: [0.25],
+  }
 ) => {
   const refArr = useRef<(HTMLElement | null)[]>([]);
   const observer = useRef<IntersectionObserver | null>(null);
-	const [isActive, setActive] = useState<boolean>(false);
 
   const setRef = useCallback((el: HTMLElement | null) => {
     refArr.current.push(el);
@@ -15,7 +18,7 @@ const useObserver = (
   }, []);
 
   useEffect(() => {
-		const observerElem = refArr.current;
+    const observerElem = refArr.current;
     // Очищаем предыдущий наблюдатель
     if (observer.current) {
       observerElem.forEach((el) => {
@@ -23,18 +26,23 @@ const useObserver = (
       });
       observer.current.disconnect();
     }
-		// Создаем новый наблюдатель
-		observer.current = new IntersectionObserver(fn, options);
-		// Подписываемся на наблюдение за элементами
+    // Создаем новый наблюдатель
+    observer.current = new IntersectionObserver(fn, options);
+    // Подписываемся на наблюдение за элементами
     observerElem.forEach((el) => {
       if (el) {
         observer.current?.observe(el);
       }
-    }
-	);
-	// Чистим наблюдатель при размонтировании
-	return () => { if (observer.current) { refArr.current.forEach((el) => { if (el) observer.current?.unobserve(el); }); observer.current.disconnect(); }
-}
+    });
+    // Чистим наблюдатель при размонтировании
+    return () => {
+      if (observer.current) {
+        refArr.current.forEach((el) => {
+          if (el) observer.current?.unobserve(el);
+        });
+        observer.current.disconnect();
+      }
+    };
   }, [fn, refArr, options]);
 
   return [refArr, setRef] as const;

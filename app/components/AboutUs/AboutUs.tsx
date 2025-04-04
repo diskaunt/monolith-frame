@@ -9,31 +9,39 @@ const AboutUs = ({
   setWhiteThemeRefs,
   setScrollVerticalRefs,
   setBlackThemeRefs,
+  options,
 }: {
   setWhiteThemeRefs: (node: HTMLDivElement | null) => void;
   setScrollVerticalRefs: (node: HTMLDivElement | null) => void;
   setBlackThemeRefs: (node: HTMLDivElement | null) => void;
+  options: Object;
 }) => {
-  const [therehold, setTherehold] = useState<number>(0.01);
-
   //обсервер функция для вертикального прокручивания стандартного к старту
   const [scrollVerticalStartRefs, setScrollVerticalStartRefs] = useObserver(
     (entries) =>
-      scrollToVerticalTarget(entries, null, { behavior: "smooth", block: "start", inline: "start" }),
+      scrollToVerticalTarget(entries, null, {
+        behavior: "smooth",
+        block: "start",
+        inline: "start",
+      }),
     {
       root: null,
       rootMargin: "0px",
-      threshold: [therehold],
+      threshold: [0.25],
     },
   );
   //обсервер функция для вертикального прокручивания стандартного к концу
   const [scrollVerticalEndRefs, setScrollVerticalEndRefs] = useObserver(
     (entries) =>
-      scrollToVerticalTarget(entries, null, { behavior: "smooth", block: "end", inline: "end" }),
+      scrollToVerticalTarget(entries, null, {
+        behavior: "smooth",
+        block: "end",
+        inline: "end",
+      }),
     {
       root: null,
       rootMargin: "0px",
-      threshold: [therehold],
+      threshold: [0.25],
     },
   );
   return (
@@ -59,11 +67,14 @@ const AboutUs = ({
           setScrollVerticalRefs={setScrollVerticalRefs}
           setScrollVerticalStartRefs={setScrollVerticalStartRefs}
           setScrollVerticalEndRefs={setScrollVerticalEndRefs}
-          therehold={therehold}
+          options={options}
         />
       </div>
       {/* награды и партнеры блока */}
-      <div ref={setBlackThemeRefs} className="relative z-10 w-100vw md:flex hd:mt-0 hd:w-100vw-scroll">
+      <div
+        ref={setBlackThemeRefs}
+        className="relative z-10 w-100vw md:flex hd:mt-0 hd:w-100vw-scroll"
+      >
         <FooterAboutUs
           setBlackThemeRefs={setBlackThemeRefs}
           setWhiteThemeRefs={setWhiteThemeRefs}

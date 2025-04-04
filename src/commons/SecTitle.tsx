@@ -27,7 +27,7 @@ const SecTitle = ({
       <div
         className={classNames(
           arrowLoad,
-          'flow-start mt-[30px] h-fit w-[80px] stroke-black',
+          'flex mt-[30px] h-[40px] w-[80px] stroke-black',
           color === 'white' ? 'stroke-white' : 'stroke-black'
         )}
       >

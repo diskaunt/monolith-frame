@@ -23,7 +23,7 @@ const ConstructionMenu = ({
     <div
       className={classNames(
         constOpened ? "visible z-10" : "invisible -z-10 delay-300",
-        "trasition-all w-full grow overflow-hidden hd:mt-[-66px]",
+        "trasition-all hd: hidden w-full grow overflow-hidden hd:mt-[-66px] hd:block shadow-lg",
       )}
     >
       <div

@@ -35,10 +35,10 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
     <div className={classNames("border-inherit transition-all")}>
       <div
         className={classNames(
-          "z-10 flex h-[50px] w-nav-mobile min-w-[343px] max-w-[707px] border-inherit sm:h-[60px] sm:w-nav-desktop",
+          "z-10 flex h-[50px] w-nav-mobile min-w-[343px] max-w-[707px] border-inherit hd:h-[60px] hd:w-nav-desktop",
         )}
       >
-        {/* Логотип */}
+        {/* Дизайнерская причуда */}
         <div
           className={classNames(
             styles.slideUpMenuBorder,
@@ -53,13 +53,13 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
           ref={menuRef}
           className={classNames(
             styles.borderAnimate,
-            "relative flex grow border border-inherit text-[16px] leading-[25px] tracking-wide sm:text-[24px] sm:leading-[25px] hd:ml-[6px]",
+            "relative flex grow border border-inherit text-[16px] leading-[25px] tracking-wide hd:ml-[6px] hd:text-[24px] hd:leading-[25px]",
           )}
         >
           {/* Логотип Monolith Frame */}
           <div
             className={classNames(
-              "flex w-full max-w-[79px] grow items-center justify-center px-[15px] sm:max-w-[247px]",
+              "flex w-full max-w-[79px] grow items-center justify-center px-[15px] hd:max-w-[247px]",
             )}
           >
             <MgLogoSvg />
@@ -76,7 +76,7 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
           {/* Кнопка "Девелопмент" */}
           <div
             className={classNames(
-              "relative grow px-[14px] sm:max-w-[154px] sm:px-[22px]",
+              "relative grow px-[14px] hd:max-w-[154px] hd:px-[22px]",
             )}
           >
             <button
@@ -84,7 +84,7 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
               className="flex h-full w-full cursor-pointer items-center justify-center gap-x-[3px] uppercase"
             >
               <span className="">девелопмент</span>
-              <span className="h-[0.7em] w-[6.67px] sm:w-[10px]">
+              <span className="h-[0.7em] w-[6.67px] hd:w-[10px]">
                 <ArrowNavSvg />
               </span>
             </button>
@@ -92,7 +92,7 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
               ref={devMenuRef}
               className={classNames(
                 constOpened ? "visible" : "invisible",
-                "absolute left-0 top-[55px] flex w-[458px] flex-wrap gap-[6px] sm:top-[66px] hd:w-[auto] hd:flex-nowrap",
+                "absolute left-0 top-[55px] flex flex-wrap gap-[6px] hd:top-[66px] hd:flex-nowrap",
               )}
             >
               <DevelopmentMenu devOpened={devOpened} />
@@ -112,16 +112,16 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
           <div
             onClick={() => {}}
             className={classNames(
-              "flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase sm:max-w-[171px] sm:px-[20px]",
+              "flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase hd:max-w-[171px] hd:px-[20px]",
             )}
           >
             <span>строительство</span>
-            <span className="h-[0.7em] w-[6.67px] sm:w-[10px]">
+            <span className="h-[0.7em] w-[6.67px] hd:w-[10px]">
               <ArrowNavSvg />
             </span>
           </div>
 
-					{/* Разделитель */}
+          {/* Разделитель */}
           <div
             className={classNames(
               styles.growAnimate,
@@ -129,14 +129,14 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
             )}
           ></div>
 
-					{/* Иконка навигации */}
+          {/* Иконка навигации */}
           <div
             className={classNames(
-              "mx-auto flex w-[48px] items-center justify-center px-[16px] sm:w-[60px] sm:px-[20px]",
+              "mx-auto flex w-[48px] items-center justify-center px-[16px] hd:w-[60px] hd:px-[20px]",
             )}
           >
-            <NavSvg className="hidden sm:block" />
-            <NavSmSvg className="sm:hidden" />
+            <NavSvg className="hidden hd:block" />
+            <NavSmSvg className="hd:hidden" />
           </div>
         </div>
       </div>

@@ -7,10 +7,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="">
+    <section className="w-full">
       <ButtonOnMain textColor="black" />
-      <ButtonOnConstruction textColor="black" />
       {children}
+      <ButtonOnConstruction textColor="black" />
     </section>
   );
 }

@@ -3,31 +3,61 @@
     "id": "KMTimiryazevsky",
     "name": "КМ Тимирязевский",
     "src": "/images/KMTimiryazevsky.jpg",
-    "nav": true
+    "nav": true,
+		"card": {
+      "adress": "Тимирязева",
+      "price": "10 млн ₽",
+      "DueDate": "2 квартал, 25г",
+      "information": "Для амбициозных людей, которые предпочитают брать от жизни все."
+    }
   },
   {
     "id": "KMAnkudievskyPark",
     "name": "КМ Анкудиновский Парк",
     "src": "/images/KMAnkudievskyPark.jpg",
-    "nav": true
+    "nav": true,
+		"card": {
+      "adress": " д. Анкудиновка",
+      "price": "4 млн ₽",
+      "DueDate": "2 квартал, 26г",
+      "information": "Самый масштабный проект."
+    }
   },
   {
     "id": "KMMolodezhny",
     "name": "КМ Молодежный",
     "src": "/images/KMMolodezhny.jpg",
-    "nav": true
+    "nav": true,
+		"card": {
+      "adress": "Молодёжный проспект, 74а",
+      "price": "5 млн ₽",
+      "DueDate": "2 квартал, 21г",
+      "information": "Первый жилой дом построеннный по высочайшим стандартам."
+    }
   },
   {
     "id": "KMPrime",
     "name": "КМ Прайм",
     "src": "/images/KMPrime.jpg",
-    "nav": true
+    "nav": true,
+		"card": {
+      "adress": "Малая Ямская, 18",
+      "price": "13 млн ₽",
+      "DueDate": "2 квартал, 2015г",
+      "information": "ЖИВИТЕ ПО-НОВОМУ В ЗНАКОМОМ МЕСТЕ."
+    }
   },
   {
     "id": "KMFlagman",
     "name": "КМ Флагман",
     "src": "/images/KMFlagman.jpg",
-    "nav": false
+    "nav": false,
+		"card": {
+      "adress": "Машинная, 29",
+      "price": "5 млн ₽",
+      "DueDate": "2 квартал, 21г",
+      "information": "Уникальный дом с отделкой вне конкуренции от ГК Каркас Монолит."
+    }
   },
   {
     "id": "KMRiverPark",
@@ -59,6 +89,12 @@
     "id": "KMTowerPlaza",
     "name": "КМ Tower Plaza",
     "src": "/images/KMTowerPlaza.jpg",
-    "nav": true
+    "nav": true,
+		"card": {
+      "adress": "Максима Горького, 23А",
+      "price": "7 млн ₽",
+      "DueDate": "2 квартал, 21г",
+      "information": "Больше, чем недвижимость."
+    }
   }
 ]

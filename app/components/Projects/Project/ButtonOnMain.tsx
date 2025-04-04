@@ -15,7 +15,7 @@ const ButtonOnMain = ({
       <div
         className={classNames(
           path !== "/projects" ? "border-white" : "border-black",
-          "fixed left-0 z-30 flex h-100svh border-r",
+          "fixed left-0 top-0 z-30 flex h-100svh border-r",
         )}
       >
         <button

@@ -9,8 +9,8 @@ const Project = ({ project }: { project: ProjectType }) => {
   const bgImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (bgImageRef.current) {
-      bgImageRef.current.style.backgroundImage = `url(${project.src})`;
+		if (bgImageRef.current) {
+			bgImageRef.current.style.backgroundImage = `url(${project.src})`;
     }
   }, [project.src]);
 

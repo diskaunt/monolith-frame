@@ -14,8 +14,12 @@ body::-webkit-scrollbar {
 	/* WebKit (Chrome, Safari, etc.) */
 }
 
-body, html {
+body,
+html {
 	margin: 0;
+}
+
+.scrollBarGutterStable {
 	scrollbar-gutter: stable;
 }
 

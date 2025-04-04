@@ -1,6 +1,6 @@
 "use client";
 import styles from "./Main.module.css";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import DevConst from "./developeConst/DevConst";
 import Company from "./Company/Company";
@@ -13,7 +13,6 @@ import Nav from "../Navbar/Nav";
 import { ProjectType } from "@/data-access/projects";
 import { getLocalStorageLoaded } from "@/data-access/loaded";
 
-
 const Main = ({
   // loaded,
   projects,
@@ -25,38 +24,29 @@ const Main = ({
   const companyRef = useRef<HTMLDivElement>(null);
   const devRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
-	const [loaded, setLoaded] = useState(false);
-
+  const [loaded, setLoaded] = useState(false);
+  const [options, setOptions] = useState({
+    root: null,
+    rootMargin: "0px",
+    threshold: [0.1],
+  });
 
   //обсервер функция для вертикального прокручивания стандартного
   const [scrollVerticalRefs, setScrollVerticalRefs] = useObserver(
-    (entries) =>
-      scrollToVerticalTarget(entries, null),
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.1],
-    },
+    (entries) => scrollToVerticalTarget(entries, null),
+    options,
   );
 
   //обсервер функция для вертикального проеручивания на дублирущий блок компании на оси y
   const [scrollVerticalCompanyRefs, setScrollVerticalCompanyRef] = useObserver(
-    (entries) => scrollToVerticalTarget(entries, companyRef ),
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.1],
-    },
+    (entries) => scrollToVerticalTarget(entries, companyRef),
+    options,
   );
 
   //обсервер функция для вертикального проеручивания на дублирущий блок девелопмент на оси y
   const [scrollVerticalDevRefs, setScrollVerticalDevRefs] = useObserver(
-    (entries) => scrollToVerticalTarget(entries, devRef ),
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.1],
-    },
+    (entries) => scrollToVerticalTarget(entries, devRef),
+    options,
   );
 
   // функция для стрелки в право
@@ -77,26 +67,29 @@ const Main = ({
   const [blackThemeRefs, setBlackThemeRefs] = useObserver(
     (entries) =>
       changeThemeColor(entries, navRef, "black-theme", "white-theme"),
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.1],
-    },
+    options,
   );
 
   const [whiteThemeRefs, setWhiteThemeRefs] = useObserver(
     (entries) =>
       changeThemeColor(entries, navRef, "white-theme", "black-theme"),
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.1],
-    },
+    options,
   );
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // влияет на отображение прелоадера, не отображает если страница уже загружалась и локал сторейдж есть запись об этом
       setLoaded(getLocalStorageLoaded());
+
+      // изменяет опции при скольки процентах срабатывает обсервер в зависимости от пользовательской велечины экрана
+      window.innerWidth > 1368
+        ? setOptions({
+            ...options,
+          })
+        : setOptions({
+            ...options,
+            threshold: [0.25],
+          });
     }
   }, []);
 
@@ -170,6 +163,7 @@ const Main = ({
                 setWhiteThemeRefs={setWhiteThemeRefs}
                 setBlackThemeRefs={setBlackThemeRefs}
                 setScrollVerticalRefs={setScrollVerticalRefs}
+                options={options}
               />
             </section>
           </div>
@@ -186,6 +180,7 @@ const Main = ({
           setWhiteThemeRefs={setWhiteThemeRefs}
           setBlackThemeRefs={setBlackThemeRefs}
           setScrollVerticalRefs={setScrollVerticalRefs}
+          options={options}
         />
       </section>
     </div>

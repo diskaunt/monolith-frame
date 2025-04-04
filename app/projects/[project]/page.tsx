@@ -19,7 +19,7 @@ const ProjectPage = async ({ params }: { params: Promise<{ project: string }> })
   const projects = await getProjects();
 
   return (
-    <div className="">
+    <div className="w-full">
       <div className="white-theme fixed left-[80px] top-[20px] z-20">
         <Nav projects={projects} />
       </div>

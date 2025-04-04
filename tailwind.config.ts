@@ -35,6 +35,7 @@ const config: Config = {
         'nav-mobile': 'calc(100vw - 40px)',
         'nav-desktop': 'calc(100vw - 32px)',
         menuDevProject: 'calc(100vw - 753px - 2 * 80px)',
+				'menuDev-mobile': 'calc(100vw - 80px - 32px)',
       },
       spacing: {
         'complex-x': 'calc(100% + 6px)',

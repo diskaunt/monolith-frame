@@ -46,7 +46,7 @@ const FooterAboutUs = ({
       {/* Награды */}
       <div
         ref={setScrollVerticalRefs}
-        className="min-h-mobile hd:min-h-desktop h-100svh w-full shrink-0 overflow-hidden bg-gray-100 pb-[40px] pt-[83px] md:w-2/4 md:pb-[6svh] hd:pt-[4.3svh]"
+        className="min-h-mobile hd:min-h-desktop h-100svh w-full px-[16px] shrink-0 overflow-hidden bg-gray-100 pb-[40px] pt-[83px] md:w-2/4 md:pb-[6svh] hd:pt-[4.3svh]"
       >
         <div ref={hoverRef} className={classNames("relative h-full")}>
           <button

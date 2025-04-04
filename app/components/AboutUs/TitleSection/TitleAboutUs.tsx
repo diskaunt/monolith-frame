@@ -28,11 +28,6 @@ const TitleAboutUs = ({
   // Анимация загрузки заголовков и описаний
   const [divLoadRefs, setDivLoadRef] = useObserver(
     (entryes) => addActiveClassname(entryes, styles),
-    {
-      root: null,
-      rootMargin: "0px",
-      threshold: [0.3],
-    },
   );
   // Анимация загрузки башни и вершин гор на основной секции
   const [divLoadRefs2, setDivLoadRef2] = useObserver(
@@ -114,7 +109,7 @@ const TitleAboutUs = ({
             ref={snowMountTopRef}
             className={classNames(
               styles.snowMountLoad,
-              "absolute -bottom-4 left-0 h-[160px] w-full translate-y-[7svh] overflow-hidden hd:h-[200px]",
+              "absolute -bottom-4 left-0 h-[160px] w-full translate-y-[7svh] overflow-hidden hd:h-[20svh]",
             )}
           >
             <AboutUsStart />
@@ -247,7 +242,7 @@ const TitleAboutUs = ({
         className="relative top-[-28px] h-[475px] w-full overflow-hidden hd:top-0 hd:h-[120.9svh]"
       >
         <div ref={setDivLoadRef3} className="h-full w-full">
-          <div className="relative min-h-[959px] w-full hd:min-h-[1209px]">
+          <div ref={setWhiteThemeRefs} className="relative min-h-[558px] w-full h-full hd:min-h-[1209px]">
             <Image
               className="object-cover object-top hd:h-full"
               src={myImageLoader("/images/whiteTowerPhoto.jpg")}
@@ -259,8 +254,7 @@ const TitleAboutUs = ({
       </div>
       {/* Нижние вершины гор */}
       <div
-        ref={setWhiteThemeRefs}
-        className="absolute -bottom-1 left-0 z-10 h-[142px] w-full overflow-hidden fill-white hd:h-[200px] hd:w-full"
+        className="absolute -bottom-1 left-0 z-10 h-[142px] w-full overflow-hidden fill-white hd:h-[20svh] hd:w-full"
       >
         <AboutUsMid />
       </div>
