@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Запуск проекта
+Установка зависимостей
+sh
+npm install
 
-## Getting Started
-
-First, run the development server:
-
-```bash
+Запуск в режиме разработки
+sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Сборка и запуск в продакшене
+sh
+npm run build
+npm run start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🛠 Используемые технологии
+Next.js - современный фреймворк для React
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+React & ReactDOM - базовые библиотеки для работы с компонентами
 
-## Learn More
+GSAP - мощная анимационная библиотека
 
-To learn more about Next.js, take a look at the following resources:
+TailwindCSS - гибкая система классов для стилизации
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+PostCSS & Autoprefixer - инструменты для обработки CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ESLint & Prettier - линтер и форматер для поддержания чистого кода
 
-## Deploy on Vercel
+TypeScript - типизированный язык программирования
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+📂 Структура проекта
+pages/ — файлы страниц Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+components/ — переиспользуемые компоненты.
+
+public/ — статические файлы (изображения, иконки и другие ресурсы).
+
+utils/ — вспомогательные функции.
+
+hooks/ — кастомные React-хуки, если они есть.
+
+contexts/ — контексты React (если используются).
+
+✨ Функциональность
+Анимации с GSAP
+
+Адаптивная верстка на TailwindCSS
+
+Оптимизированные ресурсы с Next.js
+
+Простая система управления контентом
+

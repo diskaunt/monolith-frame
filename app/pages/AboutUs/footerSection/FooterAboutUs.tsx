@@ -1,16 +1,17 @@
-import Department from "@/commons/Department";
+import Department from "@/components/Department";
 import classNames from "classnames";
 import React, { useEffect, useRef } from "react";
 import styles from "./FooterAboutUs.module.css";
 import PikSvg from "./componentsSvg/PikSvg";
 import SamoletPlusSvg from "./componentsSvg/SamoletPlusSvg";
 import InGradSvg from "./componentsSvg/InGradSvg";
-import Marque from "@/commons/Marque";
+import Marque from "@/components/Marque";
 import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
-import HorizontalBar from "@/commons/HorizontalBar";
-import VerticalBar from "@/commons/VerticalBar";
+import HorizontalBar from "@/components/HorizontalBar";
+import VerticalBar from "@/components/VerticalBar";
 import ArrowUpSvg from "./componentsSvg/ArrowUpSvg";
+import { debouceFn } from "@/utils/debounceFn";
 
 const FooterAboutUs = ({
   setScrollVerticalRefs,
@@ -22,8 +23,9 @@ const FooterAboutUs = ({
   setWhiteThemeRefs: (node: HTMLDivElement) => void;
 }) => {
   const hoverRef = useRef<HTMLDivElement | null>(null);
-  const titleRef = useRef<HTMLDivElement | null>(null);
+  const awardsRef = useRef<HTMLDivElement | null>(null);
 
+  // Обсервер навешивает на элемент класс при его появлении для анимации появления
   const [divLoadRefs, setDivLoadRef] = useObserver(
     (entryes) => addActiveClassname(entryes, styles),
     {
@@ -33,10 +35,16 @@ const FooterAboutUs = ({
     },
   );
 
-  const handleMouseOver = () => {
-    hoverRef.current?.classList.add(styles.hover);
+  // функция для добавления анимации при наведении мыши
+  const handleMouseOver = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (hoverRef.current && hoverRef.current.contains(target))
+      awardsRef.current && awardsRef.current.classList.add(styles.hover);
   };
 
+  const debHandler = debouceFn(handleMouseOver, 1000);
+
+  // функция возвращения к началу страницы
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
@@ -45,16 +53,18 @@ const FooterAboutUs = ({
     <>
       {/* Награды */}
       <div
+        onMouseOver={debHandler}
         ref={setScrollVerticalRefs}
-        className="min-h-mobile hd:min-h-desktop h-100svh w-full px-[16px] shrink-0 overflow-hidden bg-gray-100 pb-[40px] pt-[83px] md:w-2/4 md:pb-[6svh] hd:pt-[4.3svh]"
+        className="h-100svh min-h-mobile w-full shrink-0 overflow-hidden bg-gray-100 px-[16px] pb-[40px] pt-[83px] md:w-2/4 md:pb-[6svh] hd:min-h-desktop hd:pt-[4.3svh]"
       >
-        <div ref={hoverRef} className={classNames("relative h-full")}>
+        <div ref={awardsRef} className={classNames("relative h-full")}>
+          {/* стрелка возвращения к началу страницы */}
           <button
             ref={setDivLoadRef}
             onClick={handleClick}
             className={classNames(
               styles.arrow,
-              "absolute left-5 top-[48%] hidden hd:block",
+              "absolute bottom-[52%] left-5 hidden hd:block",
             )}
           >
             <ArrowUpSvg />
@@ -76,10 +86,7 @@ const FooterAboutUs = ({
             >
               <div className="mb-2 h-[56px] overflow-hidden hd:h-[83px]">
                 <div
-                  className={classNames(
-                    styles.loadTitleDescr,
-                    styles.hover,
-                  )}
+                  className={classNames(styles.loadTitleDescr, styles.hover)}
                 >
                   <p className="font-drucSyr text-[55px] font-bold uppercase leading-[56px] tracking-wide hd:text-[90px] hd:leading-[83px]">
                     архитектурное
@@ -94,10 +101,7 @@ const FooterAboutUs = ({
               </div>
               <div className="h-[56px] overflow-hidden hd:h-[83px]">
                 <div
-                  className={classNames(
-                    styles.loadTitleDescr,
-                    styles.hover,
-                  )}
+                  className={classNames(styles.loadTitleDescr, styles.hover)}
                 >
                   <p className="font-drucSyr text-[55px] font-bold uppercase leading-[56px] tracking-wide hd:text-[90px] hd:leading-[83px]">
                     решение
@@ -112,35 +116,39 @@ const FooterAboutUs = ({
               </div>
             </div>
             <div
-              ref={setDivLoadRef}
-              onMouseOver={handleMouseOver}
+              ref={hoverRef}
               className={classNames(
-                "invisible relative mb-[1svh] mt-[36px] flex h-[130px] overflow-hidden hd:mt-[8.5svh] hd:h-[265px]",
+                "invisible mb-[1svh] mt-[36px] h-[130px] hd:mt-[8.5svh] hd:h-[265px]",
               )}
             >
               <div
-                className={classNames(
-                  styles.loadTitleNumDescr,
-                  styles.hover,
-                  "ml-[40px] h-fit hd:ml-[60px]",
-                )}
+                ref={setDivLoadRef}
+                className="relative flex h-full w-full overflow-hidden"
               >
-                <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
-                  2
-                </p>
-                <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
-                  1
-                </p>
-              </div>
-              <div
-                className={classNames(
-                  styles.loadTitle,
-                  "mb-[28px] ml-[-10px] self-end hd:mb-[55px] hd:ml-[-20px]",
-                )}
-              >
-                <p className="font-midium hd:tracking-very-tight font-inter text-[17px] leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px]">
-                  место
-                </p>
+                <div
+                  className={classNames(
+                    styles.loadTitleNumDescr,
+                    styles.hover,
+                    "ml-[40px] h-fit hd:ml-[60px]",
+                  )}
+                >
+                  <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
+                    2
+                  </p>
+                  <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
+                    1
+                  </p>
+                </div>
+                <div
+                  className={classNames(
+                    styles.loadTitle,
+                    "mb-[28px] ml-[-10px] self-end hd:mb-[55px] hd:ml-[-20px]",
+                  )}
+                >
+                  <p className="font-midium hd:tracking-very-tight font-inter text-[17px] leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px]">
+                    место
+                  </p>
+                </div>
               </div>
             </div>
             <div ref={setDivLoadRef} className="invisible mt-auto flex w-full">
@@ -237,7 +245,7 @@ const FooterAboutUs = ({
       {/* Партнеры */}
       <div
         ref={setScrollVerticalRefs}
-        className="min-h-mobile hd:min-h-desktop h-100svh w-full shrink-0 overflow-hidden bg-blue-500 pb-[40px] pt-[83px] text-white md:w-2/4 md:pb-[5.5svh] hd:pt-[4.3svh]"
+        className="h-100svh min-h-mobile w-full shrink-0 overflow-hidden bg-blue-500 pb-[40px] pt-[83px] text-white md:w-2/4 md:pb-[5.5svh] hd:min-h-desktop hd:pt-[4.3svh]"
       >
         <div ref={setWhiteThemeRefs} className="flex h-full w-full flex-col">
           <div className="mx-auto flex w-full max-w-[375px] flex-col items-center hd:max-w-[665px]">
@@ -251,14 +259,14 @@ const FooterAboutUs = ({
               className="invisible w-fit text-center hd:mt-[5.8svh]"
             >
               <div className="overflow-hidden">
-                <div className={classNames(styles.loadTitleDescr,)}>
+                <div className={classNames(styles.loadTitleDescr)}>
                   <p className="mb-2 font-drucSyr text-[42px] font-bold uppercase leading-[46px] tracking-wide hd:text-[70px] hd:leading-[70px]">
                     мы&nbsp;ценим наших
                   </p>
                 </div>
               </div>
               <div className="overflow-hidden">
-                <div className={classNames(styles.loadTitleDescr,)}>
+                <div className={classNames(styles.loadTitleDescr)}>
                   <p className="font-drucSyr text-[42px] font-bold uppercase leading-[46px] tracking-wide hd:text-[70px] hd:leading-[70px]">
                     партнеров
                   </p>
@@ -292,6 +300,7 @@ const FooterAboutUs = ({
               </div>
             </div>
           </div>
+          {/* бегущая строка */}
           <div className="mt-auto w-full self-start px-[15px] hd:px-[30px]">
             <Marque styles={styles}>
               <div className="flex w-[33%] shrink-0 items-center pt-[5px]">

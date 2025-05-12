@@ -1,3 +1,4 @@
+import { debouceFn } from '@/utils/debounceFn';
 import { RefObject, useEffect } from 'react';
 
 const useMouseOver = (
@@ -14,15 +15,7 @@ const useMouseOver = (
     }
   };
 
-  const debaunce = (fn: (e: MouseEvent) => void, ms: number) => {
-    let timeout: NodeJS.Timeout;
-    return (...args: [MouseEvent]) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => fn(...args), ms);
-    };
-  };
-
-  const debHandleOver = debaunce(handleOver, ms);
+  const debHandleOver = debouceFn(handleOver, ms);
 
   useEffect(() => {
     document.addEventListener('mouseover', debHandleOver);

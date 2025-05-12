@@ -1,4 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { gsap } from 'gsap';
+import { Observer } from 'gsap/Observer';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(Observer);
 
 const useObserver = (
   fn: (atr: any) => void,
@@ -8,20 +13,25 @@ const useObserver = (
     threshold: [0.25],
   }
 ) => {
-  const refArr = useRef<(HTMLElement | null)[]>([]);
-  const observer = useRef<IntersectionObserver | null>(null);
+  const refArr = useRef<(HTMLElement | null)[]>([]),
+    observer = useRef<IntersectionObserver | null>(null);
+  // currentIndex = useRef<number>(-1);
 
-  const setRef = useCallback((el: HTMLElement | null) => {
-    refArr.current.push(el);
-    let arr = new Set(refArr.current);
-    refArr.current = Array.from(arr);
-  }, []);
+  // Очищаем массив дом-элементов от дубликатов
+  const setRef = useCallback(
+    (el: HTMLElement | null) => {
+      refArr.current.push(el);
+      let arr = new Set(refArr.current);
+      refArr.current = Array.from(arr);
+    },
+    [refArr.current]
+  );
 
   useEffect(() => {
-    const observerElem = refArr.current;
+    const refArrElems = refArr.current;
     // Очищаем предыдущий наблюдатель
     if (observer.current) {
-      observerElem.forEach((el) => {
+      refArrElems.forEach((el) => {
         if (el) observer.current?.unobserve(el);
       });
       observer.current.disconnect();
@@ -29,7 +39,7 @@ const useObserver = (
     // Создаем новый наблюдатель
     observer.current = new IntersectionObserver(fn, options);
     // Подписываемся на наблюдение за элементами
-    observerElem.forEach((el) => {
+    refArrElems.forEach((el) => {
       if (el) {
         observer.current?.observe(el);
       }
@@ -37,7 +47,7 @@ const useObserver = (
     // Чистим наблюдатель при размонтировании
     return () => {
       if (observer.current) {
-        refArr.current.forEach((el) => {
+        refArrElems.forEach((el) => {
           if (el) observer.current?.unobserve(el);
         });
         observer.current.disconnect();

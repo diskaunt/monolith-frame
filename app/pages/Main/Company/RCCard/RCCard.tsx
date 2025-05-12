@@ -5,7 +5,7 @@ import classNames from "classnames";
 import useMouseOver from "@/hooks/useMouseOver";
 import Image from "next/image";
 import myImageLoader from "@/utils/myImageLoader";
-import ArrowComplex from "@/commons/ArrowComplex";
+import ArrowComplex from "@/components/ArrowComplex";
 
 const RCCard = () => {
   const resRef = useRef(null);
@@ -36,14 +36,16 @@ const RCCard = () => {
               <p className={styles["slide-up-opacity"]}>#новое</p>
             </div>
             <div className="mx-[10px] my-[10px] text-[18px] font-medium leading-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px]">
-              <p className={styles["slide-up"]}>
-                Новый ЖК
-                <br /> готов к сдаче
-              </p>
+              <Link href={"/projects/KMTowerPlaza"}>
+                <p className={styles["slide-up"]}>
+                  Новый ЖК
+                  <br /> готов к сдаче
+                </p>
+              </Link>
             </div>
           </div>
         </div>
-				
+
         {/* Стрелка */}
         <div
           className={classNames(
@@ -88,15 +90,17 @@ const RCCard = () => {
             <p className={classNames(styles["slide-up-opacity"])}>#новое</p>
           </div>
           <div className="w-full px-[10px] py-[10px] text-[18px] font-medium leading-[18px] sm:mx-[11px] sm:mb-[14px] sm:text-[20px]">
-            <p
-              className={classNames(
-                styles["slide-up"],
-                styles.cutoffText,
-                "w-full",
-              )}
-            >
-              В ЖК Речной парк начались первые продажи апартаментов
-            </p>
+            <Link href={"/projects/KMRiverPark"}>
+              <p
+                className={classNames(
+                  styles["slide-up"],
+                  styles.cutoffText,
+                  "w-full",
+                )}
+              >
+                В ЖК Речной парк начались первые продажи апартаментов
+              </p>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import classNames from "classnames";
 import styles from "./DevConst.module.css";
-import Department from "@/commons/Department";
+import Department from "@/components/Department";
 import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
 import DevBuildSvg from "./ComponentsSvg/DevBuildSvg";
@@ -10,6 +10,7 @@ import ConstLineSvg from "./ComponentsSvg/ConstLineSvg";
 import next from "next";
 import Image from "next/image";
 import myImageLoader from "@/utils/myImageLoader";
+import { debouceFn } from "@/utils/debounceFn";
 
 const DevConst = ({
   setScrollVerticalRefs,
@@ -19,9 +20,18 @@ const DevConst = ({
   const options = { root: null, rootMargin: "0px", threshold: [0.3] };
   const hoverRef = useRef<HTMLDivElement | null>(null);
 
-  const handleMouseOver = () => {
-    hoverRef.current?.classList.add(styles.hover);
+  // Функция для добавления анимации при наведении мыши
+  const handleMouseOver = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (hoverRef.current && hoverRef.current.contains(target)) {
+      hoverRef.current.classList.add(styles.hover);
+    }
   };
+
+  // debounce функция для обработки события наведения мыши
+  const debHandler = debouceFn(handleMouseOver, 1000);
+
+  // функции для анимации элементов при появлении в области видимости
   const [divRefArr, setDivRef] = useObserver(
     (entryes) => addActiveClassname(entryes, styles),
     options,
@@ -38,7 +48,11 @@ const DevConst = ({
   return (
     <>
       {/* developement */}
-      <div className="h-100svh w-full hd:h-full" ref={setScrollVerticalRefs}>
+      <div
+        onMouseOver={debHandler}
+        className="h-100svh w-full hd:h-full"
+        ref={setScrollVerticalRefs}
+      >
         <div
           ref={setDivRef}
           className={classNames(
@@ -81,12 +95,9 @@ const DevConst = ({
               </p>
             </div>
           </div>
-          <div
-            ref={hoverRef}
-            className="relative w-full shrink px-[70px] pb-[20px] pt-[42px] fhd:py-[50px]"
-          >
+          <div className="relative w-full shrink px-[70px] pb-[20px] pt-[42px] fhd:py-[50px]">
             <div
-              onMouseOver={handleMouseOver}
+              ref={hoverRef}
               className="relative z-10 m-auto w-4/12 min-w-[236px] overflow-hidden hd:w-2/4 hd:max-w-[330px]"
             >
               <Image

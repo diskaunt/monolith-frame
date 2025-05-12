@@ -12,6 +12,9 @@ import Preloader from "../Preloader/Preloader";
 import Nav from "../Navbar/Nav";
 import { ProjectType } from "@/data-access/projects";
 import { getLocalStorageLoaded } from "@/data-access/loaded";
+import Project from "../Projects/Project/Project";
+import Projects from "../Projects/Projects";
+import useGsapObserver from "@/hooks/useGsapObserver";
 
 const Main = ({
   // loaded,
@@ -31,23 +34,7 @@ const Main = ({
     threshold: [0.1],
   });
 
-  //обсервер функция для вертикального прокручивания стандартного
-  const [scrollVerticalRefs, setScrollVerticalRefs] = useObserver(
-    (entries) => scrollToVerticalTarget(entries, null),
-    options,
-  );
-
-  //обсервер функция для вертикального проеручивания на дублирущий блок компании на оси y
-  const [scrollVerticalCompanyRefs, setScrollVerticalCompanyRef] = useObserver(
-    (entries) => scrollToVerticalTarget(entries, companyRef),
-    options,
-  );
-
-  //обсервер функция для вертикального проеручивания на дублирущий блок девелопмент на оси y
-  const [scrollVerticalDevRefs, setScrollVerticalDevRefs] = useObserver(
-    (entries) => scrollToVerticalTarget(entries, devRef),
-    options,
-  );
+  const [scrollVerticalRefs, setScrollVerticalRefs] = useGsapObserver();
 
   // функция для стрелки в право
   const scrollToDevConst = () => {
@@ -80,57 +67,39 @@ const Main = ({
     if (typeof window !== "undefined") {
       // влияет на отображение прелоадера, не отображает если страница уже загружалась и локал сторейдж есть запись об этом
       setLoaded(getLocalStorageLoaded());
-
-      // изменяет опции при скольки процентах срабатывает обсервер в зависимости от пользовательской велечины экрана
-      window.innerWidth > 1368
-        ? setOptions({
-            ...options,
-          })
-        : setOptions({
-            ...options,
-            threshold: [0.25],
-          });
     }
   }, []);
 
   return !loaded ? (
+    // прелоадер
     <div>
       <Preloader setLoaded={setLoaded} />
     </div>
   ) : (
     <div className="relative">
+      {/* меню навигации */}
       <div
         className="fixed left-[16px] top-[16px] z-20 hd:left-[20px] hd:top-[20px]"
         ref={navRef}
       >
         <Nav projects={projects} />
       </div>
-      <div className="relative z-10 h-[100svh] w-[100vw] shrink-0 hd:h-mainHeight-hd hd:w-fit">
-        <div className="hidden h-full hd:block hd:w-100vw-scroll">
-          <div
-            ref={setScrollVerticalCompanyRef}
-            className="hidden h-[50%] w-full hd:block"
-          ></div>
-          <div
-            ref={setScrollVerticalDevRefs}
-            className="hidden h-[50%] w-full hd:block"
-          >
-            <div ref={setWhiteThemeRefs}></div>
-          </div>
-        </div>
+      <div className="relative z-10 h-100svh w-100vw shrink-0 hd:w-fit">
+        {/* Основной контейнер для скролла */}
         <div
-          ref={setScrollVerticalRefs}
-          className="fixed left-[0] top-[0] h-100svh w-100vw overflow-hidden hd:w-100vw-scroll"
+          // ref={setScrollVerticalRefs}
+          className="left-[0] top-[0] h-100svh w-100vw overflow-hidden hd:w-100vw-scroll"
         >
+          {/* Горизонтальный скролл-контейнер */}
           <div
             className={classNames(
               styles.main,
-              "flex h-full w-full overflow-x-auto overflow-y-hidden",
+              "flex h-full w-full overflow-x-hidden overflow-hidden",
             )}
           >
+            {/* Секция "Company" */}
             <section ref={setWhiteThemeRefs}>
               <div
-                ref={companyRef}
                 className={classNames(
                   styles.container,
                   "h-100svh w-100vw shrink-0 text-white hd:h-full hd:w-100vw-scroll",
@@ -142,16 +111,45 @@ const Main = ({
                 />
               </div>
             </section>
+
+            {/* Секция "DevConst" */}
             <section className="h-full w-full" ref={setScrollVerticalRefs}>
-              {/* <div className="h-full w-full" ref={setWhiteThemeRefs}> */}
               <div
                 ref={devRef}
                 className="flex h-full w-100vw shrink-0 flex-wrap gap-0 overflow-y-auto md:flex-nowrap hd:w-devConst-hd"
               >
                 <DevConst setScrollVerticalRefs={setScrollVerticalRefs} />
               </div>
-              {/* </div> */}
             </section>
+
+            {/* Секция "Project" с КМ Ривер парк (мобильная версия) */}
+
+            <section
+              ref={setScrollVerticalRefs}
+              className={classNames(
+                "relative z-10 block w-100vw shrink-0 overflow-y-auto overflow-x-hidden hd:hidden hd:w-100vw-scroll",
+              )}
+            >
+              <Project
+                project={
+                  projects.find((project) => project.id === "KMRiverPark") ||
+                  projects[5]
+                }
+              />
+            </section>
+
+            {/* Секция "Projects" (мобильная версия) */}
+
+            <section
+              ref={setScrollVerticalRefs}
+              className={classNames(
+                "relative z-10 block w-100vw shrink-0 overflow-y-auto overflow-x-hidden hd:hidden hd:w-100vw-scroll",
+              )}
+            >
+              <Projects projects={projects} />
+            </section>
+
+            {/* Секция "AboutUs" (мобильная версия) */}
             <section
               ref={aboutUsRefs}
               className={classNames(
@@ -169,6 +167,8 @@ const Main = ({
           </div>
         </div>
       </div>
+
+      {/* Секция "AboutUs" (desktop версия) */}
       <section
         ref={aboutUsRefs}
         className={classNames(
