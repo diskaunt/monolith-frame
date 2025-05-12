@@ -8,7 +8,7 @@
   animation: drawLoad 1s linear forwards;
 }
 
-.hover .active.svgLoadDev path {
+.hover + .active.svgLoadDev path {
   stroke-dasharray: 1408;
   stroke-dashoffset: 0;
   animation: drawHover 1s linear 0.8s forwards;

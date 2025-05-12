@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Company.module.css";
 import RCCard from "./RCCard/RCCard";
-import ArrowRight from "../../../../src/commons/ArrowRight";
+import ArrowRight from "../../../../src/components/ArrowRight";
 import classNames from "classnames";
 
 const Company = ({

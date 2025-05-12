@@ -1,7 +1,7 @@
 "use client";
 import classNames from "classnames";
 import { useEffect, useRef } from "react";
-import Department from "@/commons/Department";
+import Department from "@/components/Department";
 import Card from "./Card";
 import { ProjectType } from "@/data-access/projects";
 import myImageLoader from "@/utils/myImageLoader";

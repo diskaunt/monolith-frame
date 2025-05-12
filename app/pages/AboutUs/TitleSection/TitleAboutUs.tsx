@@ -6,20 +6,18 @@ import AboutUsStart from "../componentsSvg/AboutUsStart";
 import AboutUsMid from "../componentsSvg/AboutUsMid";
 import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
-import SecTitle from "@/commons/SecTitle";
+import SecTitle from "@/components/SecTitle";
 import Image from "next/image";
 import myImageLoader from "@/utils/myImageLoader";
 
 const TitleAboutUs = ({
   setScrollVerticalRefs,
-  setScrollVerticalStartRefs,
   setBlackThemeRefs,
   setWhiteThemeRefs,
 }: {
-  setScrollVerticalRefs: (node: HTMLDivElement | null) => void;
-  setScrollVerticalStartRefs: (node: HTMLDivElement | null) => void;
-  setBlackThemeRefs: (node: HTMLDivElement | null) => void;
-  setWhiteThemeRefs: (node: HTMLDivElement | null) => void;
+  setScrollVerticalRefs?: (node: HTMLDivElement | null) => void;
+  setBlackThemeRefs?: (node: HTMLDivElement | null) => void;
+  setWhiteThemeRefs?: (node: HTMLDivElement | null) => void;
 }) => {
   const snowMountTopRef = useRef<HTMLDivElement>(null);
   const whiteTowerRef = useRef<HTMLDivElement>(null);
@@ -238,7 +236,7 @@ const TitleAboutUs = ({
       </div>
       {/* Задний фон небоскреба */}
       <div
-        ref={setScrollVerticalStartRefs}
+        ref={setScrollVerticalRefs}
         className="relative top-[-28px] h-[475px] w-full overflow-hidden hd:top-0 hd:h-[120.9svh]"
       >
         <div ref={setDivLoadRef3} className="h-full w-full">

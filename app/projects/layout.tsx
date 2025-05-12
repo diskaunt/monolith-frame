@@ -1,5 +1,5 @@
-import ButtonOnConstruction from "../components/Projects/Project/ButtonOnConstruction";
-import ButtonOnMain from "../components/Projects/Project/ButtonOnMain";
+import ButtonOnConstruction from "../pages/Projects/Project/ButtonOnConstruction";
+import ButtonOnMain from "../pages/Projects/Project/ButtonOnMain";
 
 export default function RootLayout({
   children,

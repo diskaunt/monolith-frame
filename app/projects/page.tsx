@@ -1,7 +1,7 @@
 import React from "react";
-import Projects from "../components/Projects/Projects";
+import Projects from "../pages/Projects/Projects";
 import { getProjects } from "@/data-access/projects";
-import Nav from "../components/Navbar/Nav";
+import Nav from "../pages/Navbar/Nav";
 
 const ProjectsPage = async () => {
   const projects = await getProjects();
