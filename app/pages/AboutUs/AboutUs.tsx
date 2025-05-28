@@ -9,12 +9,12 @@ const AboutUs = ({
   setWhiteThemeRefs,
   setScrollVerticalRefs,
   setBlackThemeRefs,
-  options,
+	gotoSection,
 }: {
   setWhiteThemeRefs: (node: HTMLDivElement | null) => void;
   setScrollVerticalRefs: (node: HTMLDivElement | null) => void;
   setBlackThemeRefs: (node: HTMLDivElement | null) => void;
-  options: Object;
+	gotoSection: (index: number, direction: number) => void;
 }) => {
   return (
     <div className="max-w-100vw hd:max-w-100vw-scroll relative w-full min-w-[375px] bg-white">
@@ -33,7 +33,6 @@ const AboutUs = ({
       >
         <MidleAboutUs
           setScrollVerticalRefs={setScrollVerticalRefs}
-          options={options}
         />
       </div>
       {/* награды и партнеры блока */}
@@ -46,6 +45,7 @@ const AboutUs = ({
             setBlackThemeRefs={setBlackThemeRefs}
             setWhiteThemeRefs={setWhiteThemeRefs}
             setScrollVerticalRefs={setScrollVerticalRefs}
+						gotoSection={gotoSection}
           />
         </div>
       </div>

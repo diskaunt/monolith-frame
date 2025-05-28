@@ -7,7 +7,6 @@ import addActiveClassname from "@/utils/addActiveStyles";
 import DevBuildSvg from "./ComponentsSvg/DevBuildSvg";
 import DevLineSvg from "./ComponentsSvg/DevLineSvg";
 import ConstLineSvg from "./ComponentsSvg/ConstLineSvg";
-import next from "next";
 import Image from "next/image";
 import myImageLoader from "@/utils/myImageLoader";
 import { debouceFn } from "@/utils/debounceFn";

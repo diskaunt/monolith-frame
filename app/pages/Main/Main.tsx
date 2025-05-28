@@ -1,12 +1,11 @@
 "use client";
 import styles from "./Main.module.css";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import DevConst from "./developeConst/DevConst";
 import Company from "./Company/Company";
 import AboutUs from "../AboutUs/AboutUs";
 import useObserver from "@/hooks/useObserver";
-import scrollToVerticalTarget from "@/utils/scrollToVerticalTarget";
 import changeThemeColor from "@/utils/changeThemeColor";
 import Preloader from "../Preloader/Preloader";
 import Nav from "../Navbar/Nav";
@@ -17,24 +16,15 @@ import Projects from "../Projects/Projects";
 import useGsapObserver from "@/hooks/useGsapObserver";
 
 const Main = ({
-  // loaded,
   projects,
 }: {
-  // loaded: boolean;
   projects: ProjectType[];
 }) => {
   const aboutUsRefs = useRef<HTMLDivElement>(null);
-  const companyRef = useRef<HTMLDivElement>(null);
   const devRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
-  const [options, setOptions] = useState({
-    root: null,
-    rootMargin: "0px",
-    threshold: [0.1],
-  });
-
-  const [scrollVerticalRefs, setScrollVerticalRefs] = useGsapObserver();
+  const [gotoSection, setScrollVerticalRefs] = useGsapObserver();
 
   // функция для стрелки в право
   const scrollToDevConst = () => {
@@ -51,16 +41,12 @@ const Main = ({
   };
 
   // обсерверы для изменнеия цвета темы навигационного меню
-  const [blackThemeRefs, setBlackThemeRefs] = useObserver(
-    (entries) =>
-      changeThemeColor(entries, navRef, "black-theme", "white-theme"),
-    options,
+  const [blackThemeRefs, setBlackThemeRefs] = useObserver((entries) =>
+    changeThemeColor(entries, navRef, "black-theme", "white-theme"),
   );
 
-  const [whiteThemeRefs, setWhiteThemeRefs] = useObserver(
-    (entries) =>
-      changeThemeColor(entries, navRef, "white-theme", "black-theme"),
-    options,
+  const [whiteThemeRefs, setWhiteThemeRefs] = useObserver((entries) =>
+    changeThemeColor(entries, navRef, "white-theme", "black-theme"),
   );
 
   useEffect(() => {
@@ -76,7 +62,7 @@ const Main = ({
       <Preloader setLoaded={setLoaded} />
     </div>
   ) : (
-    <div className="relative">
+    <div className="relative h-100svh overflow-y-hidden">
       {/* меню навигации */}
       <div
         className="fixed left-[16px] top-[16px] z-20 hd:left-[20px] hd:top-[20px]"
@@ -87,14 +73,13 @@ const Main = ({
       <div className="relative z-10 h-100svh w-100vw shrink-0 hd:w-fit">
         {/* Основной контейнер для скролла */}
         <div
-          // ref={setScrollVerticalRefs}
           className="left-[0] top-[0] h-100svh w-100vw overflow-hidden hd:w-100vw-scroll"
         >
           {/* Горизонтальный скролл-контейнер */}
           <div
             className={classNames(
               styles.main,
-              "flex h-full w-full overflow-x-hidden overflow-hidden",
+              "flex h-full w-full overflow-hidden overflow-x-hidden",
             )}
           >
             {/* Секция "Company" */}
@@ -161,7 +146,7 @@ const Main = ({
                 setWhiteThemeRefs={setWhiteThemeRefs}
                 setBlackThemeRefs={setBlackThemeRefs}
                 setScrollVerticalRefs={setScrollVerticalRefs}
-                options={options}
+								gotoSection={gotoSection}
               />
             </section>
           </div>
@@ -180,7 +165,7 @@ const Main = ({
           setWhiteThemeRefs={setWhiteThemeRefs}
           setBlackThemeRefs={setBlackThemeRefs}
           setScrollVerticalRefs={setScrollVerticalRefs}
-          options={options}
+					gotoSection={gotoSection}
         />
       </section>
     </div>

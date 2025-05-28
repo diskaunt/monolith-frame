@@ -29,7 +29,7 @@ const config: Config = {
       },
       width: {
         '100vw': '100vw',
-        '100vw-scroll': 'calc(100vw - 17px)',
+        '100vw-scroll': 'calc(100vw)',
         menuDev: 'calc(100vw - 753px)',
         'devConst-hd': 'calc(100vw - 17px - 117px - 40px)',
         'nav-mobile': 'calc(100vw - 40px)',

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import { useGSAP } from '@gsap/react';
+import filterDub from '@/utils/filterDub';
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Observer);
 
@@ -10,7 +11,7 @@ const useObserver = (
   options: IntersectionObserverInit = {
     root: null,
     rootMargin: '0px',
-    threshold: [0.25],
+    threshold: [0.1],
   }
 ) => {
   const refArr = useRef<(HTMLElement | null)[]>([]),
@@ -21,14 +22,13 @@ const useObserver = (
   const setRef = useCallback(
     (el: HTMLElement | null) => {
       refArr.current.push(el);
-      let arr = new Set(refArr.current);
-      refArr.current = Array.from(arr);
     },
     [refArr.current]
   );
 
   useEffect(() => {
-    const refArrElems = refArr.current;
+    const refArrElems = filterDub(refArr.current);
+
     // Очищаем предыдущий наблюдатель
     if (observer.current) {
       refArrElems.forEach((el) => {
