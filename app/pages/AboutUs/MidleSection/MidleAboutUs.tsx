@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
+import React from "react";
 import AboutUsRoadMap from "../componentsSvg/AboutUsRoadMap";
-import AboutUsMid from "../componentsSvg/AboutUsMid";
 import AboutUsAchvmts from "./AboutUsAchvmts";
 import useObserver from "@/hooks/useObserver";
 import addActiveClassname from "@/utils/addActiveStyles";
@@ -11,14 +10,11 @@ import myImageLoader from "@/utils/myImageLoader";
 
 const MidleAboutUs = ({
   setScrollVerticalRefs,
-  options,
 }: {
   setScrollVerticalRefs?: (node: HTMLDivElement | null) => void;
-  options: {};
 }) => {
-  const [divLoadRefs, setDivLoadRef] = useObserver(
-    (entryes) => addActiveClassname(entryes, styles),
-    options,
+  const [divLoadRefs, setDivLoadRef] = useObserver((entryes) =>
+    addActiveClassname(entryes, styles),
   );
 
   return (
@@ -93,7 +89,7 @@ const MidleAboutUs = ({
             ref={setScrollVerticalRefs}
             className="flex flex-col gap-y-[100px] hd:gap-y-[240px]"
           >
-            <div className="mr-auto mt-[28px] ml-[265px] w-fit overflow-hidden hd:ml-[1050px] hd:pt-[25px]">
+            <div className="ml-[265px] mr-auto mt-[28px] w-fit overflow-hidden hd:ml-[1050px] hd:pt-[0]">
               <div ref={setDivLoadRef} className="invisible">
                 <div className={classNames(styles.loadRoadPoints)}>
                   <p className="text-[55px] font-bold uppercase leading-[130px] tracking-wide hd:text-[90px]">
@@ -106,7 +102,7 @@ const MidleAboutUs = ({
             {/* количество построенных кпрупных проектов */}
             <div
               ref={setDivLoadRef}
-              className="invisible flex flex-col gap-x-[300px] gap-y-[45px] pb-[155px] ml-[5%] pt-[12px] hd:h-[675px] hd:max-w-[100vw] hd:flex-row hd:pb-[210px] hd:ml-[7%]"
+              className="invisible ml-[5%] flex flex-col gap-x-[300px] gap-y-[45px] pb-[155px] pt-[12px] hd:ml-[7%] hd:h-[675px] hd:max-w-[100vw] hd:flex-row hd:pb-[210px]"
             >
               <div
                 className={classNames(
@@ -154,7 +150,7 @@ const MidleAboutUs = ({
                   </p>
                 </div>
               </div>
-              <div className="mt-[30px] flex flex-col-reverse ml-[5%] mr-[5%] hd:mt-auto hd:max-w-[100vw] hd:flex-row hd:ml-[7%] hd:mr-[100px]">
+              <div className="ml-[5%] mr-[5%] mt-[30px] flex flex-col-reverse hd:ml-[7%] hd:mr-[100px] hd:mt-auto hd:max-w-[100vw] hd:flex-row">
                 <div className="mt-[-37px] flex flex-col gap-y-[55px] hd:mt-0">
                   <div className="flex overflow-hidden">
                     <div
@@ -213,18 +209,18 @@ const MidleAboutUs = ({
 
           {/* блок надежности и качества компании и проектов  */}
           <div
-            className="pt-[25px] h-100svh w-full hd:pt-[100px]"
+            className="h-100svh w-full hd:mb-[80px]"
             ref={setScrollVerticalRefs}
           >
             <div
               ref={setDivLoadRef}
               className={classNames(
-                "invisible flex w-full flex-col justify-between",
+                "invisible flex h-full max-h-[1000px] w-full flex-col pt-[65px] hd:pt-[80px]",
               )}
             >
               {/* Качество */}
               <div className="flex flex-row-reverse flex-wrap">
-                <div className="ml-auto mr-[9%] mt-[130px] h-fit w-fit overflow-hidden hd:mr-[5%] hd:mt-[180px] fhd:mr-[15.5%]">
+                <div className="ml-auto mr-[9%] mt-[90px] h-fit w-fit overflow-hidden hd:mr-[5%] hd:mt-[200px] fhd:mr-[15.5%]">
                   <div className={classNames(styles.loadRoadPoints)}>
                     <p className="text-[55px] font-bold uppercase leading-[130px] tracking-wide hd:text-[90px]">
                       качество
@@ -234,7 +230,7 @@ const MidleAboutUs = ({
                 <div
                   className={classNames(
                     styles.loadImage,
-                    "z-10 ml-[5%] mt-[80px] w-[137px] hd:ml-[34%] hd:mt-[25px] hd:w-[296px]",
+                    "z-10 ml-[5%] mt-[15px] w-[137px] hd:ml-[34%] hd:mt-[45px] hd:w-[296px]",
                   )}
                 >
                   <Image
@@ -247,7 +243,7 @@ const MidleAboutUs = ({
               </div>
 
               {/* Надежность */}
-              <div className="mb-[80px] flex flex-wrap">
+              <div className="flex hd:grow flex-wrap">
                 <div
                   className={classNames(
                     "ml-[60px] mt-[90px] h-fit w-fit overflow-hidden hd:ml-[9%] hd:mt-[230px]",
@@ -259,7 +255,7 @@ const MidleAboutUs = ({
                     </p>
                   </div>
                 </div>
-                <div className="ml-auto mr-[3%] hd:mr-[165px] hd:mt-[65px]">
+                <div className="ml-auto mr-[3%] hd:mr-[165px] hd:self-end">
                   <div className="flex overflow-hidden">
                     <AboutUsAchvmts styles={styles} number={4}>
                       <p className="max-w-[169px] hd:ml-[-27px] hd:max-w-[359px]">

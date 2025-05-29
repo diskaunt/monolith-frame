@@ -17,10 +17,12 @@ const FooterAboutUs = ({
   setScrollVerticalRefs,
   setBlackThemeRefs,
   setWhiteThemeRefs,
+  gotoSection,
 }: {
   setScrollVerticalRefs: (node: HTMLDivElement) => void;
   setBlackThemeRefs: (node: HTMLDivElement) => void;
   setWhiteThemeRefs: (node: HTMLDivElement) => void;
+  gotoSection: (index: number, direction: number) => void;
 }) => {
   const hoverRef = useRef<HTMLDivElement | null>(null);
   const awardsRef = useRef<HTMLDivElement | null>(null);
@@ -45,9 +47,7 @@ const FooterAboutUs = ({
   const debHandler = debouceFn(handleMouseOver, 1000);
 
   // функция возвращения к началу страницы
-  const handleClick = () => {
-    window.scrollTo(0, 0);
-  };
+  const handleClick = () => gotoSection(0, -1);
 
   return (
     <>

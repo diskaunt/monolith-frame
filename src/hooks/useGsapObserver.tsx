@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import { useGSAP } from '@gsap/react';
+import filterDub from '@/utils/filterDub';
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Observer);
 
@@ -10,19 +11,14 @@ const useGsapObserver = () => {
     currentIndex = useRef<number>(-1),
     animating = useRef<boolean>(false);
 
-  // Очищаем массив дом-элементов от дубликатов
   const setRef = useCallback((el: HTMLElement | null) => {
-    // если элемент существует и его высота больше 0, и ширина элемента не равна ширине родителя, то добавляем его в массив
-    if (
-      el &&
-      el.offsetHeight > 0 &&
-      el.parentElement &&
-      el.offsetWidth !== Math.ceil(el.parentElement.offsetWidth / 2)
-    ) {
-      refArr.current.push(el);
+    if (!el || el.offsetHeight <= 0) return; // Если элемента нет или он скрыт, просто выходим
+
+    const parentWidth = el.parentElement?.offsetWidth ?? 0;
+
+    if (el.offsetWidth !== Math.ceil(parentWidth / 2)) {
+      refArr.current = filterDub([...refArr.current, el]);
     }
-    let arr = new Set(refArr.current);
-    refArr.current = Array.from(arr);
   }, []);
 
   const gotoSection = (index: number, direction: number) => {
@@ -39,12 +35,9 @@ const useGsapObserver = () => {
           inline: 'nearest',
         });
       console.log(correctedIndex);
-      console.log(refArr.current[correctedIndex]);
-      console.log(refArr.current);
     }
     // изменяем наш индекс на текущий
     currentIndex.current = correctedIndex;
-    animating.current = false;
   };
 
   useGSAP(() => {
@@ -59,6 +52,10 @@ const useGsapObserver = () => {
         !animating.current && gotoSection(currentIndex.current - 1, -1),
       onLeft: () =>
         !animating.current && gotoSection(currentIndex.current + 1, 1),
+      // добавленно для мобильной версии, чтобы за раз не прокручивалось больше 1 элемента
+      onStop: () => {
+        animating.current = false;
+      },
       tolerance: 50,
       preventDefault: true,
     });
@@ -66,9 +63,9 @@ const useGsapObserver = () => {
 
   useEffect(() => {
     gotoSection(0, 1);
-  }, [currentIndex.current]);
+  }, []);
 
-  return [refArr, setRef] as const;
+  return [gotoSection, setRef] as const;
 };
 
 export default useGsapObserver;
