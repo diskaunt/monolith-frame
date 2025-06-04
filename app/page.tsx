@@ -1,4 +1,4 @@
-import Main from "./pages/Main/Main";
+import Main from "./components/Main/Main";
 import React from "react";
 import { getProjects } from "@/data-access/projects";
 

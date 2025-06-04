@@ -1,6 +1,6 @@
 import { getProject, getProjects } from "@/data-access/projects";
-import Nav from "../../pages/Navbar/Nav";
-import Project from "../../pages/Projects/Project/Project";
+import Nav from "../../components/Navbar/Nav";
+import Project from "../../components/Projects/Project/Project";
 
 // Добавляем функцию generateStaticParams
 export async function generateStaticParams() {
@@ -13,8 +13,12 @@ export async function generateStaticParams() {
   }));
 }
 
-const ProjectPage = async ({ params }: { params: Promise<{ project: string }> }) => {
-  const {project} = await params;
+type ProjectPageProps = {
+  params: Promise<{ project: string }>;
+};
+
+const ProjectPage = async ({ params }: ProjectPageProps) => {
+  const { project } = await params;
   const projectItem = await getProject(project);
   const projects = await getProjects();
 

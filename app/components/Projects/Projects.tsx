@@ -1,6 +1,6 @@
 'use client';
 import { ProjectType } from '@/data-access/projects';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import SecTitle from '@/components/SecTitle';
 import classNames from 'classnames';
 import ProjectCard from './ProjectCard';
@@ -15,30 +15,43 @@ import useCloseModal from '@/hooks/useCloseModal';
 type ProjectsProps = {
   projects: ProjectType[];
   setScrollVerticalRefs?: (el: HTMLElement | null) => void;
-  isMobileClient: boolean;
+  isMobileClient?: boolean;
 };
-const Projects = ({ projects = [], setScrollVerticalRefs, isMobileClient }: ProjectsProps) => {
-  const [project, setProject] = useState<ProjectType | null>(null),
-    modalRef = useRef<HTMLDialogElement | null>(null),
-    // Обработчик открытия модального окна
-    handleProjectOpen = (projectId: string) => {
-      setProject(() => projects.find((p) => p.id === projectId) || null);
-      modalRef.current && modalRef.current.showModal();
+
+const Projects = ({ projects = [], setScrollVerticalRefs, isMobileClient = false }: ProjectsProps) => {
+  const [project, setProject] = useState<ProjectType | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const modalRef = useRef<HTMLDialogElement | null>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Обработчик открытия модального окна
+  const handleProjectOpen = (projectId: string) => {
+    setProject(() => projects.find((p) => p.id === projectId) || null);
+    modalRef.current?.showModal();
+    if (typeof document !== 'undefined') {
       document.body.style.overflow = 'hidden';
-    },
-    // Observer для анимации элементов при загрузке
-    [divLoadRefs, setDivLoadRef] = useObserver((entryes) => addActiveClassname(entryes, styles), {
-      root: null,
-      rootMargin: '0px',
-      threshold: [0.3],
-    });
+    }
+  };
+
+  // Observer для анимации элементов при загрузке
+  const [divLoadRefs, setDivLoadRef] = useObserver((entryes) => addActiveClassname(entryes, styles), {
+    root: null,
+    rootMargin: '0px',
+    threshold: [0.3],
+  });
 
   useCloseModal(modalRef);
+
+  const isClient = typeof window !== 'undefined';
+  const shouldSetScrollRefs = isMobileClient && isClient && window.innerWidth < 768;
 
   return (
     <div className="relative flex min-h-[100svh] w-full">
       {/* Модальное окно */}
-      {createPortal(
+      {isMounted && typeof document !== 'undefined' && createPortal(
         <Modal id={project?.id} modalRef={modalRef}>
           {project && (
             <Card
@@ -49,7 +62,7 @@ const Projects = ({ projects = [], setScrollVerticalRefs, isMobileClient }: Proj
             />
           )}
         </Modal>,
-        document.body,
+        document.body
       )}
 
       {/* Заголоковок и описание секции */}
@@ -77,7 +90,7 @@ const Projects = ({ projects = [], setScrollVerticalRefs, isMobileClient }: Proj
         <div className="relative mb-[8px] h-[179svh] hd:mb-[100px] hd:h-[203svh]">
           {/* первый блок карточек */}
           <div
-            ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}
+            ref={shouldSetScrollRefs ? setScrollVerticalRefs : null}
             className="sticky top-[88px] z-0 px-[16px] hd:top-[150px] hd:px-[80px]"
           >
             <div className="flex w-full flex-col justify-center gap-[20px] hd:flex-row">
@@ -138,7 +151,7 @@ const Projects = ({ projects = [], setScrollVerticalRefs, isMobileClient }: Proj
         </div>
         {/* второй блок карточек */}
         <div
-          ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}
+          ref={shouldSetScrollRefs ? setScrollVerticalRefs : null}
           className="flex flex-col justify-center gap-[26px] px-[16px] hd:flex-row hd:gap-[20px] hd:px-[80px]"
         >
           <button
