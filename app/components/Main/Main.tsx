@@ -26,7 +26,7 @@ const Main = ({ projects }: MainProps) => {
     navRef = useRef<HTMLDivElement>(null),
     [loaded, setLoaded] = useState(false),
     [gotoSection, setScrollVerticalRefs] = useGsapObserver(),
-    isMobileClient = deviceDetector(),
+    [isMobileClient, setIsMobileClient] = useState(false),
     // функция для стрелки в право
     scrollToDevConst = useCallback(() => {
       gotoSection(1, -1);
@@ -43,8 +43,12 @@ const Main = ({ projects }: MainProps) => {
     if (typeof window !== 'undefined') {
       // влияет на отображение прелоадера, не отображает если страница уже загружалась и локал сторейдж есть запись об этом
       setLoaded(getLocalStorageLoaded());
+      setIsMobileClient(deviceDetector());
     }
   }, []);
+
+  const isClient = typeof window !== 'undefined';
+  const shouldSetScrollRefs = isMobileClient && isClient && window.innerWidth < 768;
 
   return !loaded ? (
     // прелоадер
@@ -85,7 +89,7 @@ const Main = ({ projects }: MainProps) => {
             {/* Секция "DevConst" */}
             <section
               className="h-full w-full"
-              ref={isMobileClient && window.innerWidth < 768 ? null : setScrollVerticalRefs}
+              ref={shouldSetScrollRefs ? null : setScrollVerticalRefs}
             >
               <div
                 ref={devRef}
@@ -114,7 +118,7 @@ const Main = ({ projects }: MainProps) => {
             {/* Секция "Projects" (мобильная версия) */}
 
             <section
-              ref={isMobileClient && window.innerWidth > 768 ? setScrollVerticalRefs : null}
+              ref={shouldSetScrollRefs ? setScrollVerticalRefs : null}
               className={classNames(
                 'relative z-10 block w-100vw shrink-0 overflow-y-auto overflow-x-hidden hd:hidden hd:w-100vw-scroll',
               )}

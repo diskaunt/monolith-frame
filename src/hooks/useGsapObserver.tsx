@@ -59,6 +59,8 @@ const useGsapObserver = () => {
   });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     gotoSection(0, 1);
     isMobileClient.current = deviceDetector();
   }, []);
