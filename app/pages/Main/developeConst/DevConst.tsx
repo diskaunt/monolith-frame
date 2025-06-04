@@ -11,38 +11,39 @@ import Image from "next/image";
 import myImageLoader from "@/utils/myImageLoader";
 import { debouceFn } from "@/utils/debounceFn";
 
+type DevConstProps = {
+  setScrollVerticalRefs: (el: HTMLDivElement | null) => void;
+  isMobileClient: boolean;
+};
+
 const DevConst = ({
   setScrollVerticalRefs,
-}: {
-  setScrollVerticalRefs: (el: HTMLDivElement | null) => void;
-}) => {
-  const options = { root: null, rootMargin: "0px", threshold: [0.3] };
-  const hoverRef = useRef<HTMLDivElement | null>(null);
-
-  // Функция для добавления анимации при наведении мыши
-  const handleMouseOver = (e: React.MouseEvent) => {
-    const target = e.target as HTMLElement;
-    if (hoverRef.current && hoverRef.current.contains(target)) {
-      hoverRef.current.classList.add(styles.hover);
-    }
-  };
-
-  // debounce функция для обработки события наведения мыши
-  const debHandler = debouceFn(handleMouseOver, 1000);
-
-  // функции для анимации элементов при появлении в области видимости
-  const [divRefArr, setDivRef] = useObserver(
-    (entryes) => addActiveClassname(entryes, styles),
-    options,
-  );
-  const [pRefArr, setPRef] = useObserver(
-    (entryes) => addActiveClassname(entryes, styles),
-    options,
-  );
-  const [imageRefArr, setImageRef] = useObserver(
-    (entryes) => addActiveClassname(entryes, styles),
-    options,
-  );
+  isMobileClient,
+}: DevConstProps) => {
+  const options = { root: null, rootMargin: "0px", threshold: [0.3] },
+    hoverRef = useRef<HTMLDivElement | null>(null),
+    // Функция для добавления анимации при наведении мыши
+    handleMouseOver = (e: React.MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (hoverRef.current && hoverRef.current.contains(target)) {
+        hoverRef.current.classList.add(styles.hover);
+      }
+    },
+    // debounce функция для обработки события наведения мыши
+    debHandler = debouceFn(handleMouseOver, 1000),
+    // функции для анимации элементов при появлении в области видимости
+    [divRefArr, setDivRef] = useObserver(
+      (entryes) => addActiveClassname(entryes, styles),
+      options,
+    ),
+    [pRefArr, setPRef] = useObserver(
+      (entryes) => addActiveClassname(entryes, styles),
+      options,
+    ),
+    [imageRefArr, setImageRef] = useObserver(
+      (entryes) => addActiveClassname(entryes, styles),
+      options,
+    );
 
   return (
     <>
@@ -50,7 +51,7 @@ const DevConst = ({
       <div
         onMouseOver={debHandler}
         className="h-100svh w-full hd:h-full"
-        ref={setScrollVerticalRefs}
+        ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}
       >
         <div
           ref={setDivRef}
@@ -150,7 +151,7 @@ const DevConst = ({
 
       {/* constraction */}
 
-      <div className="h-100svh w-full hd:h-full" ref={setScrollVerticalRefs}>
+      <div className="h-100svh w-full hd:h-full" ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}>
         <div
           ref={setDivRef}
           className="flex h-full w-full min-w-[375px] flex-col items-center overflow-hidden bg-blue-500 pt-[16.1svh] text-white md:pt-[13.1svh]"

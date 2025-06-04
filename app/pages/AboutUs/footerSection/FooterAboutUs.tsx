@@ -13,17 +13,21 @@ import VerticalBar from "@/components/VerticalBar";
 import ArrowUpSvg from "./componentsSvg/ArrowUpSvg";
 import { debouceFn } from "@/utils/debounceFn";
 
+type FooterAboutUsProps = {
+	setScrollVerticalRefs: (node: HTMLDivElement) => void;
+	setBlackThemeRefs: (node: HTMLDivElement) => void;
+	setWhiteThemeRefs: (node: HTMLDivElement) => void;
+	gotoSection: (index: number, direction: number) => void;
+	isMobileClient: boolean;
+}
+
 const FooterAboutUs = ({
   setScrollVerticalRefs,
   setBlackThemeRefs,
   setWhiteThemeRefs,
   gotoSection,
-}: {
-  setScrollVerticalRefs: (node: HTMLDivElement) => void;
-  setBlackThemeRefs: (node: HTMLDivElement) => void;
-  setWhiteThemeRefs: (node: HTMLDivElement) => void;
-  gotoSection: (index: number, direction: number) => void;
-}) => {
+	isMobileClient,
+}: FooterAboutUsProps) => {
   const hoverRef = useRef<HTMLDivElement | null>(null);
   const awardsRef = useRef<HTMLDivElement | null>(null);
 
@@ -54,7 +58,7 @@ const FooterAboutUs = ({
       {/* Награды */}
       <div
         onMouseOver={debHandler}
-        ref={setScrollVerticalRefs}
+        ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}
         className="h-100svh min-h-mobile w-full shrink-0 overflow-hidden bg-gray-100 px-[16px] pb-[40px] pt-[83px] md:w-2/4 md:pb-[6svh] hd:min-h-desktop hd:pt-[4.3svh]"
       >
         <div ref={awardsRef} className={classNames("relative h-full")}>
@@ -244,7 +248,7 @@ const FooterAboutUs = ({
       </div>
       {/* Партнеры */}
       <div
-        ref={setScrollVerticalRefs}
+        ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}
         className="h-100svh min-h-mobile w-full shrink-0 overflow-hidden bg-blue-500 pb-[40px] pt-[83px] text-white md:w-2/4 md:pb-[5.5svh] hd:min-h-desktop hd:pt-[4.3svh]"
       >
         <div ref={setWhiteThemeRefs} className="flex h-full w-full flex-col">
