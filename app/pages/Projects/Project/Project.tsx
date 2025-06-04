@@ -6,13 +6,17 @@ import Card from "./Card";
 import { ProjectType } from "@/data-access/projects";
 import myImageLoader from "@/utils/myImageLoader";
 
-const Project = ({ project }: { project: ProjectType }) => {
+type ProjectProps = {
+  project: ProjectType;
+};
+
+const Project = ({ project }: ProjectProps) => {
   const bgImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (bgImageRef.current) {
       bgImageRef.current.style.backgroundImage = `url(${myImageLoader(
-        project.src
+        project.src,
       )})`;
     }
   }, [project.src]);
@@ -21,24 +25,24 @@ const Project = ({ project }: { project: ProjectType }) => {
     <div
       ref={bgImageRef}
       className={classNames(
-        "h-100svh w-full bg-blue-500 overflow-hidden bg-cover bg-center bg-no-repeat"
+        "h-100svh w-full overflow-hidden bg-blue-500 bg-cover bg-center bg-no-repeat",
       )}
     >
-      <div className="flex h-full w-full px-[60px]">
+      <div className="flex h-full w-full hd:px-[60px]">
         <div className="grow">
-          <div className="flex h-full w-full items-end justify-between px-[20px] py-[22px]">
+          <div className="flex h-full w-full flex-col justify-between p-[16px] pt-[90px] hd:flex-row hd:items-end hd:px-[20px] hd:py-[22px]">
             {/* Информация о проекте */}
             <div className="mb-[6px] text-white">
               <Department fill="white">{project.name}</Department>
-              <div className="w-[700px]">
-                <p className="text-[120px] font-bold uppercase leading-[106px] tracking-wide">
+              <div className="hd:w-[700px]">
+                <p className="text-[60px] font-bold uppercase leading-[57px] tracking-wide">
                   {project.descr}
                 </p>
               </div>
             </div>
 
             {/* Карточка проекта */}
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col hd:items-end">
               <button className="mb-[6px] flex h-[60px] w-[100px] items-center justify-center border border-white">
                 <svg
                   width="33"

@@ -9,7 +9,7 @@ const Company = ({
   setScrollVerticalRefs,
 }: {
   scrollToDevConst: () => void;
-  setScrollVerticalRefs: any;
+  setScrollVerticalRefs: (el: HTMLDivElement | null) => void;
 }) => {
   return (
     <>

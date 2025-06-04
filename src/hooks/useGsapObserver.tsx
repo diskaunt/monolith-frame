@@ -3,26 +3,23 @@ import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import { useGSAP } from '@gsap/react';
 import filterDub from '@/utils/filterDub';
+import deviceDetector from '@/utils/deviceDetector';
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(Observer);
 
 const useGsapObserver = () => {
   const refArr = useRef<(HTMLElement | null)[]>([]),
     currentIndex = useRef<number>(-1),
-    animating = useRef<boolean>(false);
+    animating = useRef<boolean>(false),
+    isMobileClient = useRef<boolean>(false);
 
   const setRef = useCallback((el: HTMLElement | null) => {
-    if (!el || el.offsetHeight <= 0) return; // Если элемента нет или он скрыт, просто выходим
-
-    const parentWidth = el.parentElement?.offsetWidth ?? 0;
-
-    if (el.offsetWidth !== Math.ceil(parentWidth / 2)) {
-      refArr.current = filterDub([...refArr.current, el]);
-    }
+		if (el && el.offsetHeight === 0) return;
+    refArr.current = filterDub([...refArr.current, el]);
   }, []);
 
   const gotoSection = (index: number, direction: number) => {
-    // если индекс меньше 0, или больше длинны массива, то возвращаем его в конец или начало
+    // ограничиваем индекс
     const clamp = gsap.utils.clamp(0, refArr.current.length - 1);
     const correctedIndex = clamp(index);
     // проверяем больше ли текущий индеекс чем 0
@@ -42,7 +39,7 @@ const useGsapObserver = () => {
 
   useGSAP(() => {
     Observer.create({
-      type: 'wheel,touch,pointer',
+      type: isMobileClient.current ? 'wheel,touch,pointer' : 'wheel',
       wheelSpeed: -1,
       onDown: () =>
         !animating.current && gotoSection(currentIndex.current - 1, -1),
@@ -63,6 +60,7 @@ const useGsapObserver = () => {
 
   useEffect(() => {
     gotoSection(0, 1);
+    isMobileClient.current = deviceDetector();
   }, []);
 
   return [gotoSection, setRef] as const;
