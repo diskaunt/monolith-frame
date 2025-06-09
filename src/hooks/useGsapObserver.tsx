@@ -14,8 +14,9 @@ const useGsapObserver = () => {
     isMobileClient = useRef<boolean>(false);
 
   const setRef = useCallback((el: HTMLElement | null) => {
-		if (el && el.offsetHeight === 0) return;
+    if (el && el.offsetHeight === 0) return;
     refArr.current = filterDub([...refArr.current, el]);
+    console.log(refArr.current);
   }, []);
 
   const gotoSection = (index: number, direction: number) => {
@@ -41,14 +42,10 @@ const useGsapObserver = () => {
     Observer.create({
       type: isMobileClient.current ? 'wheel,touch,pointer' : 'wheel',
       wheelSpeed: -1,
-      onDown: () =>
-        !animating.current && gotoSection(currentIndex.current - 1, -1),
-      onUp: () =>
-        !animating.current && gotoSection(currentIndex.current + 1, 1),
-      onRight: () =>
-        !animating.current && gotoSection(currentIndex.current - 1, -1),
-      onLeft: () =>
-        !animating.current && gotoSection(currentIndex.current + 1, 1),
+      onDown: () => !animating.current && gotoSection(currentIndex.current - 1, -1),
+      onUp: () => !animating.current && gotoSection(currentIndex.current + 1, 1),
+      onRight: () => !animating.current && gotoSection(currentIndex.current - 1, -1),
+      onLeft: () => !animating.current && gotoSection(currentIndex.current + 1, 1),
       // добавленно для мобильной версии, чтобы за раз не прокручивалось больше 1 элемента
       onStop: () => {
         animating.current = false;
@@ -60,7 +57,6 @@ const useGsapObserver = () => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-
     gotoSection(0, 1);
     isMobileClient.current = deviceDetector();
   }, []);

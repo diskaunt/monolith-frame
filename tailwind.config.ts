@@ -25,13 +25,13 @@ const config: Config = {
       height: {
         'mainHeight-hd': 'calc(200svh)',
         '100svh': '100svh',
-        '100svh-scroll': 'calc(100svh - 17px)',
+        '100svh-scroll': 'calc(100svh)',
       },
       width: {
         '100vw': '100vw',
         '100vw-scroll': 'calc(100vw)',
         menuDev: 'calc(100vw - 753px)',
-        'devConst-hd': 'calc(100vw - 17px - 117px - 40px)',
+        'devConst-hd': 'calc(100vw - 117px - 40px)',
         'nav-mobile': 'calc(100vw - 40px)',
         'nav-desktop': 'calc(100vw - 32px)',
         menuDevProject: 'calc(100vw - 753px - 2 * 80px)',

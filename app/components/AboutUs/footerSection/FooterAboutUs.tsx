@@ -1,32 +1,32 @@
-import Department from "@/components/Department";
-import classNames from "classnames";
-import React, { useEffect, useRef } from "react";
-import styles from "./FooterAboutUs.module.css";
-import PikSvg from "./componentsSvg/PikSvg";
-import SamoletPlusSvg from "./componentsSvg/SamoletPlusSvg";
-import InGradSvg from "./componentsSvg/InGradSvg";
-import Marque from "@/components/Marque";
-import useObserver from "@/hooks/useObserver";
-import addActiveClassname from "@/utils/addActiveStyles";
-import HorizontalBar from "@/components/HorizontalBar";
-import VerticalBar from "@/components/VerticalBar";
-import ArrowUpSvg from "./componentsSvg/ArrowUpSvg";
-import { debouceFn } from "@/utils/debounceFn";
+import Department from '@/components/Department';
+import classNames from 'classnames';
+import React, { useEffect, useRef } from 'react';
+import styles from './FooterAboutUs.module.css';
+import PikSvg from './componentsSvg/PikSvg';
+import SamoletPlusSvg from './componentsSvg/SamoletPlusSvg';
+import InGradSvg from './componentsSvg/InGradSvg';
+import Marque from '@/components/Marque';
+import useObserver from '@/hooks/useObserver';
+import addActiveClassname from '@/utils/addActiveStyles';
+import HorizontalBar from '@/components/HorizontalBar';
+import VerticalBar from '@/components/VerticalBar';
+import ArrowUpSvg from './componentsSvg/ArrowUpSvg';
+import { debouceFn } from '@/utils/debounceFn';
 
 type FooterAboutUsProps = {
-	setScrollVerticalRefs: (node: HTMLDivElement) => void;
-	setBlackThemeRefs: (node: HTMLDivElement) => void;
-	setWhiteThemeRefs: (node: HTMLDivElement) => void;
-	gotoSection: (index: number, direction: number) => void;
-	isMobileClient: boolean;
-}
+  setScrollVerticalRefs: (node: HTMLDivElement) => void;
+  setBlackThemeRefs: (node: HTMLDivElement) => void;
+  setWhiteThemeRefs: (node: HTMLDivElement) => void;
+  gotoSection: (index: number, direction: number) => void;
+  isMobileClient: boolean;
+};
 
 const FooterAboutUs = ({
   setScrollVerticalRefs,
   setBlackThemeRefs,
   setWhiteThemeRefs,
   gotoSection,
-	isMobileClient,
+  isMobileClient,
 }: FooterAboutUsProps) => {
   const hoverRef = useRef<HTMLDivElement | null>(null);
   const awardsRef = useRef<HTMLDivElement | null>(null);
@@ -36,7 +36,7 @@ const FooterAboutUs = ({
     (entryes) => addActiveClassname(entryes, styles),
     {
       root: null,
-      rootMargin: "0px",
+      rootMargin: '0px',
       threshold: [0.3],
     },
   );
@@ -61,14 +61,14 @@ const FooterAboutUs = ({
         ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}
         className="h-100svh min-h-mobile w-full shrink-0 overflow-hidden bg-gray-100 px-[16px] pb-[40px] pt-[83px] md:w-2/4 md:pb-[6svh] hd:min-h-desktop hd:pt-[4.3svh]"
       >
-        <div ref={awardsRef} className={classNames("relative h-full")}>
+        <div ref={awardsRef} className={classNames('relative h-full')}>
           {/* стрелка возвращения к началу страницы */}
           <button
             ref={setDivLoadRef}
             onClick={handleClick}
             className={classNames(
               styles.arrow,
-              "absolute bottom-[52%] left-5 hidden hd:block",
+              'absolute bottom-[39%] left-[-2%] hidden p-5 hd:block',
             )}
           >
             <ArrowUpSvg />
@@ -76,7 +76,7 @@ const FooterAboutUs = ({
           <div
             ref={setBlackThemeRefs}
             className={classNames(
-              "mx-auto flex h-full w-full max-w-[375px] flex-col items-center hd:max-w-[665px]",
+              'mx-auto flex h-full w-full max-w-[375px] flex-col items-center hd:max-w-[665px]',
             )}
           >
             <div ref={setDivLoadRef} className="invisible w-fit hd:mt-[8svh]">
@@ -89,9 +89,7 @@ const FooterAboutUs = ({
               className="invisible relative w-fit text-center hd:mt-[5.8svh]"
             >
               <div className="mb-2 h-[56px] overflow-hidden hd:h-[83px]">
-                <div
-                  className={classNames(styles.loadTitleDescr, styles.hover)}
-                >
+                <div className={classNames(styles.loadTitleDescr, styles.hover)}>
                   <p className="font-drucSyr text-[55px] font-bold uppercase leading-[56px] tracking-wide hd:text-[90px] hd:leading-[83px]">
                     архитектурное
                   </p>
@@ -104,9 +102,7 @@ const FooterAboutUs = ({
                 </div>
               </div>
               <div className="h-[56px] overflow-hidden hd:h-[83px]">
-                <div
-                  className={classNames(styles.loadTitleDescr, styles.hover)}
-                >
+                <div className={classNames(styles.loadTitleDescr, styles.hover)}>
                   <p className="font-drucSyr text-[55px] font-bold uppercase leading-[56px] tracking-wide hd:text-[90px] hd:leading-[83px]">
                     решение
                   </p>
@@ -119,39 +115,38 @@ const FooterAboutUs = ({
                 </div>
               </div>
             </div>
-            <div
-              ref={hoverRef}
-              className={classNames(
-                "invisible mb-[1svh] mt-[36px] h-[130px] hd:mt-[8.5svh] hd:h-[265px]",
-              )}
-            >
+            <div className="flex w-full grow items-center justify-center">
               <div
-                ref={setDivLoadRef}
-                className="relative flex h-full w-full overflow-hidden"
+                ref={hoverRef}
+                className={classNames(
+                  'invisible mb-[1svh] mt-[36px] h-[130px] hd:mt-[-30px] hd:h-[265px]',
+                )}
               >
-                <div
-                  className={classNames(
-                    styles.loadTitleNumDescr,
-                    styles.hover,
-                    "ml-[40px] h-fit hd:ml-[60px]",
-                  )}
-                >
-                  <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
-                    2
-                  </p>
-                  <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
-                    1
-                  </p>
-                </div>
-                <div
-                  className={classNames(
-                    styles.loadTitle,
-                    "mb-[28px] ml-[-10px] self-end hd:mb-[55px] hd:ml-[-20px]",
-                  )}
-                >
-                  <p className="font-midium hd:tracking-very-tight font-inter text-[17px] leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px]">
-                    место
-                  </p>
+                <div ref={setDivLoadRef} className="relative flex h-full w-full overflow-hidden">
+                  <div
+                    className={classNames(
+                      styles.loadTitleNumDescr,
+                      styles.hover,
+                      'ml-[40px] h-fit hd:ml-[60px]',
+                    )}
+                  >
+                    <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
+                      2
+                    </p>
+                    <p className="text-[120px] font-bold leading-[130px] tracking-wide text-orange-500 hd:text-[300px] hd:leading-[265px]">
+                      1
+                    </p>
+                  </div>
+                  <div
+                    className={classNames(
+                      styles.loadTitle,
+                      'mb-[28px] ml-[-10px] self-end hd:mb-[55px] hd:ml-[-20px]',
+                    )}
+                  >
+                    <p className="font-midium hd:tracking-very-tight font-inter text-[17px] leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px]">
+                      место
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -159,12 +154,7 @@ const FooterAboutUs = ({
               <div className="w-full">
                 <HorizontalBar styles={styles.loadHorizontalBar} />
                 <div className="flex h-[77px] justify-between">
-                  <div
-                    className={classNames(
-                      styles.loadTableCell,
-                      "pt-[3px] hd:pt-[8px]",
-                    )}
-                  >
+                  <div className={classNames(styles.loadTableCell, 'pt-[3px] hd:pt-[8px]')}>
                     <p className="font-inter text-[10px] font-semibold uppercase leading-[23px] tracking-tighter">
                       комплекс
                     </p>
@@ -174,7 +164,7 @@ const FooterAboutUs = ({
                       className={classNames(
                         styles.loadTableCell,
                         styles.hover,
-                        "flex flex-col gap-[12px]",
+                        'flex flex-col gap-[12px]',
                       )}
                     >
                       <p className="ml-auto w-fit font-inter text-[15px] font-medium leading-[22px] tracking-veryTight hd:text-[18px]">
@@ -189,12 +179,7 @@ const FooterAboutUs = ({
                 <HorizontalBar styles={styles.loadHorizontalBar} />
                 <div className="flex h-[70px] hd:h-[77px]">
                   <div className="flex w-[62%] justify-between hd:w-[59%]">
-                    <div
-                      className={classNames(
-                        styles.loadTableCell,
-                        "pt-[3px] hd:pt-[8px]",
-                      )}
-                    >
+                    <div className={classNames(styles.loadTableCell, 'pt-[3px] hd:pt-[8px]')}>
                       <p className="font-inter text-[10px] font-semibold uppercase leading-[23px] tracking-tighter">
                         конкурс
                       </p>
@@ -202,7 +187,7 @@ const FooterAboutUs = ({
                     <div
                       className={classNames(
                         styles.loadTableCell,
-                        "content-end pb-[5px] pr-[12px] hd:pb-[10px] hd:pr-[14px]",
+                        'content-end pb-[5px] pr-[12px] hd:pb-[10px] hd:pr-[14px]',
                       )}
                     >
                       <p className="text-end font-inter text-[15px] font-medium leading-[22px] tracking-veryTight hd:text-[18px]">
@@ -215,7 +200,7 @@ const FooterAboutUs = ({
                     <div
                       className={classNames(
                         styles.loadTableCell,
-                        "pl-[12px] pt-[3px] hd:pl-[18px] hd:pt-[8px]",
+                        'pl-[12px] pt-[3px] hd:pl-[18px] hd:pt-[8px]',
                       )}
                     >
                       <p className="font-inter text-[10px] font-semibold uppercase leading-[23px] tracking-tighter">
@@ -227,7 +212,7 @@ const FooterAboutUs = ({
                         className={classNames(
                           styles.loadTableCell,
                           styles.hover,
-                          "flex flex-col gap-[12px]",
+                          'flex flex-col gap-[12px]',
                         )}
                       >
                         <p className="font-inter text-[15px] font-medium leading-[22px] tracking-veryTight hd:text-[18px]">
@@ -252,16 +237,13 @@ const FooterAboutUs = ({
         className="h-100svh min-h-mobile w-full shrink-0 overflow-hidden bg-blue-500 pb-[40px] pt-[83px] text-white md:w-2/4 md:pb-[5.5svh] hd:min-h-desktop hd:pt-[4.3svh]"
       >
         <div ref={setWhiteThemeRefs} className="flex h-full w-full flex-col">
-          <div className="mx-auto flex w-full max-w-[375px] flex-col items-center hd:max-w-[665px]">
+          <div className="mx-auto flex w-full max-w-[375px] grow flex-col items-center hd:max-w-[665px]">
             <div ref={setDivLoadRef} className="invisible w-fit hd:mt-[8svh]">
               <Department styles={styles} fill="white">
                 партнеры
               </Department>
             </div>
-            <div
-              ref={setDivLoadRef}
-              className="invisible w-fit text-center hd:mt-[5.8svh]"
-            >
+            <div ref={setDivLoadRef} className="invisible w-fit text-center hd:mt-[5.8svh]">
               <div className="overflow-hidden">
                 <div className={classNames(styles.loadTitleDescr)}>
                   <p className="mb-2 font-drucSyr text-[42px] font-bold uppercase leading-[46px] tracking-wide hd:text-[70px] hd:leading-[70px]">
@@ -277,30 +259,32 @@ const FooterAboutUs = ({
                 </div>
               </div>
             </div>
-            <div
-              ref={setDivLoadRef}
-              className="invisible mt-[58px] flex justify-center overflow-hidden hd:mt-[11svh]"
-            >
-              <div className="ml-[55px] hd:ml-[80px]">
-                <p
+            <div className="flex w-full grow items-center justify-center">
+              <div
+                ref={setDivLoadRef}
+                className="invisible mt-[58px] flex justify-center overflow-hidden hd:mt-[-120px]"
+              >
+                <div className="ml-[55px] hd:ml-[80px]">
+                  <p
+                    className={classNames(
+                      styles.shadow,
+                      styles.loadTitleDescr,
+                      'text-[119px] font-bold leading-[130px] tracking-wide text-blue-500 hd:text-[300px] hd:leading-[265px]',
+                    )}
+                  >
+                    50+
+                  </p>
+                </div>
+                <div
                   className={classNames(
-                    styles.shadow,
-                    styles.loadTitleDescr,
-                    "text-[119px] font-bold leading-[130px] tracking-wide text-blue-500 hd:text-[300px] hd:leading-[265px]",
+                    styles.loadTitle,
+                    'mb-[30px] ml-[-25px] self-end hd:mb-[55px] hd:ml-[-55px]',
                   )}
                 >
-                  50+
-                </p>
-              </div>
-              <div
-                className={classNames(
-                  styles.loadTitle,
-                  "mb-[30px] ml-[-25px] self-end hd:mb-[55px] hd:ml-[-55px]",
-                )}
-              >
-                <p className="font-inter text-[17px] font-medium leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px] hd:tracking-veryTight">
-                  партнеров
-                </p>
+                  <p className="font-inter text-[17px] font-medium leading-[18px] tracking-tighter hd:text-[28px] hd:leading-[31px] hd:tracking-veryTight">
+                    партнеров
+                  </p>
+                </div>
               </div>
             </div>
           </div>

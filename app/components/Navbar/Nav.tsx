@@ -1,17 +1,17 @@
-"use client";
-import React, { use, useRef, useState } from "react";
-import MenuSvg from "./conponentsSvg/MenuSvg";
-import MgLogoSvg from "./conponentsSvg/MgLogoSvg";
-import NavSvg from "./conponentsSvg/NavSvg";
-import ArrowNavSvg from "./conponentsSvg/ArrowNavSvg";
-import NavSmSvg from "./conponentsSvg/NavSmSvg";
-import DevelopmentMenu from "./DevelopmentMenu";
-import classNames from "classnames";
-import useClickOutside from "@/hooks/useClickOutside";
-import styles from "./Nav.module.css";
-import ConstructionMenu from "./ConstructionMenu";
-import { ProjectType } from "@/data-access/projects";
-import { useRouter } from "next/compat/router";
+'use client';
+import React, { use, useRef, useState } from 'react';
+import MenuSvg from './conponentsSvg/MenuSvg';
+import MgLogoSvg from './conponentsSvg/MgLogoSvg';
+import NavSvg from './conponentsSvg/NavSvg';
+import ArrowNavSvg from './conponentsSvg/ArrowNavSvg';
+import NavSmSvg from './conponentsSvg/NavSmSvg';
+import DevelopmentMenu from './DevelopmentMenu';
+import classNames from 'classnames';
+import useClickOutside from '@/hooks/useClickOutside';
+import styles from './Nav.module.css';
+import ConstructionMenu from './ConstructionMenu';
+import { ProjectType } from '@/data-access/projects';
+import { useRouter } from 'next/compat/router';
 
 const Nav = ({ projects }: { projects?: ProjectType[] }) => {
   const [devOpened, setDevOpened] = useState<boolean>(false);
@@ -32,17 +32,17 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
   };
 
   return (
-    <div className={classNames("border-inherit transition-all")}>
+    <div className={classNames('border-inherit transition-all')}>
       <div
         className={classNames(
-          "z-10 flex h-[50px] w-nav-mobile min-w-[343px] max-w-[707px] border-inherit hd:h-[60px] hd:w-nav-desktop",
+          'z-10 flex h-[50px] w-nav-mobile min-w-[343px] max-w-[707px] border-inherit md:h-[60px] md:w-nav-desktop',
         )}
       >
         {/* Дизайнерская причуда */}
         <div
           className={classNames(
             styles.slideUpMenuBorder,
-            "invisible w-0 items-center justify-center hd:visible hd:flex hd:w-[60px] hd:border hd:border-inherit hd:px-[15px]",
+            'invisible w-0 items-center justify-center md:visible md:flex md:w-[60px] md:border md:border-inherit md:px-[15px]',
           )}
         >
           <MenuSvg className={classNames(styles.slideUpMenuSvg)} />
@@ -53,32 +53,23 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
           ref={menuRef}
           className={classNames(
             styles.borderAnimate,
-            "relative flex grow border border-inherit text-[16px] leading-[25px] tracking-wide hd:ml-[6px] hd:text-[24px] hd:leading-[25px]",
+            'relative flex grow border border-inherit text-[16px] leading-[25px] tracking-wide md:ml-[6px] md:text-[24px] md:leading-[25px]',
           )}
         >
           {/* Логотип Monolith Frame */}
           <div
             className={classNames(
-              "flex w-full max-w-[79px] grow items-center justify-center px-[15px] hd:max-w-[247px]",
+              'flex w-full max-w-[79px] grow items-center justify-center px-[15px] hd:max-w-[247px]',
             )}
           >
             <MgLogoSvg />
           </div>
 
           {/* Разделитель */}
-          <div
-            className={classNames(
-              styles.growAnimate,
-              "h-full border-l border-inherit",
-            )}
-          ></div>
+          <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
           {/* Кнопка "Девелопмент" */}
-          <div
-            className={classNames(
-              "relative grow px-[14px] hd:max-w-[154px] hd:px-[22px]",
-            )}
-          >
+          <div className={classNames('relative grow px-[14px] hd:max-w-[154px] hd:px-[22px]')}>
             <button
               onClick={onDevOpened}
               className="flex h-full w-full cursor-pointer items-center justify-center gap-x-[3px] uppercase"
@@ -91,8 +82,8 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
             <div
               ref={devMenuRef}
               className={classNames(
-                constOpened ? "visible" : "invisible",
-                "absolute left-0 top-[55px] flex flex-wrap gap-[6px] hd:top-[66px] hd:flex-nowrap",
+                constOpened ? 'visible' : 'invisible',
+                'absolute left-0 top-[55px] flex flex-wrap gap-[6px] hd:top-[66px] hd:flex-nowrap',
               )}
             >
               <DevelopmentMenu devOpened={devOpened} />
@@ -101,18 +92,13 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
           </div>
 
           {/* Разделитель */}
-          <div
-            className={classNames(
-              styles.growAnimate,
-              "h-full border-l border-inherit",
-            )}
-          ></div>
+          <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
           {/* Кнопка "Строительство" */}
           <div
             onClick={() => {}}
             className={classNames(
-              "flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase hd:max-w-[171px] hd:px-[20px]",
+              'flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase hd:max-w-[171px] hd:px-[20px]',
             )}
           >
             <span>строительство</span>
@@ -122,17 +108,12 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
           </div>
 
           {/* Разделитель */}
-          <div
-            className={classNames(
-              styles.growAnimate,
-              "h-full border-l border-inherit",
-            )}
-          ></div>
+          <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
           {/* Иконка навигации */}
           <div
             className={classNames(
-              "mx-auto flex w-[48px] items-center justify-center px-[16px] hd:w-[60px] hd:px-[20px]",
+              'mx-auto flex w-[48px] items-center justify-center px-[16px] hd:w-[60px] hd:px-[20px]',
             )}
           >
             <NavSvg className="hidden hd:block" />

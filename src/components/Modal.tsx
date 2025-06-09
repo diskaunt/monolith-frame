@@ -1,23 +1,20 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import ArrowRight from "./ArrowRight";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const Modal = React.memo(function Modal({
   id = "",
   modalRef,
   children,
+  handleProjectOpen,
 }: {
   id?: string;
   modalRef: React.RefObject<HTMLDialogElement>;
   children: React.ReactNode;
+  handleProjectOpen: (router: AppRouterInstance, id:string) => void;
 }) {
   const router = useRouter();
-
-	//открывает проект по клику на стрелку
-	const handleClick = () => {
-		router.push(`/projects/${id}`);
-		document.body.style.overflow = "auto";
-	};
 
   // Закрытие модального окна при клике на фон и нажатии клавише Escape
 
@@ -27,7 +24,7 @@ const Modal = React.memo(function Modal({
         <div>{children}</div>
         <div className="hidden md:block">
           <button
-            onClick={handleClick}
+            onClick={()=>handleProjectOpen(router, id)}
           >
             <ArrowRight />
           </button>

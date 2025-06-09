@@ -1,12 +1,14 @@
 import { ReactRef } from '@gsap/react';
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect, useRef } from 'react';
 
-const useCloseModal = (modalRef: ReactRef) => {
+const useCloseModal = (isMounted: boolean) => {
+  const modalRef = useRef<HTMLDialogElement | null>(null);
+
   const handleCloseModal = (event: KeyboardEvent | MouseEvent) => {
     if (event.type === 'keydown' && (event as KeyboardEvent).key === 'Escape') {
       modalRef.current?.close();
       document.body.style.overflow = 'auto';
-    } else if (event.type === "click" && event.target === event.currentTarget) {
+    } else if (event.type === 'click' && event.target === event.currentTarget) {
       modalRef.current?.close();
       document.body.style.overflow = 'auto';
     }
@@ -26,6 +28,8 @@ const useCloseModal = (modalRef: ReactRef) => {
         modalElement.removeEventListener('keydown', handleCloseModal);
       }
     };
-  }, [modalRef]);
+  }, [isMounted]);
+
+  return modalRef;
 };
 export default useCloseModal;

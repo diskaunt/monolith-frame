@@ -54,7 +54,6 @@
 	}
 }
 
-
 .loadEnd.active.whiteTowerLoad {
 	animation: endTowerLoad 0.3s ease-in-out both;
 }

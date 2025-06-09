@@ -14,7 +14,7 @@ const ProjectCard = ({ projectName, src, size = 'small', styles }: ProjectCardPr
   switch (size) {
     case 'big':
       return (
-        <div className="relative flex h-[296px] w-[343px] overflow-hidden hd:h-[870px] hd:max-w-[1010px]">
+        <div className="relative flex max-h-[296px] max-w-[343px] overflow-hidden hd:max-h-[870px] hd:max-w-[1010px]">
           <Image
             className={classNames(styles?.loadImage, 'h-full w-full object-cover object-center')}
             src={myImageLoader(src)}
@@ -22,15 +22,17 @@ const ProjectCard = ({ projectName, src, size = 'small', styles }: ProjectCardPr
             width={1010}
             height={870}
           />
-          <p className="absolute bottom-[12px] left-[10px] font-drucSyr text-[55px] font-bold uppercase leading-[44px] tracking-wide text-white hd:bottom-[17px] hd:left-[17px] hd:text-[90px] hd:leading-[87px]">
-            {projectName}
-          </p>
+          <div className="absolute bottom-[12px] left-[10px] hd:bottom-[17px] hd:left-[17px]">
+            <p className="font-drucSyr text-[55px] font-bold uppercase leading-[44px] tracking-wide text-white hd:text-[90px] hd:leading-[87px]">
+              {projectName}
+            </p>
+          </div>
         </div>
       );
     case 'medium':
       return (
-        <div className="flex flex-col hd:h-[198px] hd:max-w-[299px]">
-          <div className="h-[168px] w-full overflow-hidden">
+        <div className="flex max-h-[198px] max-w-[299px] flex-col hd:max-h-[379px] hd:max-w-[638px]">
+          <div className="max-h-[168px] w-full overflow-hidden hd:max-h-[369px]">
             <Image
               className={classNames(styles?.loadImage, 'h-full w-full object-cover')}
               src={myImageLoader(src)}
