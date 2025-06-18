@@ -1,50 +1,32 @@
 .container {
 	background: url("../../../public/images/section-1.jpg") no-repeat center center fixed;
 	background-size: cover;
-	/* animation: 15s linear infinite bgAnim; */
+	animation: 15s linear infinite bgAnim;
 }
 
 @keyframes bgAnim {
 	0% {
 		background-position: center;
-		scale: 1;
+		transform: scale(1);
 	}
 
 	25% {
 		background-position: left;
-		scale: 1.025;
+		transform: scale(1.025);
 	}
 
 	50% {
 		background-position: center;
-		scale: 1.025;
+		transform: scale(1.025);
 	}
 
 	75% {
 		background-position: right;
-		scale: 1.025;
+		transform: scale(1.025);
 	}
 
 	100% {
 		background-position: center;
-		scale: 1;
+		transform: scale(1);
 	}
 }
-
-.main {
-	/* scrollbar-width: none; */
-	/* -ms-overflow-style: none; */
-	/* Internet Explorer 10+ */
-}
-
-/* .aboutUsLoad {
-	display: block;
-	transform: translateY(0);
-	animation: aboutUsLoad 1s linear forwards;
-}
-
-@keyframes aboutUsLoad {
-	100% {
-		transform: translateY(-100%)
-	}
-} */

@@ -74,7 +74,7 @@ const FooterAboutUs = ({
             <ArrowUpSvg />
           </button>
           <div
-            ref={setBlackThemeRefs}
+            // ref={setBlackThemeRefs}
             className={classNames(
               'mx-auto flex h-full w-full max-w-[375px] flex-col items-center hd:max-w-[665px]',
             )}
@@ -236,7 +236,10 @@ const FooterAboutUs = ({
         ref={isMobileClient && window.innerWidth < 768 ? setScrollVerticalRefs : null}
         className="h-100svh min-h-mobile w-full shrink-0 overflow-hidden bg-blue-500 pb-[40px] pt-[83px] text-white md:w-2/4 md:pb-[5.5svh] hd:min-h-desktop hd:pt-[4.3svh]"
       >
-        <div ref={setWhiteThemeRefs} className="flex h-full w-full flex-col">
+        <div
+          ref={isMobileClient && window.innerWidth < 768 ? setWhiteThemeRefs : null}
+          className="flex h-full w-full flex-col"
+        >
           <div className="mx-auto flex w-full max-w-[375px] grow flex-col items-center hd:max-w-[665px]">
             <div ref={setDivLoadRef} className="invisible w-fit hd:mt-[8svh]">
               <Department styles={styles} fill="white">
