@@ -7,6 +7,7 @@ npm run dev
 
 # Сборка и запуск в продакшене
 npm run build
+
 npm run start
 
 # 🛠 Используемые технологии
