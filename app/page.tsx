@@ -1,14 +1,15 @@
-import Main from "./components/Main/Main";
-import React from "react";
-import { getProjects } from "@/data-access/projects";
+import Main from '@/components/main/Main';
+import React from 'react';
+import { getProjects } from '@/data-access/projects';
+import Nav from '@/components/navbar/Nav';
 
 const MonolithFramePage = async () => {
   let projects = await getProjects();
 
   return (
     <>
-      <Main projects={projects}
-			/>
+      <Nav projects={projects} />
+      <Main projects={projects} />
     </>
   );
 };

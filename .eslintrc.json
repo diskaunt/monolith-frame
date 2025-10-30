@@ -3,6 +3,6 @@
   "parserOptions": { "ecmaVersion": 2021, "sourceType": "module" },
   "env": { "browser": true, "node": true },
   "rules": {
-    //Здесь ты можешь добавить свои правила
+    
   }
 }
