@@ -1,6 +1,6 @@
 import { getProject, getProjects } from "@/data-access/projects";
-import Nav from "../../components/Navbar/Nav";
-import Project from "../../components/Projects/Project/Project";
+import Nav from "../../../src/components/navbar/Nav";
+import Project from "../../../src/components/projects/project/Project";
 
 // Добавляем функцию generateStaticParams
 export async function generateStaticParams() {

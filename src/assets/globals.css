@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	box-sizing: border-box;
+	--color-new-orange: #DF462A;
+	--color-base: rgba(255, 255, 255, 1);
+}
+
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+	/* display: none; */
+	/* WebKit (Chrome, Safari, etc.) */
+}
+
+body,
+html {
+	margin: 0;
+}
+
+.scrollBarGutterStable {
+	scrollbar-gutter: stable;
+}
+
+.hoverMenuNav:hover::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 4px;
+	display: inline-block;
+	margin-right: 8px;
+	height: 0.95em;
+	width: 7px;
+	background-color: var(--color-new-orange);
+}
+
+.clipPath {
+	clip-path: xywh(0 0 100% 100%);
+}
+
+.baseTheme {
+	color: var(--color-base);
+	border-color: var(--color-base);
+	fill: var(--color-base);
+	stroke: var(--color-base);
+}
+
+.blackTheme {
+	--color-base: rgba(0, 0, 0, 1);
+}
+
+.vertical-text-bottom {
+	writing-mode: vertical-rl;
+	/* Направление письма: сверху вниз справа налево */
+	text-orientation: mixed;
+	/* Ориентация текста */
+	transform: rotate(180deg);
+	/* Поворот текста на 180 градусов */
+}
+
+.vertical-text-top {
+	writing-mode: vertical-rl;
+	text-orientation: mixed;
+}
+
+dialog:open::backdrop {
+	background-color: rgb(0 0 0 / 40%);
+}
