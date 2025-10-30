@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import classNames from 'classnames';
-import styles from './DevConst.module.css';
+import styles from './devConst.module.css';
 import Department from '@/components/common/Department';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';

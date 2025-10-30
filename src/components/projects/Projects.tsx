@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import ProjectCard from './projectCard/ProjectCard';
 import Modal from '@/components/common/Modal';
 import Card from './project/card/Card';
-import styles from './Projects.module.css';
+import styles from './projects.module.css';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';
 import { createPortal } from 'react-dom';

@@ -1,6 +1,6 @@
 'use clients';
-import React, { SetStateAction, useEffect, useState } from 'react';
-import styles from './Preloader.module.css';
+import React from 'react';
+import styles from './preloader.module.css';
 import PreloaderSvg from './PreloaderSvg';
 import classNames from 'classnames';
 
