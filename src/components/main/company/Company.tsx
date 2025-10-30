@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Company.module.css';
+import styles from './company.module.css';
 import RCCard from './RCCard/RCCard';
 import ArrowRight from '../../common/ArrowRight';
 import classNames from 'classnames';

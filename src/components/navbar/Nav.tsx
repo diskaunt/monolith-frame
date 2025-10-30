@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
 import useClickOutside from '@/hooks/useClickOutside';
-import styles from './Nav.module.css';
+import styles from './nav.module.css';
 import ConstructionMenu from './constructinMenu/ConstructionMenu';
 import { ProjectType } from '@/data-access/projects';
 import Icon from '../icon/Icon';

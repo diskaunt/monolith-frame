@@ -2,7 +2,7 @@ import React from 'react';
 import AboutUsAchvmts from './AboutUsAchvmts';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';
-import styles from './MidleAboutUs.module.css';
+import styles from './midleAboutUs.module.css';
 import classNames from 'classnames';
 import Image from 'next/image';
 import myImageLoader from '@/utils/myImageLoader';

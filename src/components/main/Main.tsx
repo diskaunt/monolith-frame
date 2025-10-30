@@ -1,5 +1,5 @@
 'use client';
-import styles from './Main.module.css';
+import styles from './main.module.css';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import DevConst from './developeConst/DevConst';

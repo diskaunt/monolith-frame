@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useRef } from 'react';
-import styles from './TitltAboutUs.module.css';
+import styles from './titltAboutUs.module.css';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';
 import SecTitle from '@/components/common/SecTitle';

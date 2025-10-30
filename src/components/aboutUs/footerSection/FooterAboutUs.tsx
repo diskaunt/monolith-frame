@@ -1,7 +1,7 @@
 import Department from '@/components/common/Department';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
-import styles from './FooterAboutUs.module.css';
+import styles from './footerAboutUs.module.css';
 import Marque from '@/components/common/Marque';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';
