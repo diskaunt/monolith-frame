@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import "@/assets/globals.css";
+import "@/assets/global.css";
 import { Inter } from "next/font/google";
 import classNames from "classnames";
 import myImageLoader from "@/utils/myImageLoader";

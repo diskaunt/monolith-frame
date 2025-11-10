@@ -1,10 +1,10 @@
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
-import ArrowRight from "./ArrowRight";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import Icon from '../icon/Icon';
 
 const Modal = React.memo(function Modal({
-  id = "",
+  id = '',
   modalRef,
   children,
   handleProjectOpen,
@@ -12,7 +12,7 @@ const Modal = React.memo(function Modal({
   id?: string;
   modalRef: React.RefObject<HTMLDialogElement>;
   children: React.ReactNode;
-  handleProjectOpen: (router: AppRouterInstance, id:string) => void;
+  handleProjectOpen: (router: AppRouterInstance, id: string) => void;
 }) {
   const router = useRouter();
 
@@ -20,13 +20,11 @@ const Modal = React.memo(function Modal({
 
   return (
     <dialog ref={modalRef} className="bg-inherit">
-      <div className="flex items-center z-50 gap-[215px]">
+      <div className="z-50 flex items-center gap-[215px]">
         <div>{children}</div>
         <div className="hidden md:block">
-          <button
-            onClick={()=>handleProjectOpen(router, id)}
-          >
-            <ArrowRight />
+          <button onClick={() => handleProjectOpen(router, id)}>
+            <Icon name="arrowRight" />
           </button>
         </div>
       </div>

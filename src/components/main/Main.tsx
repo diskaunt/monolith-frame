@@ -27,23 +27,24 @@ const Main = ({ projects }: MainProps) => {
     scrollToDevConst = useCallback(() => {
       gotoSection(1, -1);
     }, [gotoSection]);
-    // обсерверы для изменнеия цвета темы навигационного меню
-    // [blackThemeRefs, setBlackThemeRefs] = useObserver(
-    //   (entries) => changeThemeColor(entries, navRef, 'black-theme', 'white-theme'),
-    //   {
-    //     root: null,
-    //     rootMargin: '0px',
-    //     threshold: [0.1],
-    //   },
-    // ),
-    // [whiteThemeRefs, setWhiteThemeRefs] = useObserver(
-    //   (entries) => changeThemeColor(entries, navRef, 'white-theme', 'black-theme'),
-    //   {
-    //     root: null,
-    //     rootMargin: '0px',
-    //     threshold: [0.1],
-    //   },
-    // );
+
+  // обсерверы для изменнеия цвета темы навигационного меню
+  // [blackThemeRefs, setBlackThemeRefs] = useObserver(
+  //   (entries) => changeThemeColor(entries, navRef, 'black-theme', 'white-theme'),
+  //   {
+  //     root: null,
+  //     rootMargin: '0px',
+  //     threshold: [0.1],
+  //   },
+  // ),
+  // [whiteThemeRefs, setWhiteThemeRefs] = useObserver(
+  //   (entries) => changeThemeColor(entries, navRef, 'white-theme', 'black-theme'),
+  //   {
+  //     root: null,
+  //     rootMargin: '0px',
+  //     threshold: [0.1],
+  //   },
+  // );
 
   useEffect(() => {
     setLoaded(getLocalStorageLoaded());
@@ -56,7 +57,11 @@ const Main = ({ projects }: MainProps) => {
   return (
     <>
       {/* блок который я забыл зачем сделал ;( */}
-      <div className={classNames('absolute left-0 top-0 -z-10 h-100svh w-100vw overflow-hidden')}>
+      <div
+        className={classNames(
+          'fixed left-0 top-0 -z-10 h-100svh w-100vw min-w-[375px] overflow-hidden',
+        )}
+      >
         <div className={classNames(styles.container, 'h-full w-full bg-blue-500')}></div>
       </div>
       {!loaded ? (
@@ -65,7 +70,7 @@ const Main = ({ projects }: MainProps) => {
           <Preloader setLoaded={setLoaded} />
         </div>
       ) : (
-        <main className="relative h-100svh overflow-y-hidden">
+        <main className="relative h-100svh w-max overflow-y-hidden">
           {/* меню навигации */}
           {/* <div
             ref={null}
@@ -73,17 +78,21 @@ const Main = ({ projects }: MainProps) => {
           >
             <Nav projects={projects} />
           </div> */}
-          <div className="relative z-10 h-100svh w-100vw shrink-0 hd:w-fit">
+
+          <div className="relative z-10 h-100svh w-100vw min-w-[375px] shrink-0 hd:w-fit">
             {/* Основной контейнер для скролла */}
-            <div className="left-[0] top-[0] h-100svh w-100vw overflow-hidden hd:w-100vw-scroll">
+
+            <div className="left-[0] top-[0] h-100svh w-100vw min-w-[375px] overflow-hidden hd:w-100vw-scroll">
               {/* Горизонтальный скролл-контейнер */}
-              <div className={classNames('flex h-full w-full overflow-hidden')}>
+
+              <div className={classNames('flex h-100svh w-100vw min-w-[375px] overflow-hidden')}>
                 {/* Секция "Company" */}
+
                 <section ref={null}>
                   <div
                     className={classNames(
                       // styles.container,
-                      'h-100svh w-100vw shrink-0 text-white hd:h-full hd:w-100vw-scroll',
+                      'h-100svh w-100vw min-w-[375px] shrink-0 text-white hd:h-full hd:w-100vw-scroll',
                     )}
                   >
                     <Company
@@ -99,7 +108,7 @@ const Main = ({ projects }: MainProps) => {
                   className="h-full w-full"
                   ref={shouldSetScrollRefs ? null : setScrollVerticalRefs}
                 >
-                  <div className="flex h-full w-100vw shrink-0 flex-wrap gap-0 overflow-y-hidden md:flex-nowrap hd:w-devConst-hd">
+                  <div className="flex h-full w-100vw min-w-[375px] shrink-0 flex-wrap gap-0 overflow-y-hidden md:flex-nowrap hd:w-devConst-hd">
                     <DevConst
                       setScrollVerticalRefs={setScrollVerticalRefs}
                       isMobileClient={isMobileClient}
@@ -112,7 +121,7 @@ const Main = ({ projects }: MainProps) => {
                 <section
                   ref={setScrollVerticalRefs}
                   className={classNames(
-                    'relative z-10 block w-100vw shrink-0 overflow-hidden hd:hidden hd:w-100vw-scroll',
+                    'relative z-10 block w-100vw min-w-[375px] shrink-0 overflow-hidden hd:hidden hd:w-100vw-scroll',
                   )}
                 >
                   <Project
@@ -126,7 +135,7 @@ const Main = ({ projects }: MainProps) => {
 
                 <section
                   className={classNames(
-                    'relative z-10 block w-100vw shrink-0 overflow-hidden hd:hidden hd:w-100vw-scroll bg-white',
+                    'relative z-10 block w-100vw min-w-[375px] shrink-0 overflow-hidden bg-white hd:hidden hd:w-100vw-scroll',
                   )}
                 >
                   <Projects
@@ -145,8 +154,8 @@ const Main = ({ projects }: MainProps) => {
                   )}
                 >
                   <AboutUs
-                    setWhiteThemeRefs={()=>null}
-                    setBlackThemeRefs={()=>null}
+                    setWhiteThemeRefs={() => null}
+                    setBlackThemeRefs={() => null}
                     setScrollVerticalRefs={setScrollVerticalRefs}
                     gotoSection={gotoSection}
                     isMobileClient={isMobileClient}
@@ -164,8 +173,8 @@ const Main = ({ projects }: MainProps) => {
             )}
           >
             <AboutUs
-              setWhiteThemeRefs={()=>null}
-              setBlackThemeRefs={()=>null}
+              setWhiteThemeRefs={() => null}
+              setBlackThemeRefs={() => null}
               setScrollVerticalRefs={setScrollVerticalRefs}
               gotoSection={gotoSection}
               isMobileClient={isMobileClient}

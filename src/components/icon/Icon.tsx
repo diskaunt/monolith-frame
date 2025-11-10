@@ -7,10 +7,10 @@ import DevLineSvg from './icons/DevLineSvg';
 import MenuSvg from './icons/MenuSvg';
 import NavSmSvg from './icons/NavSmSvg';
 import NavSvg from './icons/NavSvg';
+import ArrowRight from './icons/ArrowRight';
 
 
 const icons = {
-
   arrowComplex: ArrowComplex,
   arrowNav: ArrowNavSvg,
   arrowUp: ArrowUpSvg,
@@ -19,7 +19,7 @@ const icons = {
   menu: MenuSvg,
   navSm: NavSmSvg,
   nav: NavSvg,
-
+	arrowRight: ArrowRight,
 };
 
 type IconName = keyof typeof icons;
