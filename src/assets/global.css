@@ -18,6 +18,7 @@ body::-webkit-scrollbar {
 body,
 html {
 	margin: 0;
+	overflow: hidden;
 }
 
 .scrollBarGutterStable {

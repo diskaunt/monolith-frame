@@ -1,39 +1,39 @@
-import classNames from "classnames";
-import Link from "next/link";
-import React from "react";
+import classNames from 'classnames';
+import Link from 'next/link';
+import React from 'react';
 
 const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
   const menuItems = [
-    "девелопмент",
-    "ипотека",
-    "коммерческая недвижимость",
-    "управляющая компания",
-    "ход строительства",
+    'девелопмент',
+    'ипотека',
+    'коммерческая недвижимость',
+    'управляющая компания',
+    'ход строительства',
   ];
 
   return (
     <div
       className={classNames(
-        devOpened ? "visible z-10" : "invisible -z-10 delay-300",
-        "transition-all shadow-lg",
+        'h-max w-menuDev-mobile min-w-[263px] overflow-hidden bg-white shadow-lg transition-all duration-300 hd:h-[410px] hd:w-menuDev-project',
+        devOpened
+          ? 'visible z-10 max-h-[410px] max-w-[392px] hd:translate-y-[66px]'
+          : 'invisible -z-10 max-h-0 max-w-0',
       )}
     >
       <ul
         className={classNames(
-          devOpened
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0",
-          "w-menuDev-mobile max-w-[394px] space-y-[30px] bg-white px-[23px] py-[31px] transition-all duration-300 sm:h-[410px] hd:w-[394px]",
+          devOpened ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0',
+          'mx-[15px] my-[22px] space-y-[20px] transition-all duration-300 md:mx-[23px] md:my-[31px] md:space-y-[30px]',
         )}
       >
         {menuItems.map((item, i) => (
           <li key={item} className="relative">
             <Link
               className={classNames(
-                "hoverMenuNav",
-                "text-[34px] uppercase leading-[25px] tracking-normal text-black hover:ml-[13px] hover:border-b-2 hover:border-black",
+                'hoverMenuNav',
+                'text-[22px] uppercase leading-[25px] tracking-normal text-black hover:ml-[13px] hover:border-b-2 hover:border-black md:text-[34px]',
               )}
-              href={"/"}
+              href={'/'}
             >
               {item}
             </Link>

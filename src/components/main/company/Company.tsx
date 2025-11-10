@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './company.module.css';
-import RCCard from './RCCard/RCCard';
-import ArrowRight from '../../common/ArrowRight';
+import RCCard from '../../RCCard/RCCard';
 import classNames from 'classnames';
+import Icon from '@/components/icon/Icon';
 
 const Company = ({
   scrollToDevConst,
@@ -18,7 +18,7 @@ const Company = ({
         ref={setScrollVerticalRefs}
       >
         <div className="mx-auto flex w-full flex-wrap gap-x-[101px] gap-y-[37px] hd:max-w-[1920px]">
-          <div className="h-[50px] w-full min-w-[343px] max-w-[707px] sm:h-[60px]"></div>
+          <div className="h-[50px] w-full min-w-[343px] max-w-[707px] md:h-[60px]"></div>
           <div className="mt-[-11px] grow space-y-[30px]">
             <div className="overflow-hidden pr-[117px]">
               <div className="ml-[-1px] max-w-[400px] text-[70px] font-bold uppercase leading-[60px] tracking-wide sm:max-w-[900px] sm:text-[140px] sm:leading-[120px]">
@@ -47,7 +47,10 @@ const Company = ({
             <RCCard />
           </div>
           <div onClick={scrollToDevConst} className="invisible sm:visible">
-            <ArrowRight className={classNames(styles.slideRightOpacity, 'cursor-pointer')} />
+            <Icon
+              name="arrowRight"
+              className={classNames(styles.slideRightOpacity, 'cursor-pointer')}
+            />
           </div>
         </article>
       </div>

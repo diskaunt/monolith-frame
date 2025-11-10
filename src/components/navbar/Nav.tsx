@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { use, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import useClickOutside from '@/hooks/useClickOutside';
 import styles from './nav.module.css';
@@ -8,23 +8,27 @@ import { ProjectType } from '@/data-access/projects';
 import Icon from '../icon/Icon';
 import Illustration from '../illustration/Illustration';
 import { useParams } from 'next/navigation';
+import DevelopmentMenu from './developmentMenu/DevelopmentMenu';
 
 const Nav = ({ projects }: { projects?: ProjectType[] }) => {
-  // const [devOpened, setDevOpened] = useState<boolean>(false);
+  const [devOpened, setDevOpened] = useState<boolean>(false);
   const [constOpened, setConstOpened] = useState<boolean>(false);
+  const navRef = useRef(null);
   const menuRef = useRef(null);
-  const devMenuRef = useRef(null);
   const params = useParams();
 
   const handleClickOutside = (value: boolean) => {
-    // setDevOpened(value);
+    setDevOpened(value);
     setConstOpened(value);
   };
 
-  useClickOutside([menuRef, devMenuRef], handleClickOutside);
+  useClickOutside([navRef, menuRef], handleClickOutside);
 
   const onDevOpened = () => {
-    // setDevOpened(!devOpened);
+    setDevOpened(!devOpened);
+  };
+
+  const onConstOpened = () => {
     setConstOpened(!constOpened);
   };
 
@@ -34,16 +38,13 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
     <>
       <nav
         className={classNames(
-          'border-inherit transition-all',
-          'baseTheme',
-          isProjectPage ? 'translate-x-[60px]' : 'blackTheme',
-          'fixed left-[16px] top-[16px] z-20 md:left-[20px] md:top-[20px]',
-					'grayscale',
+          'baseTheme fixed left-[16px] top-[16px] z-20 border-inherit grayscale transition-all sm:left-[20px] sm:top-[20px]',
+          isProjectPage ? '' : 'blackTheme',
         )}
       >
         <div
           className={classNames(
-            'z-10 flex h-[50px] w-nav-mobile min-w-[343px] max-w-[707px] border-inherit md:h-[60px] md:w-nav-desktop',
+            'z-10 flex h-[50px] w-nav-mobile min-w-[343px] max-w-[707px] border-inherit sm:w-nav-desktop md:h-[60px]',
           )}
         >
           {/* Дизайнерская причуда */}
@@ -58,7 +59,7 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
 
           {/* Основное меню */}
           <div
-            ref={menuRef}
+            ref={navRef}
             className={classNames(
               styles.borderAnimate,
               'relative flex grow border border-inherit text-[16px] leading-[25px] tracking-wide md:ml-[6px] md:text-[24px] md:leading-[25px]',
@@ -77,10 +78,17 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
             <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
             {/* Кнопка "Девелопмент" */}
-            <div className={classNames('relative grow px-[14px] hd:max-w-[154px] hd:px-[22px]')}>
+            <div
+              className={classNames(
+                devOpened ? 'bg-white' : '',
+                'relative grow px-[14px] hd:max-w-[154px] hd:px-[22px]',
+              )}
+            >
               <button
                 onClick={onDevOpened}
-                className="flex h-full w-full cursor-pointer items-center justify-center gap-x-[3px] uppercase"
+                className={classNames(
+                  'flex h-full w-full cursor-pointer items-center justify-center gap-x-[3px] uppercase',
+                )}
               >
                 <span className="">девелопмент</span>
                 <span className="h-[0.7em] w-[6.67px] hd:w-[10px]">
@@ -94,8 +102,9 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
 
             {/* Кнопка "Строительство" */}
             <div
-              onClick={() => {}}
+              onClick={onConstOpened}
               className={classNames(
+                constOpened ? 'bg-white' : '',
                 'flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase hd:max-w-[171px] hd:px-[20px]',
               )}
             >
@@ -120,16 +129,17 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
           </div>
         </div>
       </nav>
-      <nav
-        ref={devMenuRef}
+      <div
+        ref={menuRef}
         className={classNames(
-          constOpened ? 'visible' : 'invisible',
-          'absolute left-[95px] top-[70px] z-20 flex flex-wrap gap-[6px] sm:left-[86px] sm:top-[86px] hd:left-[333px] hd:flex-nowrap',
+          'invisible absolute left-[97px] top-[76px] z-20 me-[16px] mr-[16px] flex max-h-[80svh] flex-wrap transition-all duration-300 sm:left-[101px] sm:top-[76px] sm:mr-[20px] md:left-[167px] md:top-[86px] hd:left-[335px] hd:top-[20px] hd:flex-nowrap',
+          constOpened || devOpened ? 'visible' : '',
+          devOpened ? 'visible gap-[6px]' : 'gap-0 hd:top-[86px]',
         )}
       >
-        {/* <DevelopmentMenu devOpened={devOpened} /> */}
+        <DevelopmentMenu devOpened={devOpened} />
         <ConstructionMenu projects={projects} constOpened={constOpened} />
-      </nav>
+      </div>
     </>
   );
 };
