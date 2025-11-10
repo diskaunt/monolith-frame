@@ -49,6 +49,7 @@ const useGsapObserver = () => {
       // добавленно для мобильной версии, чтобы за раз не прокручивалось больше 1 элемента
       onStop: () => {
         animating.current = false;
+        console.log('stop');
       },
       tolerance: 50,
       preventDefault: true,
