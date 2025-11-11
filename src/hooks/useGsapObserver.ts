@@ -38,7 +38,8 @@ const useGsapObserver = () => {
     currentIndex.current = correctedIndex;
   };
 
-  useGSAP(() => {
+  useGSAP((context, contextSafe) => {
+		console.log(isMobileClient.current);
     Observer.create({
       type: isMobileClient.current ? 'wheel,touch,pointer' : 'wheel',
       wheelSpeed: -1,
