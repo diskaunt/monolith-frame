@@ -1,5 +1,5 @@
 'use client';
-import React, { use, useEffect, useRef, useState } from 'react';
+import React, { use, useCallback, useRef, useState } from 'react';
 import classNames from 'classnames';
 import useClickOutside from '@/hooks/useClickOutside';
 import styles from './nav.module.css';
@@ -9,6 +9,7 @@ import Icon from '../icon/Icon';
 import Illustration from '../illustration/Illustration';
 import { useParams } from 'next/navigation';
 import DevelopmentMenu from './developmentMenu/DevelopmentMenu';
+import Button from './button/Button';
 
 const Nav = ({ projects }: { projects?: ProjectType[] }) => {
   const [devOpened, setDevOpened] = useState<boolean>(false);
@@ -24,13 +25,13 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
 
   useClickOutside([navRef, menuRef], handleClickOutside);
 
-  const onDevOpened = () => {
+  const onDevOpened = useCallback(() => {
     setDevOpened(!devOpened);
-  };
+  }, [devOpened]);
 
-  const onConstOpened = () => {
+  const onConstOpened = useCallback(() => {
     setConstOpened(!constOpened);
-  };
+  }, [constOpened]);
 
   const isProjectPage = params.project ? true : false;
 
@@ -78,41 +79,18 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
             <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
             {/* Кнопка "Девелопмент" */}
-            <div
-              className={classNames(
-                devOpened ? 'bg-white' : '',
-                'relative grow px-[14px] hd:max-w-[154px] hd:px-[22px]',
-              )}
-            >
-              <button
-                onClick={onDevOpened}
-                className={classNames(
-                  'flex h-full w-full cursor-pointer items-center justify-center gap-x-[3px] uppercase',
-                )}
-              >
-                <span className="">девелопмент</span>
-                <span className="h-[0.7em] w-[6.67px] hd:w-[10px]">
-                  <Icon name="arrowNav" />
-                </span>
-              </button>
-            </div>
+            <Button onCLick={onDevOpened} isOpened={devOpened} type="button">
+              девелопмент
+            </Button>
 
             {/* Разделитель */}
             <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
             {/* Кнопка "Строительство" */}
-            <div
-              onClick={onConstOpened}
-              className={classNames(
-                constOpened ? 'bg-white' : '',
-                'flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase hd:max-w-[171px] hd:px-[20px]',
-              )}
-            >
-              <span>строительство</span>
-              <span className="h-[0.7em] w-[6.67px] hd:w-[10px]">
-                <Icon name="arrowNav" />
-              </span>
-            </div>
+
+            <Button onCLick={onConstOpened} isOpened={constOpened} type="button">
+              строительство
+            </Button>
 
             {/* Разделитель */}
             <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>

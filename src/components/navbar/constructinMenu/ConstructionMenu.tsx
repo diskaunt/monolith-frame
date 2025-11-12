@@ -11,7 +11,7 @@ type ConstructionMenuType = {
   constOpened: boolean;
 };
 
-const ConstructionMenu = ({ projects = [], constOpened }: ConstructionMenuType) => {
+const ConstructionMenu = React.memo(({ projects = [], constOpened }: ConstructionMenuType) => {
   const [KMImage, setKMImage] = useState<string>('/images/KMResidencePrime.jpg');
   const pathName = usePathname();
 
@@ -19,7 +19,7 @@ const ConstructionMenu = ({ projects = [], constOpened }: ConstructionMenuType) 
     <div
       className={classNames(
         constOpened ? 'visible z-10 shadow-lg transition-shadow delay-150' : 'invisible -z-10',
-        'flex max-h-[410px] max-w-[360px] bg-white sm:w-max md:max-h-[476px] hd:w-menuDev-project hd:max-w-[1167px]',
+        'flex max-h-[410px] max-w-[360px] overflow-hidden bg-white sm:w-max md:max-h-[476px] hd:w-menuDev-project hd:max-w-[1167px]',
       )}
     >
       <div
@@ -80,6 +80,6 @@ const ConstructionMenu = ({ projects = [], constOpened }: ConstructionMenuType) 
       </div>
     </div>
   );
-};
+});
 
 export default ConstructionMenu;

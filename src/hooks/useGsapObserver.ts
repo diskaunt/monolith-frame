@@ -10,8 +10,7 @@ gsap.registerPlugin(Observer);
 const useGsapObserver = () => {
   const refArr = useRef<(HTMLElement | null)[]>([]),
     currentIndex = useRef<number>(-1),
-    animating = useRef<boolean>(false),
-    isMobileClient = useRef<boolean>(false);
+    animating = useRef<boolean>(false);
 
   const setRef = useCallback((el: HTMLElement | null) => {
     if (el && el.offsetHeight === 0) return;
@@ -39,9 +38,8 @@ const useGsapObserver = () => {
   };
 
   useGSAP((context, contextSafe) => {
-		console.log(isMobileClient.current);
     Observer.create({
-      type: isMobileClient.current ? 'wheel,touch,pointer' : 'wheel',
+      type: 'wheel,touch,pointer',
       wheelSpeed: -1,
       onDown: () => !animating.current && gotoSection(currentIndex.current - 1, -1),
       onUp: () => !animating.current && gotoSection(currentIndex.current + 1, 1),
@@ -56,12 +54,6 @@ const useGsapObserver = () => {
       preventDefault: true,
     });
   });
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    gotoSection(0, 1);
-    isMobileClient.current = deviceDetector();
-  }, []);
 
   return [gotoSection, setRef] as const;
 };
