@@ -13,7 +13,7 @@ const inter = Inter({
 const halvarBreit = localFont({
   src: [
     {
-      path: "./../public/fonts/Halvar Breitschrift/HalvarBreit-Md.woff2",
+      path: "../../public/fonts/Halvar Breitschrift/HalvarBreit-Md.woff2",
       weight: "400",
       style: "normal",
     },
@@ -25,12 +25,12 @@ const halvarBreit = localFont({
 const drucSyr = localFont({
   src: [
     {
-      path: "./../public/fonts/Druc Syr/DrukCyr-Medium.woff2",
+      path: "../../public/fonts/Druc Syr/DrukCyr-Medium.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "./../public/fonts/Druc Syr/DrukCyr-Bold.woff2",
+      path: "../../public/fonts/Druc Syr/DrukCyr-Bold.woff2",
       weight: "700",
       style: "normal",
     },
