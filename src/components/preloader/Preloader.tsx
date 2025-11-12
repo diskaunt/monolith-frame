@@ -1,7 +1,7 @@
 'use clients';
 import React from 'react';
 import styles from './preloader.module.css';
-import PreloaderSvg from './PreloaderSvg';
+import PreloaderSvg from './preloaderSvg/PreloaderSvg';
 import classNames from 'classnames';
 
 const Preloader = ({ setLoaded }: { setLoaded: React.Dispatch<React.SetStateAction<boolean>> }) => {

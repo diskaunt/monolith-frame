@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Link from 'next/link';
 import React from 'react';
 
-const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
+const DevelopmentMenu = React.memo(({ devOpened }: { devOpened: boolean }) => {
   const menuItems = [
     'девелопмент',
     'ипотека',
@@ -14,7 +14,7 @@ const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
   return (
     <div
       className={classNames(
-        'h-max w-menuDev-mobile min-w-[263px] overflow-hidden bg-white shadow-lg transition-all duration-300 hd:h-[410px] hd:w-menuDev-project',
+        'h-max w-menuDev-mobile overflow-hidden bg-white shadow-lg transition-all duration-300 hd:h-[410px] hd:w-menuDev-project',
         devOpened
           ? 'visible z-10 max-h-[410px] max-w-[392px] hd:translate-y-[66px]'
           : 'invisible -z-10 max-h-0 max-w-0',
@@ -42,6 +42,6 @@ const DevelopmentMenu = ({ devOpened }: { devOpened: boolean }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default DevelopmentMenu;

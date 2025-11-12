@@ -1,11 +1,13 @@
 'use client';
 
 export default function deviceDetector() {
-	if (typeof navigator === 'undefined') {
-		return false;
-	}
+  if (typeof navigator.userAgent === 'undefined') {
+    return false;
+  }
 
-	return Boolean(navigator.userAgent.match(
-      /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i
-    ))
+  const isMobile = Boolean(
+    navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i),
+  );
+
+  return isMobile;
 }

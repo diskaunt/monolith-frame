@@ -22,29 +22,12 @@ const Main = ({ projects }: MainProps) => {
   const navRef = useRef<HTMLDivElement>(null),
     [loaded, setLoaded] = useState(false),
     [gotoSection, setScrollVerticalRefs] = useGsapObserver(),
-    [isMobileClient, setIsMobileClient] = useState(false),
-    // функция для стрелки в право
-    scrollToDevConst = useCallback(() => {
-      gotoSection(1, -1);
-    }, [gotoSection]);
+    [isMobileClient, setIsMobileClient] = useState(false);
 
-  // обсерверы для изменнеия цвета темы навигационного меню
-  // [blackThemeRefs, setBlackThemeRefs] = useObserver(
-  //   (entries) => changeThemeColor(entries, navRef, 'black-theme', 'white-theme'),
-  //   {
-  //     root: null,
-  //     rootMargin: '0px',
-  //     threshold: [0.1],
-  //   },
-  // ),
-  // [whiteThemeRefs, setWhiteThemeRefs] = useObserver(
-  //   (entries) => changeThemeColor(entries, navRef, 'white-theme', 'black-theme'),
-  //   {
-  //     root: null,
-  //     rootMargin: '0px',
-  //     threshold: [0.1],
-  //   },
-  // );
+  // функция для стрелки в право
+  const scrollToDevConst = useCallback(() => {
+    gotoSection(1, -1);
+  }, [gotoSection]);
 
   useEffect(() => {
     setLoaded(getLocalStorageLoaded());
@@ -71,14 +54,7 @@ const Main = ({ projects }: MainProps) => {
         </div>
       ) : (
         <main className="relative h-100svh w-max overflow-y-hidden">
-          {/* меню навигации */}
-          {/* <div
-            ref={null}
-            className={classNames("white-theme", "fixed left-[16px] top-[16px] z-20 md:left-[20px] md:top-[20px] mix-blend-difference")}
-          >
-            <Nav projects={projects} />
-          </div> */}
-
+          
           <div className="relative z-10 h-100svh w-100vw min-w-[375px] shrink-0 hd:w-fit">
             {/* Основной контейнер для скролла */}
 
