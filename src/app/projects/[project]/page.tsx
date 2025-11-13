@@ -24,9 +24,6 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
 
   return (
     <div className="w-full">
-      <div className="white-theme fixed left-[80px] top-[20px] z-20">
-        <Nav projects={projects} />
-      </div>
       {projectItem && <Project project={projectItem} />}
     </div>
   );

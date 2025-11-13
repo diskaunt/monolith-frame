@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import styles from './titltAboutUs.module.css';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';
-import SecTitle from '@/components/common/SecTitle';
+import SecTitle from '@/components/secTitle/SecTitle';
 import Image from 'next/image';
 import myImageLoader from '@/utils/myImageLoader';
 import Illustration from '@/components/illustration/Illustration';

@@ -8,7 +8,9 @@ import MenuSvg from './icons/MenuSvg';
 import NavSmSvg from './icons/NavSmSvg';
 import NavSvg from './icons/NavSvg';
 import ArrowRight from './icons/ArrowRight';
-
+import ProjectSvg from './icons/ProjectSvg';
+import Cross from './icons/Cross';
+import Square from './icons/Square';
 
 const icons = {
   arrowComplex: ArrowComplex,
@@ -19,7 +21,10 @@ const icons = {
   menu: MenuSvg,
   navSm: NavSmSvg,
   nav: NavSvg,
-	arrowRight: ArrowRight,
+  arrowRight: ArrowRight,
+  projectSvg: ProjectSvg,
+  cross: Cross,
+  square: Square,
 };
 
 type IconName = keyof typeof icons;

@@ -1,10 +1,10 @@
 'use client';
 import { ProjectType } from '@/data-access/projects';
 import React, { useState, useEffect } from 'react';
-import SecTitle from '@/components/common/SecTitle';
+import SecTitle from '@/components/secTitle/SecTitle';
 import classNames from 'classnames';
 import ProjectCard from './projectCard/ProjectCard';
-import Modal from '@/components/common/Modal';
+import Modal from '@/components/modal/Modal';
 import Card from './project/card/Card';
 import styles from './projects.module.css';
 import useObserver from '@/hooks/useObserver';

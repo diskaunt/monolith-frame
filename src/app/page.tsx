@@ -7,7 +7,7 @@ const MonolithFramePage = async () => {
   let projects = await getProjects();
 
   return (
-    <>
+		<>
       <Nav projects={projects} />
       <Main projects={projects} />
     </>

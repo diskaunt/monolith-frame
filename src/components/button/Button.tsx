@@ -1,18 +1,20 @@
 import Icon from '@/components/icon/Icon';
 import classNames from 'classnames';
-import { on } from 'events';
 
-const Button: React.FC<{
+type ButtonProps = {
   children: React.ReactNode;
+	className?: string;
   onCLick?: () => void;
   isOpened?: boolean;
   type?: 'button' | 'submit' | 'reset';
-}> = ({ onCLick, isOpened, children, type = 'button' }) => {
+};
+
+const Button: React.FC<ButtonProps> = ({ onCLick, isOpened, children, type = 'button' }) => {
   return (
     <button
       onClick={onCLick}
       className={classNames(
-        isOpened ? 'bg-white' : '',
+        isOpened ? 'bg-white text-black' : '',
         'flex grow cursor-pointer items-center justify-center space-x-[3px] px-[14px] uppercase hd:px-[20px]',
       )}
     >

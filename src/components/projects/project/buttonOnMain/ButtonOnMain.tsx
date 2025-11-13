@@ -1,57 +1,42 @@
-"use client";
-import classNames from "classnames";
-import { usePathname, useRouter } from "next/navigation";
-import React from "react";
+'use client';
+import Icon from '@/components/icon/Icon';
+import classNames from 'classnames';
+import { usePathname, useRouter } from 'next/navigation';
 
-const ButtonOnMain = ({
-  textColor = "white",
-}: {
-  textColor?: "white" | "black";
-}) => {
-  const path = usePathname();
+const ButtonOnMain = ({ textColor = 'white' }: { textColor?: 'white' | 'black' }) => {
+  const pathName = usePathname();
   const router = useRouter();
   return (
-    path && (
+    pathName && (
       <div
         className={classNames(
-          path !== "/projects" ? "border-white" : "border-black",
-          "fixed left-0 top-0 z-30 flex h-100svh border-r",
+          pathName !== '/projects' ? 'border-white' : 'border-black',
+          'fixed left-0 top-0 z-30 flex h-100svh border-r',
         )}
       >
         <button
-          onClick={() => router.replace("/")}
+          onClick={() => router.replace('/')}
           className={classNames(
-            path !== "/projects" ? "text-white" : "text-black",
-            "vertical-text-bottom",
-            "flex w-[60px] items-center self-center uppercase",
+            pathName !== '/projects' ? 'text-white' : 'text-black',
+            'vertical-text-bottom',
+            'flex items-center self-center py-[16px] pl-[10px] pr-[8px] uppercase sm:py-[20px] sm:pl-[14.06px] sm:pr-[12px]',
           )}
         >
           <p
             className={classNames(
-              path !== "/projects" ? "text-white" : "text-black",
-              "font-drucSyr text-[30px] uppercase leading-[25px] tracking-normal",
+              pathName !== '/projects' ? 'text-white' : 'text-black',
+              'leadig-[16px] font-drucSyr text-[20px] uppercase tracking-normal sm:text-[30px] sm:leading-[25px]',
             )}
           >
             на главную
           </p>
-          <svg
-            width="34"
-            height="34"
-            viewBox="0 0 34 34"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8.48535 25.4561L25.4559 8.48549"
-              stroke={path !== "/projects" ? "white" : "black"}
-              strokeWidth="1.5"
-            />
-            <path
-              d="M25.4556 25.4561L8.485 8.48549"
-              stroke={path !== "/projects" ? "white" : "black"}
-              strokeWidth="1.5"
-            />
-          </svg>
+          <Icon
+            name="cross"
+            className={classNames(
+              'h-[24px] w-[24px] sm:h-[34px] sm:w-[34px]',
+              pathName !== '/projects' ? 'stroke-white' : 'stroke-black',
+            )}
+          />
         </button>
       </div>
     )

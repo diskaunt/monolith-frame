@@ -9,7 +9,7 @@ import Icon from '../icon/Icon';
 import Illustration from '../illustration/Illustration';
 import { useParams } from 'next/navigation';
 import DevelopmentMenu from './developmentMenu/DevelopmentMenu';
-import Button from './button/Button';
+import Button from '../button/Button';
 
 const Nav = ({ projects }: { projects?: ProjectType[] }) => {
   const [devOpened, setDevOpened] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
       <nav
         className={classNames(
           'baseTheme fixed left-[16px] top-[16px] z-20 border-inherit grayscale transition-all sm:left-[20px] sm:top-[20px]',
-          isProjectPage ? '' : 'blackTheme',
+          isProjectPage ? 'text-white translate-x-[48px] sm:translate-x-[60px] max-w-[calc(100% - 48px)] sm:max-w-[calc(100% - 60px)]' : 'blackTheme',
         )}
       >
         <div
@@ -79,7 +79,7 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
             <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
             {/* Кнопка "Девелопмент" */}
-            <Button onCLick={onDevOpened} isOpened={devOpened} type="button">
+            <Button onCLick={onDevOpened} className={classNames( devOpened ? 'text-black' : '')} isOpened={devOpened} type="button">
               девелопмент
             </Button>
 

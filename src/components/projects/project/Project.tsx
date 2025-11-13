@@ -1,11 +1,12 @@
 'use client';
 import classNames from 'classnames';
 import { useEffect, useRef } from 'react';
-import Department from '@/components/common/Department';
+import Department from '@/components/department/Department';
 import Card from './card/Card';
 import { ProjectType } from '@/data-access/projects';
 import myImageLoader from '@/utils/myImageLoader';
 import { useParams, usePathname } from 'next/navigation';
+import Icon from '@/components/icon/Icon';
 
 type ProjectProps = {
   project: ProjectType;
@@ -50,20 +51,7 @@ const Project = ({ project }: ProjectProps) => {
             {/* Карточка проекта */}
             <article className="flex flex-col hd:items-end">
               <button className="mb-[6px] flex h-[60px] w-[100px] items-center justify-center border border-white">
-                <svg
-                  width="33"
-                  height="19"
-                  viewBox="0 0 33 19"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M22 1L31.4515 9.58506L22 17.9656" stroke="white" strokeWidth="1.5" />
-                  <path
-                    d="M11.4517 1L2.00021 9.58506L11.4517 17.9656"
-                    stroke="white"
-                    strokeWidth="1.5"
-                  />
-                </svg>
+                <Icon name="projectSvg" />
               </button>
               <Card
                 adress={project.card?.adress}

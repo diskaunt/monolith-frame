@@ -1,8 +1,8 @@
-import Department from '@/components/common/Department';
+import Department from '@/components/department/Department';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import styles from './footerAboutUs.module.css';
-import Marque from '@/components/common/Marque';
+import Marque from '@/components/marque/Marque';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';
 import HorizontalBar from '@/components/common/HorizontalBar';

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import classNames from 'classnames';
 import styles from './devConst.module.css';
-import Department from '@/components/common/Department';
+import Department from '@/components/department/Department';
 import useObserver from '@/hooks/useObserver';
 import addActiveClassname from '@/utils/addActiveStyles';
 import Image from 'next/image';
