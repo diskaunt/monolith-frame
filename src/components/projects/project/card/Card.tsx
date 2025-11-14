@@ -1,15 +1,17 @@
 import React from 'react';
 
-const Card = ({
-  adress = 'no adress',
-  price = 'no price',
-  DueDate = 'no date',
-  information = 'information not find',
-}: {
+type CardProps = {
   adress?: string;
   price?: string;
   DueDate?: string;
   information?: string;
+};
+
+const Card: React.FC<CardProps> = ({
+  adress = 'no adress',
+  price = 'no price',
+  DueDate = 'no date',
+  information = 'information not find',
 }) => {
   return (
     <div className="h-[344px] w-[299px] bg-orange-500 hd:h-[538px] hd:w-[460px]">

@@ -19,13 +19,13 @@ type FooterAboutUsProps = {
   isMobileClient: boolean;
 };
 
-const FooterAboutUs = ({
+const FooterAboutUs: React.FC<FooterAboutUsProps> = ({
   setScrollVerticalRefs,
   setBlackThemeRefs,
   setWhiteThemeRefs,
   gotoSection,
   isMobileClient,
-}: FooterAboutUsProps) => {
+}) => {
   const hoverRef = useRef<HTMLDivElement | null>(null);
   const awardsRef = useRef<HTMLDivElement | null>(null);
 

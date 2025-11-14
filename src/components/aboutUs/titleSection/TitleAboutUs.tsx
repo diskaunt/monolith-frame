@@ -14,11 +14,11 @@ type TitleAboutUsProps = {
   setWhiteThemeRefs: (node: HTMLDivElement | null) => void;
 };
 
-const TitleAboutUs = ({
+const TitleAboutUs: React.FC<TitleAboutUsProps> = ({
   setScrollVerticalRefs,
   setBlackThemeRefs,
   setWhiteThemeRefs,
-}: TitleAboutUsProps) => {
+}) => {
   const snowMountTopRef = useRef<HTMLDivElement>(null),
     whiteTowerRef = useRef<HTMLDivElement>(null),
     secRef = useRef<HTMLDivElement>(null),

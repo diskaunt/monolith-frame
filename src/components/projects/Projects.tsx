@@ -20,11 +20,11 @@ type ProjectsProps = {
   isMobileClient?: boolean;
 };
 
-const Projects = ({
+const Projects: React.FC<ProjectsProps> = ({
   projects = [],
   setScrollVerticalRefs,
   isMobileClient = false,
-}: ProjectsProps) => {
+}) => {
   const [project, setProject] = useState<ProjectType | null>(null),
     [isMounted, setIsMounted] = useState(false),
     [goToSection, setScrollRefs] = setScrollVerticalRefs ? [null, null] : useGsapObserver();

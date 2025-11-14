@@ -4,9 +4,8 @@ import ButtonOnMain from '../../components/projects/project/buttonOnMain/ButtonO
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <section className="w-full">
+    <section className="min-w-[375px] w-full">
       <ButtonOnMain textColor="black" />
-      <Nav />
       {children}
       <ButtonOnConstruction textColor="black" />
     </section>

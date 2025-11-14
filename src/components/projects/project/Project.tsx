@@ -12,7 +12,7 @@ type ProjectProps = {
   project: ProjectType;
 };
 
-const Project = ({ project }: ProjectProps) => {
+const Project: React.FC<ProjectProps> = ({ project }) => {
   const bgImageRef = useRef<HTMLDivElement>(null);
   const params = useParams();
   const isProjectPage = params.project ? true : false;

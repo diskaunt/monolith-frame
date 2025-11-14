@@ -8,10 +8,12 @@ import Image from 'next/image';
 import myImageLoader from '@/utils/myImageLoader';
 import Illustration from '@/components/illustration/Illustration';
 
-const MidleAboutUs = ({
-  setScrollVerticalRefs,
-}: {
-  setScrollVerticalRefs?: (node: HTMLDivElement | null) => void;
+export type MidleAboutUsProps = {
+	setScrollVerticalRefs?: (node: HTMLDivElement | null) => void;
+};
+
+const MidleAboutUs: React.FC<MidleAboutUsProps> = ({
+  setScrollVerticalRefs = null,
 }) => {
   const [divLoadRefs, setDivLoadRef] = useObserver((entryes) =>
     addActiveClassname(entryes, styles),

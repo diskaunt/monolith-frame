@@ -3,7 +3,11 @@ import Icon from '@/components/icon/Icon';
 import classNames from 'classnames';
 import { usePathname, useRouter } from 'next/navigation';
 
-const ButtonOnMain = ({ textColor = 'white' }: { textColor?: 'white' | 'black' }) => {
+type ButtonOnMainProps = {
+  textColor?: 'white' | 'black';
+};
+
+const ButtonOnMain: React.FC<ButtonOnMainProps> = ({ textColor = 'white' }) => {
   const pathName = usePathname();
   const router = useRouter();
   return (

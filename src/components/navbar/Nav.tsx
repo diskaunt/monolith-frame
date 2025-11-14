@@ -7,16 +7,20 @@ import ConstructionMenu from './constructinMenu/ConstructionMenu';
 import { ProjectType } from '@/data-access/projects';
 import Icon from '../icon/Icon';
 import Illustration from '../illustration/Illustration';
-import { useParams } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import DevelopmentMenu from './developmentMenu/DevelopmentMenu';
 import Button from '../button/Button';
 
-const Nav = ({ projects }: { projects?: ProjectType[] }) => {
+type NavProps = {
+  projects?: ProjectType[];
+};
+
+const Nav: React.FC<NavProps> = ({ projects }) => {
   const [devOpened, setDevOpened] = useState<boolean>(false);
   const [constOpened, setConstOpened] = useState<boolean>(false);
   const navRef = useRef(null);
   const menuRef = useRef(null);
-  const params = useParams();
+  const pathname = usePathname();
 
   const handleClickOutside = (value: boolean) => {
     setDevOpened(value);
@@ -33,14 +37,16 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
     setConstOpened(!constOpened);
   }, [constOpened]);
 
-  const isProjectPage = params.project ? true : false;
+  const isProjectPage = pathname.indexOf('/projects') !== -1 ? true : false;
 
   return (
     <>
       <nav
         className={classNames(
           'baseTheme fixed left-[16px] top-[16px] z-20 border-inherit grayscale transition-all sm:left-[20px] sm:top-[20px]',
-          isProjectPage ? 'text-white translate-x-[48px] sm:translate-x-[60px] max-w-[calc(100% - 48px)] sm:max-w-[calc(100% - 60px)]' : 'blackTheme',
+          isProjectPage
+            ? 'max-w-[calc(100% - 48px)] sm:max-w-[calc(100% - 60px)] translate-x-[48px] text-white sm:translate-x-[60px]'
+            : 'blackTheme',
         )}
       >
         <div
@@ -79,7 +85,12 @@ const Nav = ({ projects }: { projects?: ProjectType[] }) => {
             <div className={classNames(styles.growAnimate, 'h-full border-l border-inherit')}></div>
 
             {/* Кнопка "Девелопмент" */}
-            <Button onCLick={onDevOpened} className={classNames( devOpened ? 'text-black' : '')} isOpened={devOpened} type="button">
+            <Button
+              onCLick={onDevOpened}
+              className={classNames(devOpened ? 'text-black' : '')}
+              isOpened={devOpened}
+              type="button"
+            >
               девелопмент
             </Button>
 
