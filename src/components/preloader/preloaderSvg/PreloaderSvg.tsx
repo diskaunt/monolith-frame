@@ -16,8 +16,9 @@ const PreloaderSvg = ({
   useEffect(() => {
     const handleAnimationEnd = () => {
       setLoaded(true);
-      setLocalStorageLoaded(true);
+      // setLocalStorageLoaded(true);
     };
+
     const svg = svgRef.current;
     if (svg) {
       svg.addEventListener("animationend", handleAnimationEnd);

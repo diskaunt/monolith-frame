@@ -40,7 +40,7 @@
 	height: 100%;
 	z-index: 0;
 	background-color: #DF462A;
-	animation: 0.7s linear both backTrans;
+	animation: 0.8s linear both backTrans;
 }
 
 .loaderWrapper {
@@ -174,10 +174,15 @@
 @keyframes backTrans {
 	0% {
 		transform: translateY(0);
+		opacity: 1;
 	}
 
+	99% {
+		transform: translateY(-99svh);
+		opacity: 1;
+	}
 	100% {
 		transform: translateY(-100svh);
-		display: none;
+		opacity: 0;
 	}
 }

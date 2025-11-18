@@ -1,10 +1,10 @@
 'use client';
-import React, { use, useCallback, useRef, useState } from 'react';
+import React, { use, useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import useClickOutside from '@/hooks/useClickOutside';
 import styles from './nav.module.css';
 import ConstructionMenu from './constructinMenu/ConstructionMenu';
-import { ProjectType } from '@/data-access/projects';
+import { getProjects, ProjectType } from '@/data-access/projects';
 import Icon from '../icon/Icon';
 import Illustration from '../illustration/Illustration';
 import { useParams, usePathname } from 'next/navigation';
@@ -15,12 +15,24 @@ type NavProps = {
   projects?: ProjectType[];
 };
 
-const Nav: React.FC<NavProps> = ({ projects }) => {
+const Nav: React.FC<NavProps> = ({ projects = [] }) => {
   const [devOpened, setDevOpened] = useState<boolean>(false);
   const [constOpened, setConstOpened] = useState<boolean>(false);
+  const [loadedProjects, setLoadedProjects] = useState<ProjectType[]>(projects);
   const navRef = useRef(null);
   const menuRef = useRef(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    async function fetchProjects() {
+      const data = await getProjects();
+      setLoadedProjects(data);
+    }
+
+    if (loadedProjects.length === 0) {
+      fetchProjects();
+    }
+  }, [loadedProjects.length]);
 
   const handleClickOutside = (value: boolean) => {
     setDevOpened(value);
@@ -127,7 +139,7 @@ const Nav: React.FC<NavProps> = ({ projects }) => {
         )}
       >
         <DevelopmentMenu devOpened={devOpened} />
-        <ConstructionMenu projects={projects} constOpened={constOpened} />
+        <ConstructionMenu projects={loadedProjects} constOpened={constOpened} />
       </div>
     </>
   );

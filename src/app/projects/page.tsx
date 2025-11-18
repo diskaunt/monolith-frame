@@ -7,7 +7,6 @@ const ProjectsPage = async () => {
   const projects = await getProjects();
   return (
     <>
-      <Nav projects={projects} />
       <Projects projects={projects} />
     </>
   );

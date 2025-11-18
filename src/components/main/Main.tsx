@@ -1,6 +1,6 @@
 'use client';
 import styles from './main.module.css';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import DevConst from './developeConst/DevConst';
 import Company from './company/Company';
@@ -19,8 +19,7 @@ type MainProps = {
 };
 
 const Main = ({ projects }: MainProps) => {
-  const navRef = useRef<HTMLDivElement>(null),
-    [loaded, setLoaded] = useState(false),
+  const [loaded, setLoaded] = useState(false),
     [gotoSection, setScrollVerticalRefs] = useGsapObserver(),
     [isMobileClient, setIsMobileClient] = useState(false);
 
@@ -30,7 +29,7 @@ const Main = ({ projects }: MainProps) => {
   }, [gotoSection]);
 
   useEffect(() => {
-    setLoaded(getLocalStorageLoaded());
+    // setLoaded(getLocalStorageLoaded());
     setIsMobileClient(deviceDetector());
   }, []);
 
@@ -54,7 +53,6 @@ const Main = ({ projects }: MainProps) => {
         </div>
       ) : (
         <main className="relative h-100svh w-max overflow-y-hidden">
-          
           <div className="relative z-10 h-100svh w-100vw min-w-[375px] shrink-0 hd:w-fit">
             {/* Основной контейнер для скролла */}
 

@@ -7,11 +7,11 @@ import Image from 'next/image';
 import myImageLoader from '@/utils/myImageLoader';
 
 type ConstructionMenuType = {
-  projects?: ProjectType[];
+  projects: ProjectType[];
   constOpened: boolean;
 };
 
-const ConstructionMenu = React.memo(({ projects = [], constOpened }: ConstructionMenuType) => {
+const ConstructionMenu = React.memo(({ projects, constOpened }: ConstructionMenuType) => {
   const [KMImage, setKMImage] = useState<string>('/images/KMResidencePrime.jpg');
   const pathName = usePathname();
 
